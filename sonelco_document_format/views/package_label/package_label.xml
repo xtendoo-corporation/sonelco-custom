@@ -1,11 +1,11 @@
 <odoo>
     <data>
 
-        <record id="sonelco_document_format.label_xtendoo_3x3" model="report.paperformat">
+        <record id="sonelco_document_format.label_sonelco_150x74" model="report.paperformat">
             <field name="name">Label Packaging 15x7.4</field>
             <field name="default" eval="False"/>
             <field name="format">custom</field>
-            <field name="margin_top">3.50</field>
+            <field name="margin_top">0</field>
             <field name="margin_bottom">0</field>
             <field name="margin_right">0</field>
             <field name="margin_left">0</field>
@@ -17,75 +17,170 @@
             <field name="dpi">90</field>
         </record>
 
-        <template id="sonelco_document_format.report_simple_label_xtendoo"
-                  inherit_id="product.report_simple_label">
-            <xpath expr="//div" position="replace">
-                <div class="page">
-                    <div style="width:100%;">
-                        <div style="font-size:0.7em;text-align:center;">
-                            <span t-field="product.name"/>
-                        </div>
-                        <div class="text-center align-middle">
-                           <t t-if="product.barcode">
-                                <img alt="Barcode"
-                                     t-if="len(product.barcode) == 13"
-                                     t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(product.barcode or ''), 600, 150)"
-                                     style="width:100%;height::4rem;"/>
-                                <img alt="Barcode"
-                                     t-elif="len(product.barcode) == 8"
-                                     t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', quote_plus(product.barcode or ''), 600, 150)"
-                                     style="width:100%;height::4rem;"/>
-                                <img alt="Barcode"
-                                     t-else=""
-                                     t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus(product.barcode or ''), 600, 150)"
-                                     style="width:100%;height::4rem;"/>
-                                <span style="font-size:0.7em;"
-                                      t-field="product.barcode"/>
-                            </t>
-                            <t t-else="">
-                                <span class="text-muted">No barcode available</span>
-                            </t>
-                        </div>
-                        <div style="text-align:center;font-size:0.8em;">
-                            <span t-field="product.list_price"
-                                  t-options="{'widget': 'monetary', 'display_currency': product.currency_id}"/>
-                        </div>
-                    </div>
-                </div>
-            </xpath>
-        </template>
+         <report
+             string="Etiqueta"
+             id="sonelco_document_format.label_packaging_sonelco"
+             model="stock.quant.package"
+             report_type="qweb-pdf"
+             name="sonelco_document_format.report_label_packaging_sonelco"
+             file="sonelco_document_format.report_label_packaging_sonelco"
+             paperformat="sonelco_document_format.label_sonelco_150x74"
+        />
 
-        <template
-            id="sonelco_document_format.report_simple_barcode"
-            inherit_id="product.report_simple_barcode"
-        >
-            <xpath expr="//div" position="replace">
-                <div class="page text-justify">
-                    <div class="text-center">
-                        <div
-                            style="text-align:center;font-size:0.9em;min-height:80px;padding-top:5px;"
-                        >
-                            <span t-field="product.name" />
-                        </div>
-                        <div style="text-align:center;">
-                            <t t-if="product.barcode">
-                                <img
-                                    alt="Barcode"
-                                    t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus(product.barcode or ''), 600, 220)"
-                                    style="width:120%;height:6rem;margin-left:-10%;"
-                                />
-                                <span
-                                    style="text-align: center;"
-                                    t-field="product.barcode"
-                                />
-                            </t>
-                        </div>
-                        <div style="text-align:center;">
-                            <span t-field="product.default_code" />
-                        </div>
-                    </div>
-                </div>
-            </xpath>
-        </template>
+       <template id="sonelco_document_format.report_label_packaging_sonelco">
+            <t t-name="sonelco_document_format.report_label_packaging_sonelco">
+                <t t-call="web.basic_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <t>
+                            <div class="page" style="border:5px solid blue;height:330px;margin-left:-8px;width:105%;">
+                                <div class="container">
+                                    <div style="width:70%;display:block;margin-right:2.5%;float:left;">
+                                        <div style="width:20%;display:block;float:left;height:50px;margin-top:10px;margin-left:3%;color:blue;font-weight:bolder;">
+                                            <span>DESTINO/</span>
+                                            <span>DESTINATION:</span>
+                                        </div>
+                                        <div style="width:62%;display:block;float:left;margin-left:15%;margin-top:15px;font-weight:bolder;;">
+                                            <span style="text-align:lef;;width:100%;display:block;" t-field="o.delivery_ids.partner_id.name"></span>
+                                        </div>
+                                        <div style="clear:both;font-size:0.8em; height:30px;">
+                                            <div style="width:20%;display:block;float:left;margin-top:3px;margin-left:3%;color:blue;font-weight:bolder;">
+                                                <span>CONSIGNATARIO/</span>
+                                                <span>CONSIGNEE:</span>
+                                            </div>
+                                            <div style="margin-left:15%;width:62%;display:block;float:left;text-align:left;margin-top:8px;font-weight:bolder;">
+                                                <span style="text-align:left;width:100%;display:block;" t-field="o.delivery_ids.partner_id.name"></span>
+                                            </div>
+                                            <div style="clear:both;width:30%;display:block;float:left;margin-top:3px;margin-left:3%;color:blue;font-weight:bolder;">
+                                                <span>DOMICILIO/ADDRESS:</span>
+                                            </div>
+                                             <div style="width:62%;display:block;float:left;margin-left:5%;text-align:letf;margin-top:3px;font-weight:bolder;">
+                                                <span style="text-align:left;;width:100%;display:block;" t-field="o.delivery_ids.partner_id.street"></span>
+                                            </div>
+                                            <div style="clear:both;width:30%;display:block;float:left;margin-top:3px;margin-left:3%;color:blue;font-weight:bolder;">
+                                                <span>POBLACION/CITY:</span>
+                                            </div>
+                                            <div style="width:62%;display:block;float:left;margin-left:5%;text-align:left;margin-top:3px;font-weight:bolder;">
+                                                <span t-field="o.delivery_ids.partner_id.city"></span>
+                                            </div>
+                                            <div style="clear:both;width:30%;display:block;float:left;margin-top:3px;margin-left:3%;color:blue;font-weight:bolder;">
+                                                <span>PAIS/COUNTRY:</span>
+                                            </div>
+                                            <div style="width:62%;display:block;float:left;margin-left:5%;text-align:left;margin-top:3px;font-weight:bolder;">
+                                                <span t-field="o.delivery_ids.partner_id.country_id.name"></span>
+                                            </div>
+                                        </div>
+                                         <div style="width:20%;display:block;float:left;height:50px;margin-top:15px;margin-left:3%;color:blue;font-weight:bolder;">
+                                            <span>MERCANCIA/</span>
+                                            <span>GOODS:</span>
+                                        </div>
+                                        <div style="width:72%;display:block;float:left;margin-left:5%;margin-top:5px;height:45px;background-color:blue;">
+                                            <span style="font-size:1.2em;margin-top:1px;text-align:center;width:100%;display:block;color:white;font-weight:bolder;">MATERIAL ELECTORNICO</span>
+                                            <span style="font-size:1.2em;text-align:center;width:100%;display:block;color:white;font-weight:bolder;">ELECTRIC MATERIAL</span>
+                                        </div>
+
+                                        <!--Footer-->
+                                        <div style="clear:both;font-size:0.8em;margin-left:3%;">
+                                            <div style="width:100%;">
+                                                <div style="width:25%;float:left;">
+                                                     <div style="width:50%;display:block;float:left;height:50px;margin-top:10px;color:blue;font-weight:bolder;">
+                                                        <span>NUM. DE BULTOS/</span>
+                                                        <span>PACKING:</span>
+
+                                                    </div>
+                                                </div>
+                                                <div style="width:37.5%;float:left;">
+                                                    <div style="width:20%;display:block;float:left;height:50px;margin-top:10px;color:blue;font-weight:bolder;">
+                                                        <span>KILOS/</span>
+                                                        <span>WEIGHT:</span>
+
+                                                    </div>
+                                                    <div style="margin-left:20%;width:60%;display:block;float:left;height:50px;margin-top:10px;color:blue;font-weight:bolder;">
+                                                        <span style="margin-top:5px;display:block;color:black;" t-field="o.shipping_weight"/>
+                                                    </div>
+                                                </div>
+                                                <div style="width:37.5%;float:left;">
+                                                    <div style="width:20%;display:block;float:left;height:50px;margin-top:10px;color:blue;font-weight:bolder;">
+                                                        <span>FECHA/</span>
+                                                        <span>DATE:</span>
+                                                    </div>
+                                                    <div style="margin-left:20%;width:60%;display:block;float:left;height:50px;margin-top:10px;color:blue;font-weight:bolder;">
+                                                        <span style="margin-top:5px;display:block;color:black;" t-field="o.delivery_ids.scheduled_date" t-options="{&quot;format&quot;: &quot;MM-dd-yyyy&quot;}" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div style="width:100%;clear:both;">
+                                                <div style="width:62.5%;float:left;">
+                                                     <div style="width:30%;display:block;float:left;height:50px;margin-top:10px;color:blue;font-weight:bolder;">
+                                                        <span>ENVIO POR/</span>
+                                                        <span>SEND BY:</span>
+                                                    </div>
+                                                   <div style="margin-left:10%;width:60%;display:block;float:left;height:50px;margin-top:10px;color:blue;font-weight:bolder;">
+                                                        <span style="margin-top:5px;display:block;color:black;" t-field="o.delivery_ids.carrier_id.name"/>
+                                                    </div>
+                                                </div>
+                                                <div style="width:37.5%;float:left;">
+                                                     <div style="width:50%;display:block;float:left;height:50px;margin-top:10px;color:blue;font-weight:bolder;">
+                                                        <span>PORTES/</span>
+                                                        <span>CARRIAGE:</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!--style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:450px;"-->
+                                    <div style="background-color:blue;width:27.5%;display:block;float:left;height:330px;">
+                                         <div style="-webkit-transform: rotate(-90deg);position:absolute;margin-top:124px;">
+                                             <div style="width:100%;margin-top:-70px;">
+                                                 <img t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" alt="Logo" style="width:220%;margin-left:-70px;margin-top:25px;"/>
+                                             </div>
+                                             <div style="width:180%;color:white;font-size:0.8em;margin-left:-50px;margin-top:-18px;font-weight:bolder;">
+                                                  <div>
+                                                    <span t-if="res_company.name" t-field="res_company.name" />
+                                                </div>
+                                                <div>
+                                                    <span t-if="res_company.name" t-field="res_company.street" />
+                                                </div>
+                                                 <div>
+                                                    <span t-if="res_company.name">AUTOVIA DE LOGROÑO. Km 2,400</span>
+                                                </div>
+                                                 <div>
+                                                     <span>TLF.: </span>
+                                                     <span t-field="res_company.phone"/>
+                                                     <span>FAX.: 976373775</span>
+                                                 </div>
+                                                 <div>
+                                                     <span t-field="res_company.zip"/>
+                                                    <span> </span>
+                                                    <span t-field="res_company.state_id"/>
+                                                    <span> (</span>
+                                                    <span t-field="res_company.country_id.name"/>
+                                                    <span>)</span>
+                                                 </div>
+                                             </div>
+                                             <!--<div style="width:180%;color:white;font-size:0.8em;margin-left:-50px;font-weight:bolder;">
+
+                                            </div>-->
+
+                                             <!--<div style="width:180%;color:white;font-size:0.8em;margin-left:-50px;font-weight:bolder;">
+                                                 <span t-field="res_company.zip"/>
+                                                 <span> </span>
+                                                 <span t-field="res_company.state_id"/>
+                                                 <span> (</span>
+                                                 <span t-field="res_company.country_id.name"/>
+                                                 <span>)</span>
+                                             </div> -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </t>
+                </t>
+            </t>
+       </template>
     </data>
 </odoo>

@@ -14,7 +14,7 @@
     """,
     "depends": ["purchase", "product"],
     "data": [
-        #"views/package_label/package_label.xml",
+        "views/package_label/package_label.xml",
         "views/purchase/purchase_order_view.xml",
     ],
     "installable": True,
