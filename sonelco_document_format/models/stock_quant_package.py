@@ -11,8 +11,6 @@ class StockQuantPackage(models.Model):
         compute="_compute_delivery_ids",
         default=lambda self: self._get_delivery_ids(),
         store=True,
-
-
     )
 
     def _compute_delivery_ids(self):

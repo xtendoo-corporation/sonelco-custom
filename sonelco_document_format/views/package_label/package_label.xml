@@ -70,7 +70,7 @@
                                                 <span t-field="o.delivery_ids.partner_id.country_id.name"/>
                                             </div>
                                         </div>
-                                         <div style="width:25%;display:block;float:left;height:50px;margin-top:5px;margin-left:3%;color:#1F5595;font-weight:bolder;">
+                                         <div style="clear:both;width:25%;display:block;float:left;height:50px;margin-top:5px;margin-left:3%;color:#1F5595;font-weight:bolder;">
                                             <span>MERCANCIA/</span>
                                             <span>GOODS:</span>
                                         </div>
@@ -86,10 +86,9 @@
                                                      <div style="width:70%;display:block;float:left;height:50px;margin-top:3px;color:#1F5595;font-weight:bolder;">
                                                         <span>NUM. DE BULTOS/</span>
                                                         <span>PACKING:</span>
-
                                                     </div>
                                                     <div style="margin-left:3%;width:27%;display:block;float:left;margin-top:10px;color:black;font-weight:bolder;">
-                                                        <span>99</span>
+                                                        <span></span>
                                                     </div>
                                                 </div>
                                                 <div style="width:37.5%;float:left;">
