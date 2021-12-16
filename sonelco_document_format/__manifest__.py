@@ -12,7 +12,11 @@
     "description": """
         Formatos de impresión para Sonelco
     """,
-    "depends": ["purchase", "product"],
+    "depends": [
+        "purchase",
+        "product",
+        "sonelco_stock_package_numbers",
+    ],
     "data": [
         "views/package_label/package_label.xml",
         "views/purchase/purchase_order_view.xml",

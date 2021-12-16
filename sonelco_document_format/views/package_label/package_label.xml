@@ -41,7 +41,7 @@
                                             <span>DESTINATION:</span>
                                         </div>
                                         <div style="width:57%;display:block;float:left;margin-left:15%;margin-top:15px;font-weight:bolder;;">
-                                            <span style="text-align:lef;;width:100%;display:block;" t-field="o.delivery_ids.partner_id.name"/>
+                                            <span style="text-align:lef;;width:100%;display:block;" t-field="o.delivery_id.partner_id.name"/>
                                         </div>
                                         <div style="clear:both;font-size:0.8em; height:30px;">
                                             <div style="width:25%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
@@ -49,25 +49,25 @@
                                                 <span>CONSIGNEE:</span>
                                             </div>
                                             <div style="margin-left:15%;width:57%;display:block;float:left;text-align:left;margin-top:8px;font-weight:bolder;">
-                                                <span style="text-align:left;width:100%;display:block;" t-field="o.delivery_ids.partner_id.name"/>
+                                                <span style="text-align:left;width:100%;display:block;" t-field="o.delivery_id.partner_id.name"/>
                                             </div>
                                             <div style="clear:both;width:32%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
                                                 <span>DOMICILIO/ADDRESS:</span>
                                             </div>
                                              <div style="width:57%;display:block;float:left;margin-left:8%;text-align:letf;margin-top:3px;font-weight:bolder;">
-                                                <span style="text-align:left;;width:100%;display:block;" t-field="o.delivery_ids.partner_id.street"/>
+                                                <span style="text-align:left;;width:100%;display:block;" t-field="o.delivery_id.partner_id.street"/>
                                             </div>
                                             <div style="clear:both;width:32%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
                                                 <span>POBLACION/CITY:</span>
                                             </div>
                                             <div style="width:57%;display:block;float:left;margin-left:8%;text-align:left;margin-top:3px;font-weight:bolder;">
-                                                <span t-field="o.delivery_ids.partner_id.city"/>
+                                                <span t-field="o.delivery_id.partner_id.city"/>
                                             </div>
                                             <div style="clear:both;width:32%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
                                                 <span>PAIS/COUNTRY:</span>
                                             </div>
                                             <div style="width:57%;display:block;float:left;margin-left:8%;text-align:left;margin-top:3px;font-weight:bolder;">
-                                                <span t-field="o.delivery_ids.partner_id.country_id.name"/>
+                                                <span t-field="o.delivery_id.partner_id.country_id.name"/>
                                             </div>
                                         </div>
                                          <div style="clear:both;width:25%;display:block;float:left;height:50px;margin-top:5px;margin-left:3%;color:#1F5595;font-weight:bolder;">
@@ -107,7 +107,7 @@
                                                         <span>DATE:</span>
                                                     </div>
                                                     <div style="margin-left:3%;width:47%;display:block;float:left;height:50px;margin-top:6px;color:#1F5595;font-weight:bolder;">
-                                                        <span style="margin-top:5px;display:block;color:black;" t-field="o.delivery_ids.scheduled_date" t-options="{&quot;format&quot;: &quot;MM-dd-yyyy&quot;}"/>
+                                                        <span style="margin-top:5px;display:block;color:black;" t-field="o.delivery_id.scheduled_date" t-options="{&quot;format&quot;: &quot;MM-dd-yyyy&quot;}"/>
                                                     </div>
                                                 </div>
 
@@ -119,7 +119,7 @@
                                                         <span>SEND BY:</span>
                                                     </div>
                                                    <div style="margin-left:3%;width:47%;display:block;float:left;margin-top:6px;color:#1F5595;font-weight:bolder;">
-                                                        <span style="margin-top:5px;display:block;color:black;" t-field="o.delivery_ids.carrier_id.name"/>
+                                                        <span style="margin-top:5px;display:block;color:black;" t-field="o.delivery_id.carrier_id.name"/>
                                                     </div>
                                                 </div>
                                                 <div style="width:37.5%;float:left;">

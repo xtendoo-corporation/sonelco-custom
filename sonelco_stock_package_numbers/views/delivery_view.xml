@@ -6,12 +6,14 @@
         <field name="model">stock.quant.package</field>
         <field name="inherit_id" ref="stock.view_quant_package_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']/.." position="after">
+                <group>
+                    <field name="property_delivery_carrier_id"/>
+                    <field name="partner_id"/>
+                </group>
+            </xpath>
             <field name="company_id" position="before">
-                <field name="property_delivery_carrier_id"/>
-                <label for="package"/>
-                <div class="o_row" name="Number of package">
-                    <field name="package"/>
-                </div>
+                <field name="package"/>
             </field>
         </field>
     </record>
