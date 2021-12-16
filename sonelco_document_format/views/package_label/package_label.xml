@@ -33,95 +33,97 @@
                 <t t-call="web.basic_layout">
                     <t t-foreach="docs" t-as="o">
                         <t>
-                            <div class="page" style="border:5px solid #1F5595;height:330px;margin-left:-8px;width:105%;">
+                            <div class="page" style="border:5px solid #1F5595;height:342px;margin-left:-2.5%;width:105%;">
                                 <div class="container">
                                     <div style="width:70%;display:block;margin-right:2.5%;float:left;">
-                                        <div style="width:20%;display:block;float:left;height:50px;margin-top:10px;margin-left:3%;color:#1F5595;font-weight:bolder;">
+                                        <div style="width:25%;display:block;float:left;height:50px;margin-top:10px;margin-left:3%;color:#1F5595;font-weight:bolder;">
                                             <span>DESTINO/</span>
                                             <span>DESTINATION:</span>
                                         </div>
-                                        <div style="width:62%;display:block;float:left;margin-left:15%;margin-top:15px;font-weight:bolder;;">
-                                            <span style="text-align:lef;;width:100%;display:block;" t-field="o.delivery_ids.partner_id.name"></span>
+                                        <div style="width:57%;display:block;float:left;margin-left:15%;margin-top:15px;font-weight:bolder;;">
+                                            <span style="text-align:lef;;width:100%;display:block;" t-field="o.delivery_ids.partner_id.name"/>
                                         </div>
                                         <div style="clear:both;font-size:0.8em; height:30px;">
-                                            <div style="width:20%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
+                                            <div style="width:25%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
                                                 <span>CONSIGNATARIO/</span>
                                                 <span>CONSIGNEE:</span>
                                             </div>
-                                            <div style="margin-left:15%;width:62%;display:block;float:left;text-align:left;margin-top:8px;font-weight:bolder;">
-                                                <span style="text-align:left;width:100%;display:block;" t-field="o.delivery_ids.partner_id.name"></span>
+                                            <div style="margin-left:15%;width:57%;display:block;float:left;text-align:left;margin-top:8px;font-weight:bolder;">
+                                                <span style="text-align:left;width:100%;display:block;" t-field="o.delivery_ids.partner_id.name"/>
                                             </div>
-                                            <div style="clear:both;width:30%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
+                                            <div style="clear:both;width:32%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
                                                 <span>DOMICILIO/ADDRESS:</span>
                                             </div>
-                                             <div style="width:62%;display:block;float:left;margin-left:5%;text-align:letf;margin-top:3px;font-weight:bolder;">
-                                                <span style="text-align:left;;width:100%;display:block;" t-field="o.delivery_ids.partner_id.street"></span>
+                                             <div style="width:57%;display:block;float:left;margin-left:8%;text-align:letf;margin-top:3px;font-weight:bolder;">
+                                                <span style="text-align:left;;width:100%;display:block;" t-field="o.delivery_ids.partner_id.street"/>
                                             </div>
-                                            <div style="clear:both;width:30%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
+                                            <div style="clear:both;width:32%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
                                                 <span>POBLACION/CITY:</span>
                                             </div>
-                                            <div style="width:62%;display:block;float:left;margin-left:5%;text-align:left;margin-top:3px;font-weight:bolder;">
-                                                <span t-field="o.delivery_ids.partner_id.city"></span>
+                                            <div style="width:57%;display:block;float:left;margin-left:8%;text-align:left;margin-top:3px;font-weight:bolder;">
+                                                <span t-field="o.delivery_ids.partner_id.city"/>
                                             </div>
-                                            <div style="clear:both;width:30%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
+                                            <div style="clear:both;width:32%;display:block;float:left;margin-top:3px;margin-left:3%;color:#1F5595;font-weight:bolder;">
                                                 <span>PAIS/COUNTRY:</span>
                                             </div>
-                                            <div style="width:62%;display:block;float:left;margin-left:5%;text-align:left;margin-top:3px;font-weight:bolder;">
-                                                <span t-field="o.delivery_ids.partner_id.country_id.name"></span>
+                                            <div style="width:57%;display:block;float:left;margin-left:8%;text-align:left;margin-top:3px;font-weight:bolder;">
+                                                <span t-field="o.delivery_ids.partner_id.country_id.name"/>
                                             </div>
                                         </div>
-                                         <div style="width:20%;display:block;float:left;height:50px;margin-top:15px;margin-left:3%;color:#1F5595;font-weight:bolder;">
+                                         <div style="clear:both;width:25%;display:block;float:left;height:50px;margin-top:5px;margin-left:3%;color:#1F5595;font-weight:bolder;">
                                             <span>MERCANCIA/</span>
                                             <span>GOODS:</span>
                                         </div>
-                                        <div style="width:72%;display:block;float:left;margin-left:5%;margin-top:5px;height:45px;background-color:#1F5595;">
-                                            <span style="font-size:1.2em;margin-top:1px;text-align:center;width:100%;display:block;color:white;font-weight:bolder;">MATERIAL ELECTORNICO</span>
-                                            <span style="font-size:1.2em;text-align:center;width:100%;display:block;color:white;font-weight:bolder;">ELECTRIC MATERIAL</span>
+                                        <div style="width:67%;display:block;float:left;margin-left:5%;margin-top:5px;height:45px;background-color:#1F5595;">
+                                          <span style="font-size:1.1em;margin-top:-3px;text-align:center;width:100%;display:block;color:white;font-weight:bolder;">MATERIAL ELECTORNICO</span>
+                                            <span style="font-size:1.1em;text-align:center;width:100%;display:block;color:white;font-weight:bolder;margin-top:-5px;">ELECTRIC MATERIAL</span>
                                         </div>
 
                                         <!--Footer-->
                                         <div style="clear:both;font-size:0.8em;margin-left:3%;">
                                             <div style="width:100%;">
                                                 <div style="width:25%;float:left;">
-                                                     <div style="width:50%;display:block;float:left;height:50px;margin-top:10px;color:#1F5595;font-weight:bolder;">
+                                                     <div style="width:70%;display:block;float:left;height:50px;margin-top:3px;color:#1F5595;font-weight:bolder;">
                                                         <span>NUM. DE BULTOS/</span>
                                                         <span>PACKING:</span>
-
+                                                    </div>
+                                                    <div style="margin-left:3%;width:27%;display:block;float:left;margin-top:10px;color:black;font-weight:bolder;">
+                                                        <span></span>
                                                     </div>
                                                 </div>
                                                 <div style="width:37.5%;float:left;">
-                                                    <div style="width:20%;display:block;float:left;height:50px;margin-top:10px;color:#1F5595;font-weight:bolder;">
+                                                    <div style="width:55%;display:block;float:left;height:50px;margin-top:3px;color:#1F5595;font-weight:bolder;">
                                                         <span>KILOS/</span>
                                                         <span>WEIGHT:</span>
 
                                                     </div>
-                                                    <div style="margin-left:20%;width:60%;display:block;float:left;height:50px;margin-top:10px;color:#1F5595;font-weight:bolder;">
+                                                    <div style="margin-left:8%;width:37%;display:block;float:left;height:50px;margin-top:6px;color:#1F5595;font-weight:bolder;">
                                                         <span style="margin-top:5px;display:block;color:black;" t-field="o.shipping_weight"/>
                                                     </div>
                                                 </div>
                                                 <div style="width:37.5%;float:left;">
-                                                    <div style="width:20%;display:block;float:left;height:50px;margin-top:10px;color:#1F5595;font-weight:bolder;">
+                                                    <div style="width:40%;display:block;float:left;height:50px;margin-top:3px;color:#1F5595;font-weight:bolder;">
                                                         <span>FECHA/</span>
                                                         <span>DATE:</span>
                                                     </div>
-                                                    <div style="margin-left:20%;width:60%;display:block;float:left;height:50px;margin-top:10px;color:#1F5595;font-weight:bolder;">
-                                                        <span style="margin-top:5px;display:block;color:black;" t-field="o.delivery_ids.scheduled_date" t-options="{&quot;format&quot;: &quot;MM-dd-yyyy&quot;}" />
+                                                    <div style="margin-left:3%;width:47%;display:block;float:left;height:50px;margin-top:6px;color:#1F5595;font-weight:bolder;">
+                                                        <span style="margin-top:5px;display:block;color:black;" t-field="o.delivery_ids.scheduled_date" t-options="{&quot;format&quot;: &quot;MM-dd-yyyy&quot;}"/>
                                                     </div>
                                                 </div>
 
                                             </div>
                                             <div style="width:100%;clear:both;">
                                                 <div style="width:62.5%;float:left;">
-                                                     <div style="width:30%;display:block;float:left;height:50px;margin-top:10px;color:#1F5595;font-weight:bolder;">
+                                                     <div style="width:50%;display:block;float:left;margin-top:3px;color:#1F5595;font-weight:bolder;">
                                                         <span>ENVIO POR/</span>
                                                         <span>SEND BY:</span>
                                                     </div>
-                                                   <div style="margin-left:10%;width:60%;display:block;float:left;height:50px;margin-top:10px;color:#1F5595;font-weight:bolder;">
+                                                   <div style="margin-left:3%;width:47%;display:block;float:left;margin-top:6px;color:#1F5595;font-weight:bolder;">
                                                         <span style="margin-top:5px;display:block;color:black;" t-field="o.delivery_ids.carrier_id.name"/>
                                                     </div>
                                                 </div>
                                                 <div style="width:37.5%;float:left;">
-                                                     <div style="width:50%;display:block;float:left;height:50px;margin-top:10px;color:#1F5595;font-weight:bolder;">
+                                                     <div style="width:50%;display:block;float:left;margin-top:3px;color:#1F5595;font-weight:bolder;">
                                                         <span>PORTES/</span>
                                                         <span>CARRIAGE:</span>
                                                     </div>
@@ -132,17 +134,17 @@
                                     </div>
 
                                     <!--style="position:absolute;opacity:0.25;font-size:3em;width:100%;text-align:center;z-index:1000;-webkit-transform: rotate(-37deg);margin-top:450px;"-->
-                                    <div style="background-color:#1F5595;width:27.5%;display:block;float:left;height:330px;">
-                                         <div style="-webkit-transform: rotate(-90deg);position:absolute;margin-top:124px;">
-                                             <div style="width:100%;margin-top:-120px;margin-left:-70px;">
+                                  <div style="background-color:#1F5595;width:35%;display:block;height:332px;position:relative;left:73%;">
+                                       <div>
+                                             <div style="width:130%;-webkit-transform: rotate(-90deg);z-index:3;position:absolute;top:120px;left:-115px;">
                                                  <span style="color:white;font-size:4em;font-weight:bold;">SONELCO</span>
                                              </div>
-                                             <div style="width:180%;color:white;font-size:0.8em;margin-left:-70px;margin-top:-15px;font-weight:bolder;">
+                                            <div style="width:180%;color:white;font-size:0.8em;font-weight:bolder;-webkit-transform: rotate(-90deg);z-index:3;position:absolute;top:60px;left:-95px;">
                                                   <div>
-                                                    <span t-if="res_company.name" t-field="res_company.name" />
+                                                    <span t-if="res_company.name" t-field="res_company.name"/>
                                                 </div>
                                                 <div>
-                                                    <span t-if="res_company.name" t-field="res_company.street" />
+                                                    <span t-if="res_company.name" t-field="res_company.street"/>
                                                 </div>
                                                  <div>
                                                     <span t-if="res_company.name">AUTOVIA DE LOGROÑO. Km 2,400</span>
@@ -161,19 +163,6 @@
                                                     <span>)</span>
                                                  </div>
                                              </div>
-                                             <!--<div style="width:180%;color:white;font-size:0.8em;margin-left:-50px;font-weight:bolder;">
-
-                                            </div>-->
-
-                                             <!--<div style="width:180%;color:white;font-size:0.8em;margin-left:-50px;font-weight:bolder;">
-                                                 <span t-field="res_company.zip"/>
-                                                 <span> </span>
-                                                 <span t-field="res_company.state_id"/>
-                                                 <span> (</span>
-                                                 <span t-field="res_company.country_id.name"/>
-                                                 <span>)</span>
-                                             </div> -->
-
                                         </div>
                                     </div>
                                 </div>
