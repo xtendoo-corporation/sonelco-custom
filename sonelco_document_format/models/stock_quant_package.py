@@ -7,12 +7,11 @@ class StockQuantPackage(models.Model):
     _inherit = "stock.quant.package"
 
     delivery_ids = fields.Many2one(
-        comodel_name='stock.picking', string='Delivery',
+        comodel_name='stock.picking',
+        string='Delivery',
         compute="_compute_delivery_ids",
         default=lambda self: self._get_delivery_ids(),
         store=True,
-
-
     )
 
     def _compute_delivery_ids(self):
@@ -21,7 +20,8 @@ class StockQuantPackage(models.Model):
         move_line = self.env['stock.move.line'].search(domain)
         if move_line:
             delivery_ids = self.env['stock.picking'].search(
-                [('id', '=', move_line[0].picking_id.id)], limit=1)
+                [('id', '=', move_line[0].picking_id.id)], limit=1
+            )
         self.delivery_ids = delivery_ids
 
     def _get_delivery_ids(self):
@@ -30,5 +30,6 @@ class StockQuantPackage(models.Model):
         move_line = self.env['stock.move.line'].search(domain)
         if move_line:
             delivery_ids = self.env['stock.picking'].search(
-                [('id', '=', move_line[0].picking_id.id)], limit=1)
+                [('id', '=', move_line[0].picking_id.id)], limit=1
+            )
         return delivery_ids
