@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <template id="report_saleorder_document_sonelco"
+                  inherit_id="sale.report_saleorder_document">
+
+            <xpath expr="//div[@id='informations']/div[@t-if='doc.user_id.name']" position="replace">
+                <div t-if="doc.user_id.name" class="col-auto mw-100 mb-2">
+                    <strong>Offer made by:</strong>
+                    <p class="m-0" t-field="doc.user_id"/>
+                </div>
+            </xpath>
+
+            <xpath expr="//table/thead/tr/th[@name='th_description']" position="before">
+                <th name="th_code" class="text-left">Code</th>
+            </xpath>
+
+            <xpath
+                expr="//table/tbody[hasclass('sale_tbody')]//td[@name='td_name']"
+                position="before"
+            >
+                <td>
+                    <span t-field="line.product_id.default_code"/>
+                </td>
+            </xpath>
+
+            <xpath expr="//table/thead/tr/th[@name='th_priceunit']" position="replace">
+                <th name="th_priceunit" class="text-right">Price</th>
+            </xpath>
+
+            <xpath
+                expr="//table/thead/tr/th[@name='th_taxes']"
+                position="replace"
+            >
+            </xpath>
+
+            <xpath
+                expr="//table/tbody[hasclass('sale_tbody')]//td[@name='td_name']"
+                position="replace"
+            >
+                <t t-set="description_name" t-value="line.name"/>
+                <t t-set="code_position" t-value="description_name.find(']') + 1"/>
+                <t t-if="code_position &gt; 0">
+                    <t t-set="description_name" t-value="description_name[code_position:]" />
+                </t>
+                <td name="td_name">
+                    <span t-esc="description_name"/>
+                </td>
+            </xpath>
+
+            <xpath
+                expr="//table/tbody[hasclass('sale_tbody')]//td[@name='td_taxes']"
+                position="replace"
+            >
+            </xpath>
+
+        </template>
+    </data>
+</odoo>

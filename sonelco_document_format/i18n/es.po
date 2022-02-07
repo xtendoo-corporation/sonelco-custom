@@ -1,0 +1,145 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sonelco_document_format
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-07 10:33+0000\n"
+"PO-Revision-Date: 2022-02-07 10:33+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sonelco_document_format
+#: model:ir.actions.report,print_report_name:sonelco_document_format.label_packaging_sonelco
+msgid "'Etiqueta - %s' % (object.name)"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid "<span style=\"color:white;font-size:4em;font-weight:bold;\">SONELCO</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid ""
+"<span style=\"font-size:1.1em;margin-top:-3px;text-align:center;width:100%;display:block;color:white;font-weight:bolder;\">MATERIAL ELECTORNICO</span>\n"
+"                                            <span style=\"font-size:1.1em;text-align:center;width:100%;display:block;color:white;font-weight:bolder;margin-top:-5px;\">ELECTRIC MATERIAL</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid ""
+"<span>CONSIGNATARIO/</span>\n"
+"                                                <span>CONSIGNEE:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid ""
+"<span>DESTINO/</span>\n"
+"                                            <span>DESTINATION:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid "<span>DOMICILIO/ADDRESS:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid ""
+"<span>ENVIO POR/</span>\n"
+"                                                        <span>SEND BY:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid "<span>FAX.: 976373775</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid ""
+"<span>FECHA/</span>\n"
+"                                                        <span>DATE:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid ""
+"<span>KILOS/</span>\n"
+"                                                        <span>WEIGHT:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid ""
+"<span>MERCANCIA/</span>\n"
+"                                            <span>GOODS:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid ""
+"<span>NUM. DE BULTOS/</span>\n"
+"                                                        <span>PACKING:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid "<span>PAIS/COUNTRY:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid "<span>POBLACION/CITY:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid ""
+"<span>PORTES/</span>\n"
+"                                                        <span>CARRIAGE:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid "<span>TLF.: </span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
+msgid "<strong>Offer made by:</strong>"
+msgstr "<strong>Oferta realizada por:</strong>
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_purchaseorder_document_sonelco
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_purchasequotation_document_sonelco
+msgid "<strong>Sale Code</strong>"
+msgstr "<strong>Código Venta</strong>"
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+msgid "AUTOVIA DE LOGROÑO. Km 2,400"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
+msgid "Code"
+msgstr "Código"
+
+#. module: sonelco_document_format
+#: model:ir.actions.report,name:sonelco_document_format.label_packaging_sonelco
+msgid "Etiqueta"
+msgstr "Etiqueta"
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
+msgid "Price"
+msgstr "Precio"
