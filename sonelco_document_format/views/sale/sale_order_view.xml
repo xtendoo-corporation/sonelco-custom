@@ -13,14 +13,14 @@
             </xpath>
 
             <xpath expr="//table/thead/tr/th[@name='th_description']" position="before">
-                <th name="th_code" class="text-left">Code</th>
+                <th name="th_code" colspan="3" class="text-left">Code</th>
             </xpath>
 
             <xpath
                 expr="//table/tbody[hasclass('sale_tbody')]//td[@name='td_name']"
                 position="before"
             >
-                <td>
+                <td colspan="3">
                     <span t-field="line.product_id.default_code"/>
                 </td>
             </xpath>
@@ -45,7 +45,31 @@
                     <t t-set="description_name" t-value="description_name[code_position:]" />
                 </t>
                 <td name="td_name">
-                    <span t-esc="description_name"/>
+                    <t t-if="doc.state not in ['draft','sent']">
+                        <span t-esc="description_name"/>
+                    </t>
+                    <t t-if="doc.state in ['draft','sent']">
+                        <span t-field="line.product_id.description"/>
+                    </t>
+                </td>
+            </xpath>
+
+            <xpath
+                expr="//table/tbody[hasclass('sale_tbody')]//td[@name='td_quantity']"
+                position="replace"
+            >
+                <td name="td_quantity" class="text-right">
+                    <span t-esc="'%.0f' % line.product_uom_qty"/>
+                </td>
+            </xpath>
+
+            <xpath
+                expr="//table/tbody[hasclass('sale_tbody')]//td[@name='td_subtotal']"
+                position="replace"
+            >
+                <td name="td_subtotal" class="text-right o_price_total">
+                    <span t-esc="'%.2f' % line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                    <span t-esc="'%.2f' % line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
                 </td>
             </xpath>
 
