@@ -21,6 +21,7 @@
         "views/package_label/package_label.xml",
         "views/purchase/purchase_order_view.xml",
         "views/sale/sale_order_view.xml",
+        "views/stock_picking/stock_picking.xml",
     ],
     "installable": True,
     "auto_install": False,
