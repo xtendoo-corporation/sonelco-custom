@@ -190,18 +190,6 @@
                                             <strong>Qty Reserved</strong>
                                         </th>
                                     </t>
-                                    <th class="text-right">
-                                        <strong>Unit Price</strong>
-                                    </th>
-                                    <th class="text-right" groups="product.group_discount_per_so_line">
-                                        <strong>Discount</strong>
-                                    </th>
-                                    <th class="text-right">
-                                        <strong>Subtotal</strong>
-                                    </th>
-                                    <th class="text-right">
-                                        <strong>Taxes</strong>
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -216,9 +204,6 @@
                                     <td>
                                         <span t-field="move.product_uom_qty"/>
                                         <span t-field="move.product_uom"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="move.sale_price_unit"/>
                                     </td>
                                 </tr>
                             </tbody>
