@@ -13,6 +13,7 @@
         Formatos de impresión para Sonelco
     """,
     "depends": [
+        "stock",
         "purchase",
         "product",
         "sonelco_stock_package_numbers",
