@@ -8,7 +8,7 @@
             <xpath expr="//div[@id='informations']/div[@t-if='doc.user_id.name']" position="replace">
                 <div t-if="doc.user_id.name" class="col-auto mw-100 mb-2">
                     <p>
-                        <strong>Offer made by:</strong><br/>
+                        <strong>Offer made by:</strong>
                         <span t-field="doc.user_id"/>
                     </p>
                 </div>
@@ -35,15 +35,6 @@
                 expr="//table/thead/tr/th[@name='th_taxes']"
                 position="replace"
             >
-            </xpath>
-
-            <xpath
-                expr="//table/tbody[hasclass('sale_tbody')]//td[@name='td_priceunit']"
-                position="replace"
-            >
-                <td name="td_priceunit" class="text-right">
-                    <span t-esc="'%.2f' % line.price_unit" />
-                </td>
             </xpath>
 
             <xpath
@@ -74,6 +65,15 @@
             >
                 <td name="td_quantity" class="text-right">
                     <span t-esc="'%.0f' % line.product_uom_qty"/>
+                </td>
+            </xpath>
+
+            <xpath
+                expr="//table/tbody[hasclass('sale_tbody')]//td[@name='td_priceunit']"
+                position="replace"
+            >
+                <td name="td_priceunit" class="text-right">
+                    <span t-esc="'%.0f' % line.price_unit" />
                 </td>
             </xpath>
 
