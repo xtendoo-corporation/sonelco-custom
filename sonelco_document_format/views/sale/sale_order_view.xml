@@ -15,14 +15,14 @@
             </xpath>
 
             <xpath expr="//table/thead/tr/th[@name='th_description']" position="before">
-                <th name="th_code" colspan="3" class="text-left">Code</th>
+                <th name="th_code" style="width:50px!important;" class="text-left">Code</th>
             </xpath>
 
             <xpath
                 expr="//table/tbody[hasclass('sale_tbody')]//td[@name='td_name']"
                 position="before"
             >
-                <td colspan="3">
+                <td style="width:50px;!important">
                     <span t-field="line.product_id.default_code"/>
                 </td>
             </xpath>
