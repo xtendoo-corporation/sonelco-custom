@@ -27,20 +27,41 @@
                 <t t-call="web.external_layout">
                     <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
                     <t t-set="partner_parent"
-                       t-value="o.sale_id.partner_id or False"/>
+                       t-value="o.partner_id.parent_id or False"/>
                     <t t-set="partner"
                        t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
                     <t t-if="partner_parent and (partner_parent != partner)" name="partner_header">
                         <div style="width:50%;float:left;">
                                 <b><span>Cliente:</span></b>
-                                    <div t-esc="partner_parent"
-                                        t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
+                                    <div>
+                                        <span style="width:100%;display:block;" t-esc="partner_parent.name"/>
+                                        <span style="width:100%;display:block;" t-esc="partner_parent.street"/>
+                                        <div style="width:100%;display:block;">
+                                            <span t-esc="partner_parent.zip"/><span> </span><span t-esc="partner_parent.city"/>
+                                        </div>
+                                        <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>
+                                        <span t-if="partner_parent.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+
+                                    </div>
                                 </div>
                                 <t t-if="partner" name="partner_header">
                                     <b><span>Dirección de entrega:</span></b>
                                     <div style="width:50%;float:left;">
-                                        <div t-esc="partner"
-                                         t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
+                                        <div>
+                                            <div style="width:100%;display:block;">
+                                                <span t-esc="partner_parent.name"/>
+                                                <span>, </span>
+                                                <span t-esc="partner.name"/>
+                                            </div>
+                                            <span style="width:100%;display:block;" t-esc="partner.street"/>
+                                            <div style="width:100%;display:block;">
+                                                <span t-esc="partner_parent.zip"/>
+                                                <span> </span>
+                                                <span t-esc="partner.city"/>
+                                            </div>
+                                            <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
+                                            <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+                                        </div>
                                     </div>
                                 </t>
                     </t>
@@ -49,8 +70,19 @@
                         </div>
                         <t t-if="partner" name="partner_header">
                             <div style="width:50%;float:right;">
-                                <div t-esc="partner"
-                                         t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
+                                <div>
+                                    <div style="width:100%;display:block;">
+                                        <span t-esc="partner_parent.name"/>
+                                        <span>, </span>
+                                        <span t-esc="partner.name"/>
+                                    </div>
+                                    <span style="width:100%;display:block;" t-esc="partner.street"/>
+                                    <div style="width:100%;display:block;">
+                                        <span t-esc="partner_parent.zip"/><span> </span><span t-esc="partner.city"/>
+                                    </div>
+                                    <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
+                                    <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+                                </div>
                             </div>
                         </t>
                     </t>
@@ -177,20 +209,41 @@
                 <t t-call="web.external_layout">
                     <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
                     <t t-set="partner_parent"
-                       t-value="o.sale_id.partner_id or False"/>
+                       t-value="o.partner_id.parent_id or False"/>
                     <t t-set="partner"
                        t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
                     <t t-if="partner_parent and (partner_parent != partner)" name="partner_header">
                         <div style="width:50%;float:left;">
                                 <b><span>Cliente:</span></b>
-                                    <div t-esc="partner_parent"
-                                        t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
+                                    <div>
+                                        <span style="width:100%;display:block;" t-esc="partner_parent.name"/>
+                                        <span style="width:100%;display:block;" t-esc="partner_parent.street"/>
+                                        <div style="width:100%;display:block;">
+                                            <span t-esc="partner_parent.zip"/><span> </span><span t-esc="partner_parent.city"/>
+                                        </div>
+                                        <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>
+                                        <span t-if="partner_parent.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+
+                                    </div>
                                 </div>
                                 <t t-if="partner" name="partner_header">
                                     <b><span>Dirección de entrega:</span></b>
                                     <div style="width:50%;float:left;">
-                                        <div t-esc="partner"
-                                         t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
+                                        <div>
+                                            <div style="width:100%;display:block;">
+                                                <span t-esc="partner_parent.name"/>
+                                                <span>, </span>
+                                                <span t-esc="partner.name"/>
+                                            </div>
+                                            <span style="width:100%;display:block;" t-esc="partner.street"/>
+                                            <div style="width:100%;display:block;">
+                                                <span t-esc="partner_parent.zip"/>
+                                                <span> </span>
+                                                <span t-esc="partner.city"/>
+                                            </div>
+                                            <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
+                                            <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+                                        </div>
                                     </div>
                                 </t>
                     </t>
@@ -199,8 +252,19 @@
                         </div>
                         <t t-if="partner" name="partner_header">
                             <div style="width:50%;float:right;">
-                                <div t-esc="partner"
-                                         t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
+                                <div>
+                                    <div style="width:100%;display:block;">
+                                        <span t-esc="partner_parent.name"/>
+                                        <span>, </span>
+                                        <span t-esc="partner.name"/>
+                                    </div>
+                                    <span style="width:100%;display:block;" t-esc="partner.street"/>
+                                    <div style="width:100%;display:block;">
+                                        <span t-esc="partner_parent.zip"/><span> </span><span t-esc="partner.city"/>
+                                    </div>
+                                    <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
+                                    <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+                                </div>
                             </div>
                         </t>
                     </t>
