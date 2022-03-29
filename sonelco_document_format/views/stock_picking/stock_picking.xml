@@ -6,7 +6,7 @@
         <report
             id="sonelco_report_picking"
             model="stock.picking"
-            string="Un Valued Report Picking"
+            string="Unvalued Report Picking"
             report_type="qweb-pdf"
             name="sonelco_document_format.sonelco_report_picking"
             file="sonelco_document_format.sonelco_report_picking"
@@ -26,16 +26,26 @@
             <t t-call="web.html_container">
                 <t t-call="web.external_layout">
                     <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+                    <t t-set="partner_parent"
+                       t-value="o.sale_id.partner_id or False"/>
                     <t t-set="partner"
                        t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
-                        <t t-if="partner" name="partner_header">
-                            <t t-set="address">
-                                <div t-esc="partner"
-                                     t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
-                            </t>
+                    <t t-if="partner" name="partner_header">
+                        <div style="width:50%;float:left;">
+                                <b><span>Cliente:</span></b>
+                                    <div t-esc="partner_parent"
+                                        t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
+                                </div>
+                                <t t-if="partner" name="partner_header">
+                                    <b><span>Dirección de entrega:</span></b>
+                                    <div style="width:50%;float:left;">
+                                        <div t-esc="partner"
+                                         t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
+                                    </div>
+                                </t>
                         </t>
 
-                        <div class="page">
+                        <div class="page" style="clear:both;">
                             <h2>
                                 <span t-field="o.name"/>
                             </h2>
@@ -156,15 +166,25 @@
                 <t t-call="web.html_container">
                 <t t-call="web.external_layout">
                     <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+                    <t t-set="partner_parent"
+                       t-value="o.sale_id.partner_id or False"/>
                     <t t-set="partner"
                        t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
                     <t t-if="partner" name="partner_header">
-                        <t t-set="address">
-                            <div t-esc="partner"
-                                 t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
-                        </t>
+                        <div style="width:50%;float:left;">
+                                <b><span>Cliente:</span></b>
+                                    <div t-esc="partner_parent"
+                                        t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
+                                </div>
+                                <t t-if="partner" name="partner_header">
+                                    <b><span>Dirección de entrega:</span></b>
+                                    <div style="width:50%;float:left;">
+                                        <div t-esc="partner"
+                                         t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True}'/>
+                                    </div>
+                                </t>
                     </t>
-                    <div class="page">
+                    <div class="page" style="clear:both;">
                         <h2>
                             <span t-field="o.name"/>
                         </h2>
@@ -301,7 +321,7 @@
                                     </td>
                                     <td class="text-right">
                                         <span t-field="o.amount_total"/>
-                                    </td>
+                                    </td> 
                                 </tr>
                             </tbody>
                         </table>
