@@ -4,7 +4,7 @@
 
        <report
             id="report_invoice_without_grouped"
-            string="Factura"
+            string="Factura Sonelco"
             model="account.move"
             report_type="qweb-pdf"
             name="sonelco_document_format.report_invoice_not_grouped"
