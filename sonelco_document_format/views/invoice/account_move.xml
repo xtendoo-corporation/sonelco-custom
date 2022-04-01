@@ -51,26 +51,26 @@
                                 </div>
                             </div>
                         </t>
-                        <t t-if="o.partner_shipping_id and (o.partner_shipping_id != o.partner_id)">
-                            <div groups="sale.group_delivery_invoice_address">
-                                <strong>Dirección de Entrega:</strong>
-                                <div>
-                                    <div style="width:100%;display:block;">
-                                        <span t-esc="partner_parent.name"/>
-                                        <span>, </span>
-                                        <span t-esc="o.partner_shipping_id.name"/>
-                                    </div>
-                                    <span style="width:100%;display:block;" t-esc="o.partner_shipping_id.street"/>
-                                    <div style="width:100%;display:block;">
-                                        <span t-esc="o.partner_shipping_id.zip"/>
-                                        <span> </span>
-                                        <span t-esc="o.partner_shipping_id.city"/>
-                                    </div>
-                                    <span style="width:100%;display:block;" t-esc="o.partner_shipping_id.country_id.name"/>
-                                    <span t-if="o.partner_shipping_id.phone" style="width:100%;display:block;" t-esc="o.partner_shipping_id.phone"/>
-                                </div>
-                            </div>
-                        </t>
+<!--                        <t t-if="o.partner_shipping_id and (o.partner_shipping_id != o.partner_id)">-->
+<!--                            <div groups="sale.group_delivery_invoice_address">-->
+<!--                                <strong>Dirección de Entrega:</strong>-->
+<!--                                <div>-->
+<!--                                    <div style="width:100%;display:block;">-->
+<!--                                        <span t-esc="partner_parent.name"/>-->
+<!--                                        <span>, </span>-->
+<!--                                        <span t-esc="o.partner_shipping_id.name"/>-->
+<!--                                    </div>-->
+<!--                                    <span style="width:100%;display:block;" t-esc="o.partner_shipping_id.street"/>-->
+<!--                                    <div style="width:100%;display:block;">-->
+<!--                                        <span t-esc="o.partner_shipping_id.zip"/>-->
+<!--                                        <span> </span>-->
+<!--                                        <span t-esc="o.partner_shipping_id.city"/>-->
+<!--                                    </div>-->
+<!--                                    <span style="width:100%;display:block;" t-esc="o.partner_shipping_id.country_id.name"/>-->
+<!--                                    <span t-if="o.partner_shipping_id.phone" style="width:100%;display:block;" t-esc="o.partner_shipping_id.phone"/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </t>-->
                     </t>
                     <t t-if="partner_parent">
                         <t t-if="partner_parent != o.partner_id">
