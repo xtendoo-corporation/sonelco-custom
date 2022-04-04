@@ -26,21 +26,29 @@
             <t t-call="web.html_container">
                 <t t-call="web.external_layout">
                     <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+                     <t t-set="partner_client"
+                       t-value="o.move_lines[0].sale_line_id.order_id.partner_id"/>
                     <t t-set="partner_parent"
                        t-value="o.partner_id.parent_id or False"/>
                     <t t-set="partner"
                        t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
-                    <t t-if="partner_parent and (partner_parent != partner)" name="partner_header">
+                    <t t-if="partner_client and (partner_client != partner)" name="partner_header">
                         <div style="width:50%;float:left;">
                                 <b><span>Cliente:</span></b>
                                     <div>
-                                        <span style="width:100%;display:block;" t-esc="partner_parent.name"/>
-                                        <span style="width:100%;display:block;" t-esc="partner_parent.street"/>
                                         <div style="width:100%;display:block;">
-                                            <span t-esc="partner_parent.zip"/><span> </span><span t-esc="partner_parent.city"/>
+                                            <t t-if="partner_client.parent_id">
+                                                <span t-esc="partner_client.parent_id.name"/>
+                                                <span>, </span>
+                                            </t>
+                                            <span t-esc="partner_client.name"/>
                                         </div>
-                                        <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>
-                                        <span t-if="partner_parent.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+                                        <span style="width:100%;display:block;" t-esc="partner_client.street"/>
+                                        <div style="width:100%;display:block;">
+                                            <span t-esc="partner_parent.zip"/><span> </span><span t-esc="partner_client.city"/>
+                                        </div>
+                                        <span style="width:100%;display:block;" t-esc="partner_client.country_id.name"/>
+                                        <span t-if="partner_parent.phone" style="width:100%;display:block;" t-esc="partner_client.phone"/>
 
                                     </div>
                                 </div>
@@ -49,18 +57,20 @@
                                     <div style="width:50%;float:left;">
                                         <div>
                                             <div style="width:100%;display:block;">
-                                                <span t-esc="partner_parent.name"/>
-                                                <span>, </span>
+                                                <t t-if="partner.parent_id">
+                                                    <span t-esc="partner.parent_id.name"/>
+                                                    <span>, </span>
+                                                </t>
                                                 <span t-esc="partner.name"/>
                                             </div>
                                             <span style="width:100%;display:block;" t-esc="partner.street"/>
                                             <div style="width:100%;display:block;">
-                                                <span t-esc="partner_parent.zip"/>
+                                                <span t-esc="partner.zip"/>
                                                 <span> </span>
                                                 <span t-esc="partner.city"/>
                                             </div>
                                             <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
-                                            <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+                                            <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner.phone"/>
                                         </div>
                                     </div>
                                 </t>
@@ -72,16 +82,18 @@
                             <div style="width:50%;float:right;">
                                 <div>
                                     <div style="width:100%;display:block;">
-                                        <span t-esc="partner_parent.name"/>
-                                        <span>, </span>
+                                        <t t-if="partner.parent_id">
+                                            <span t-esc="partner.parent_id.name"/>
+                                            <span>, </span>
+                                        </t>
                                         <span t-esc="partner.name"/>
                                     </div>
                                     <span style="width:100%;display:block;" t-esc="partner.street"/>
                                     <div style="width:100%;display:block;">
-                                        <span t-esc="partner_parent.zip"/><span> </span><span t-esc="partner.city"/>
+                                        <span t-esc="partner.zip"/><span> </span><span t-esc="partner.city"/>
                                     </div>
                                     <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
-                                    <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+                                    <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner.phone"/>
                                 </div>
                             </div>
                         </t>
@@ -208,21 +220,29 @@
                 <t t-call="web.html_container">
                 <t t-call="web.external_layout">
                     <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+                     <t t-set="partner_client"
+                       t-value="o.move_lines[0].sale_line_id.order_id.partner_id"/>
                     <t t-set="partner_parent"
                        t-value="o.partner_id.parent_id or False"/>
                     <t t-set="partner"
                        t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
-                    <t t-if="partner_parent and (partner_parent != partner)" name="partner_header">
+                    <t t-if="partner_client and (partner_client != partner)" name="partner_header">
                         <div style="width:50%;float:left;">
                                 <b><span>Cliente:</span></b>
                                     <div>
-                                        <span style="width:100%;display:block;" t-esc="partner_parent.name"/>
-                                        <span style="width:100%;display:block;" t-esc="partner_parent.street"/>
                                         <div style="width:100%;display:block;">
-                                            <span t-esc="partner_parent.zip"/><span> </span><span t-esc="partner_parent.city"/>
+                                            <t t-if="partner_client.parent_id">
+                                                <span t-esc="partner_client.parent_id.name"/>
+                                                <span>, </span>
+                                            </t>
+                                            <span t-esc="partner_client.name"/>
                                         </div>
-                                        <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>
-                                        <span t-if="partner_parent.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+                                        <span style="width:100%;display:block;" t-esc="partner_client.street"/>
+                                        <div style="width:100%;display:block;">
+                                            <span t-esc="partner_parent.zip"/><span> </span><span t-esc="partner_client.city"/>
+                                        </div>
+                                        <span style="width:100%;display:block;" t-esc="partner_client.country_id.name"/>
+                                        <span t-if="partner_parent.phone" style="width:100%;display:block;" t-esc="partner_client.phone"/>
 
                                     </div>
                                 </div>
@@ -231,18 +251,20 @@
                                     <div style="width:50%;float:left;">
                                         <div>
                                             <div style="width:100%;display:block;">
-                                                <span t-esc="partner_parent.name"/>
-                                                <span>, </span>
+                                                <t t-if="partner.parent_id">
+                                                    <span t-esc="partner.parent_id.name"/>
+                                                    <span>, </span>
+                                                </t>
                                                 <span t-esc="partner.name"/>
                                             </div>
                                             <span style="width:100%;display:block;" t-esc="partner.street"/>
                                             <div style="width:100%;display:block;">
-                                                <span t-esc="partner_parent.zip"/>
+                                                <span t-esc="partner.zip"/>
                                                 <span> </span>
                                                 <span t-esc="partner.city"/>
                                             </div>
                                             <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
-                                            <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+                                            <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner.phone"/>
                                         </div>
                                     </div>
                                 </t>
@@ -254,16 +276,18 @@
                             <div style="width:50%;float:right;">
                                 <div>
                                     <div style="width:100%;display:block;">
-                                        <span t-esc="partner_parent.name"/>
-                                        <span>, </span>
+                                        <t t-if="partner.parent_id">
+                                            <span t-esc="partner.parent_id.name"/>
+                                            <span>, </span>
+                                        </t>
                                         <span t-esc="partner.name"/>
                                     </div>
                                     <span style="width:100%;display:block;" t-esc="partner.street"/>
                                     <div style="width:100%;display:block;">
-                                        <span t-esc="partner_parent.zip"/><span> </span><span t-esc="partner.city"/>
+                                        <span t-esc="partner.zip"/><span> </span><span t-esc="partner.city"/>
                                     </div>
                                     <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
-                                    <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
+                                    <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner.phone"/>
                                 </div>
                             </div>
                         </t>
