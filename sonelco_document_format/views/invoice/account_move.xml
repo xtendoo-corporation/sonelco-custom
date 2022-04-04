@@ -33,50 +33,30 @@
                     <t t-set="information_block">
                         <t t-if="partner_parent and (partner_parent != o.partner_id)">
                             <div groups="sale.group_delivery_invoice_address">
-                                <strong>Dirección de Facturación:</strong>
+                                <strong>Cliente:</strong>
                                 <div>
                                     <div style="width:100%;display:block;">
-                                        <t t-if="partner_invoice.parent_id">
-                                            <span t-esc="partner_invoice.parent_id.name"/>
+                                        <t t-if="partner_parent.parent_id">
+                                            <span t-esc="partner_parent.parent_id.name"/>
                                             <span>, </span>
                                         </t>
-                                        <span t-esc="o.partner_id.name"/>
+                                        <span t-esc="partner_parent.name"/>
                                     </div>
-                                    <span style="width:100%;display:block;" t-esc="o.partner_id.street"/>
+                                    <span style="width:100%;display:block;" t-esc="partner_parent.street"/>
                                     <div style="width:100%;display:block;">
-                                        <span t-esc="o.partner_id.zip"/>
+                                        <span t-esc="partner_parent.zip"/>
                                         <span> </span>
-                                        <span t-esc="o.partner_id.city"/>
+                                        <span t-esc="partner_parent.city"/>
                                     </div>
-                                    <span style="width:100%;display:block;" t-esc="o.partner_id.country_id.name"/>
-                                    <span t-if="o.partner_id.phone" style="width:100%;display:block;" t-esc="o.partner_id.phone"/>
+                                    <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>
+                                    <span t-if="partner_parent.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
                                 </div>
                             </div>
                         </t>
                     </t>
-                    <t t-if="partner_parent">
-                        <t t-if="partner_parent != o.partner_id">
-                        <div>
-                            <strong>Cliente:</strong>
-                            <div style="width:100%;display:block;">
-                                <t t-if="partner_parent.parent_id">
-                                    <span t-esc="partner_parent.parent_id.name"/>
-                                    <span>, </span>
-                                </t>
-                                <span t-esc="partner_parent.name"/>
-                            </div>
-                            <span style="width:100%;display:block;" t-esc="partner_parent.street"/>
-                            <div style="width:100%;display:block;">
-                                <span t-esc="partner_parent.zip"/>
-                                <span> </span>
-                                <span t-esc="partner_parent.city"/>
-                            </div>
-                            <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>
-                            <span t-if="partner_parent.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
-                        </div>
-                    </t>
-                        <t t-else="">
+                    <t t-if="partner_invoice">
                             <div>
+                                <strong>Dirección de facturación:</strong>
                                 <div style="width:100%;display:block;">
                                     <t t-if="o.partner_id.parent_id">
                                         <span t-esc="o.partner_id.parent_id.name"/>
@@ -93,7 +73,6 @@
                                 <span style="width:100%;display:block;" t-esc="o.partner_id.country_id.name"/>
                                 <span t-if="o.partner_id.phone" style="width:100%;display:block;" t-esc="o.partner_id.phone"/>
                             </div>
-                        </t>
                     </t>
                     <t t-else="">
                         <div>
