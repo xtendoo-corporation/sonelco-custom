@@ -239,10 +239,10 @@
                                         </div>
                                         <span style="width:100%;display:block;" t-esc="partner_client.street"/>
                                         <div style="width:100%;display:block;">
-                                            <span t-esc="partner_parent.zip"/><span> </span><span t-esc="partner_client.city"/>
+                                            <span t-esc="partner_client.zip"/><span> </span><span t-esc="partner_client.city"/>
                                         </div>
                                         <span style="width:100%;display:block;" t-esc="partner_client.country_id.name"/>
-                                        <span t-if="partner_parent.phone" style="width:100%;display:block;" t-esc="partner_client.phone"/>
+                                        <span t-if="partner_client.phone" style="width:100%;display:block;" t-esc="partner_client.phone"/>
 
                                     </div>
                                 </div>
