@@ -18,6 +18,7 @@
         "product",
         "sonelco_stock_package_numbers",
         "stock_picking_report_valued",
+        "mrp"
     ],
     "data": [
         "views/package_label/package_label.xml",
@@ -25,6 +26,7 @@
         "views/sale/sale_order_view.xml",
         "views/stock_picking/stock_picking.xml",
         "views/invoice/account_move.xml",
+        "views/mrp/mrp_report_bom.xml",
     ],
     "installable": True,
     "auto_install": False,
