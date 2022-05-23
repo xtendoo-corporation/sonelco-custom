@@ -43,8 +43,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td t-if="o.product_id.name" style="text-align:center;font-size:0.9em;">
-                                            <div style="text-overflow: ellipsis; overflow:hidden; height:60px;">
+                                        <td t-if="o.product_id.name" style="text-align:center;font-size:0.7em;">
+                                            <div style="text-overflow: ellipsis; overflow:hidden; max-height:50px; min-height:50px;">
                                                  <span t-field="o.product_id.name"/>
                                             </div>
                                         </td>
@@ -60,8 +60,8 @@
                                                         <span t-field="o.company_id.favicon" t-options='{"widget": "image"}' style="witdh:100%;margin-left:10px;"/>
                                                     </td>
                                                     <td style="width:60%; text-align:center;margin:0;padding:0;">
-                                                        <img t-if="o.name" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 150)" style="width:90%;height:20%;"/>
-                                                        <span t-field="o.name" style="width:100%;font-size:0.8em;"></span>
+                                                        <img t-if="o.product_id.barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 150)" style="width:90%;height:20%;"/>
+                                                        <span t-field="o.product_id.barcode" style="width:100%;font-size:0.7em;"></span>
                                                     </td>
                                                 </tr>
                                             </table>
