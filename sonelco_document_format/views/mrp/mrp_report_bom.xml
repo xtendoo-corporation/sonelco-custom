@@ -2,19 +2,25 @@
 <odoo>
     <data>
         <template id="report_mrp_bom_sonelco" inherit_id="mrp.report_mrp_bom">
+            <xpath expr="//table/thead/tr/th[4]" position="after">
+                <th>
+                    <span>Localización</span>
+                </th>
+            </xpath>
             <xpath expr="//table/tbody/tr/td[4]" position="after">
-                <td t-if="data['report_structure'] != 'bom_structure'" class="o_mrp_prod_cost text-right">
-                    <span><t t-esc="data['price']" /></span>
-                </td>
-                <td t-if="data['report_structure'] != 'bom_structure'" class="o_mrp_bom_cost text-right">
-                    <span><t t-esc="data['total']" /></span>
+                <td>
                 </td>
             </xpath>
-            <xpath expr="//table/tbody/tr/td[5]" position="after">
+        </template>
 
+        <template id="report_mrp_bom_line_sonelco" inherit_id="mrp.report_mrp_bom_pdf_line">
+            <xpath expr="//tr/td[4]" position="after">
+                <td>
+<!--                     <span><t t-esc="data['location']"></t></span>-->
+
+                </td>
             </xpath>
-<!--            <xpath expr="//table/tbody/tr/td[@class='o_mrp_prod_cost']" position="after">-->
-<!--            </xpath>-->
+
         </template>
     </data>
 </odoo>
