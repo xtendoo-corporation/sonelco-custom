@@ -19,7 +19,6 @@
         "sonelco_stock_package_numbers",
         "stock_picking_report_valued",
         "mrp",
-        "mrp_bom_list_location_in_plane",
     ],
     "data": [
         "views/package_label/package_label.xml",
