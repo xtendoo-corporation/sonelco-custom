@@ -21,5 +21,12 @@
             </field>
         </field>
     </record>
+          <template id="report_mrp_bom_pdf_line_location" inherit_id="mrp.report_mrp_bom_pdf_line">
+        <xpath expr="//tr" position="inside">
+            <td class="text-left">
+                <span t-esc="l['location_plane']" />
+            </td>
+        </xpath>
+    </template>
     </data>
 </odoo>
