@@ -55,9 +55,9 @@
                                             <th>Producto</th>
                                             <th><span style="margin-left:10px;">BoM</span></th>
                                             <th class="text-right">Cantidad</th>
-                                            <th class="text-left" groups="uom.group_uom">Unidad de medida</th>
+                                            <th class="text-left" groups="uom.group_uom">Unidad</th>
                                             <th>
-                                                <span>Posición en plano</span>
+                                                <span>Posición</span>
                                             </th>
                                         </tr>
                                     </thead>
