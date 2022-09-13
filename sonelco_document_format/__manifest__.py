@@ -21,7 +21,7 @@
         "mrp",
     ],
     "data": [
-        "views/package_label/package_label_new.xml",
+        "views/package_label/package_label.xml",
         "views/purchase/purchase_order_view.xml",
         "views/sale/sale_order_view.xml",
         #"views/stock_picking/stock_picking.xml",
