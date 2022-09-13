@@ -21,10 +21,10 @@
         "mrp",
     ],
     "data": [
-        "views/package_label/package_label.xml",
+        "views/package_label/package_label_new.xml",
         "views/purchase/purchase_order_view.xml",
         "views/sale/sale_order_view.xml",
-        #"views/stock_picking/stock_picking.xml",
+        "views/stock_picking/stock_picking.xml",
         "views/invoice/account_move.xml",
         #"views/mrp/mrp_report_bom.xml",
         "views/label/papper_format.xml",
