@@ -33,26 +33,25 @@
                     <t t-set="partner_parent" t-value="o.picking_ids.move_lines[0].sale_line_id.order_id.partner_id"></t>
                     <t t-set="information_block">
                         <t t-if="partner_parent and (partner_parent != o.partner_id)">
-                            <div groups="sale.group_delivery_invoice_address">
-                                <strong>Dirección de entrega:</strong>
-                                <div>
-                                    <div style="width:100%;display:block;">
-                                        <t t-if="partner_parent.parent_id">
-                                            <span t-esc="partner_parent.parent_id.name"/>
-                                            <span>, </span>
-                                        </t>
-                                        <span t-esc="partner_parent.name"/>
-                                    </div>
-                                    <span style="width:100%;display:block;" t-esc="partner_parent.street"/>
-                                    <div style="width:100%;display:block;">
-                                        <span t-esc="partner_parent.zip"/>
-                                        <span> </span>
-                                        <span t-esc="partner_parent.city"/>
-                                    </div>
-                                    <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>
-                                    <span t-if="partner_parent.phone" style="width:100%;display:block;" t-esc="partner_parent.phone"/>
-                                </div>
-                            </div>
+<!--                            <div groups="sale.group_delivery_invoice_address">-->
+<!--                                <strong>Dirección de entrega:</strong>-->
+<!--                                <div>-->
+<!--                                    <div style="width:100%;display:block;">-->
+<!--                                        <t t-if="partner_parent.parent_id">-->
+<!--                                            <span t-esc="partner_parent.parent_id.name"/>-->
+<!--                                            <span>, </span>-->
+<!--                                        </t>-->
+<!--                                        <span t-esc="partner_parent.name"/>-->
+<!--                                    </div>-->
+<!--                                    <span style="width:100%;display:block;" t-esc="partner_parent.street"/>-->
+<!--                                    <div style="width:100%;display:block;">-->
+<!--                                        <span t-esc="partner_parent.zip"/>-->
+<!--                                        <span> </span>-->
+<!--                                        <span t-esc="partner_parent.city"/>-->
+<!--                                    </div>-->
+<!--                                    <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         </t>
                     </t>
                     <t t-if="partner_invoice">
@@ -72,7 +71,6 @@
                                     <span t-esc="o.partner_id.city"/>
                                 </div>
                                 <span style="width:100%;display:block;" t-esc="o.partner_id.country_id.name"/>
-                                <span t-if="o.partner_id.phone" style="width:100%;display:block;" t-esc="o.partner_id.phone"/>
                             </div>
                     </t>
                     <t t-else="">
@@ -111,10 +109,10 @@
                             <strong>Fecha:</strong>
                             <p class="m-0" t-field="o.invoice_date"/>
                         </div>
-<!--                        <div class="col-auto mw-100 mb-2" t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'" name="due_date">-->
-<!--                            <strong>Due Date:</strong>-->
-<!--                            <p class="m-0" t-field="o.invoice_date_due"/>-->
-<!--                        </div>-->
+                        <div class="col-auto mw-100 mb-2" t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'" name="due_date">
+                            <strong>Fecha Vencimiento:</strong>
+                            <p class="m-0" t-field="o.invoice_date_due"/>
+                        </div>
                         <div class="col-auto mw-100 mb-2" t-if="o.invoice_origin" name="origin">
                             <strong>Origen:</strong>
                             <p class="m-0" t-field="o.invoice_origin"/>
@@ -260,10 +258,8 @@
                             </div>
                         </div>
                     </div>
-                    <p t-if="o.type in ('out_invoice', 'in_refund')">
-                        Utilice la siguiente referencia para realizar su pago. : <b><span t-field="o.invoice_payment_ref"/></b>
-                    </p>
-                    <p t-if="o.narration" name="comment">
+                    <div style="margin-top:20px;">
+                         <p t-if="o.narration" name="comment">
                         <span t-field="o.narration"/>
                     </p>
                     <p t-if="o.invoice_payment_term_id" name="payment_term">
@@ -272,14 +268,6 @@
                     <p t-if="o.fiscal_position_id.note" name="note">
                         <span t-field="o.fiscal_position_id.note"/>
                     </p>
-                    <div id="qrcode" t-if="(o.company_id.qr_code) and (o.currency_id.name == 'EUR') and (o.invoice_partner_bank_id.acc_number != False) and o.amount_residual &gt; 0">
-                        <p t-if="(o.invoice_partner_bank_id.qr_code_valid)">
-                            <strong class="text-center">Scan me with your banking app.</strong><br/><br/>
-                            <img class="border border-dark rounded" t-att-src="o.invoice_partner_bank_id.build_qr_code_base64(o.amount_residual, o.invoice_payment_ref or o.ref or o.name)"/>
-                        </p>
-                        <p t-if="(o.invoice_partner_bank_id.qr_code_valid == False)">
-                            <strong class="text-center">The SEPA QR Code informations are not set correctly.</strong><br/>
-                        </p>
                     </div>
                 </div>
             </t>
