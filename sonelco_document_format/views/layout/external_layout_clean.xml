@@ -14,8 +14,34 @@
                              <span t-field="company.state_id.name"></span>
                              <span t-field="company.country_id.name"></span>
                          </p>
+                         <p style="margin:0">Telf. <span t-field="company.phone"/></p>
+                         <p style="margin:0">Email: <span t-field="company.email"/></p>
+                         <t t-set="website_name" t-value="company.website"/>
+                                            <t t-set="code_position" t-value="website_name.find('w')"/>
+                                            <t t-if="code_position &gt; 0">
+                                                <t t-set="website_name" t-value="website_name[code_position:]"/>
+                                            </t>
+                         <p style="margin:0">Web: <span t-esc="website_name"/></p>
                      </div>
             </xpath>
+
+             <xpath expr="//div[@class='text-center']" position="replace">
+                 <div class="text-center" style="border-top: 1px solid black;">
+                <ul class="list-inline mb4">
+                    <li t-if="company.vat" class="list-inline-item d-inline"><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
+                </ul>
+
+                <div name="financial_infos">
+                    <span t-field="company.report_footer"/>
+                </div>
+
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+            </xpath>
+
+
         </template>
     </data>
 </odoo>
