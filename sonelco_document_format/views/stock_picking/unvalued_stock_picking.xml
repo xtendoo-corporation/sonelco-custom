@@ -11,6 +11,10 @@
                     print_report_name="'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
                 />
 
+        <record id="sonelco_report_picking" model="ir.actions.report">
+            <field name="paperformat_id" ref="sonelco_A4_papperformat" />
+        </record>
+
                 <template id="sonelco_document_format.sonelco_report_picking">
                     <t t-name="sonelco_document_format.sonelco_report_picking">
                         <t t-foreach="docs" t-as="o">
@@ -173,7 +177,6 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <span t-esc="'%.0f'%move_line.qty_done"/>
-                                                    <span t-field="move_line.product_uom_id"/>
                                                 </td>
                                             </tr>
                                         </tbody>
