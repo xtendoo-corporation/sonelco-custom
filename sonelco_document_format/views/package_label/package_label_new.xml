@@ -40,7 +40,7 @@
                         <t t-foreach="int(num_copy)" t-as="">
                             <div class="page" style="border:5px solid black;width:106%;margin-left:-3%;">
                                 <div class="container">
-                                    <div style="width:100%;display:block;float:left;height:494px;">
+                                    <div style="width:98%;display:block;float:left;height:460px;">
                                         <div
                                             style="font-size:0.9em;width:100%;display:block;float:left;height:20px;margin-top:15px;margin-left:3%;color:black;">
                                             <span>Destino/Destination:</span>
@@ -83,23 +83,23 @@
                                         </div>
 
                                         <!--line-->
-                                        <div style="height:5px;background-color:black;clear:both;width:110%;margin-left:-5%;"/>
+                                        <div style="height:5px;background-color:black;clear:both;width:112%;margin-left:-5%;"/>
                                         <!--end line-->
 
-                                        <div style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
+                                        <div style="width:60%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
                                             <span>Número de bultos/Packing:</span>
                                         </div>
-                                        <div style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
+                                        <div style="width:40%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
                                             <span t-esc="iteration"/>
                                             <span>/</span>
-                                            <span t-field="o.package"></span>
+                                            <span t-field="o.package"/>
                                         </div>
 
                                         <div style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
                                             <span>Kilos/Weight:</span>
                                         </div>
                                         <div style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
-                                            <span t-field="o.shipping_weight"></span>
+                                            <span t-field="o.shipping_weight"/>
                                         </div>
 
                                         <div style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
@@ -117,31 +117,33 @@
                                         </div>
                                     </div>
 
-                                    <div style="width:110%;margin-left:-5%;border-width: 5px;">
-                                        <img style="margin-left:30%;display:block;width:40%;"
+                                    <div style="width:110%;margin-left:-5%;border-width:50px;">
+                                        <img style="margin-left:30%;display:block;width:40%;margin-top:-500px;"
                                              src="/sonelco_document_format/static/src/img/logo_sonelco.png"/>
                                     </div>
 
                                     <div
-                                        style="margin-top:-3px;text-align:center;width:100%;color:black;font-size:1em;font-weight:bolder;">
+                                        style="margin-top:10px;text-align:center;width:100%;color:black;font-size:1em;font-weight:bolder;">
                                         <div>
                                             <span t-if="res_company.name" t-field="res_company.name"/>
                                         </div>
                                         <div>
-                                            <span t-if="res_company.name" t-field="res_company.street"/>
+                                            <span t-if="res_company.street" t-field="res_company.street"/>
                                         </div>
                                         <div>
-                                            <span t-if="res_company.name">AUTOVIA DE LOGROÑO. Km 2,400</span>
+                                            <span t-if="res_company.street2" t-field="res_company.street2"/>
                                         </div>
                                         <div>
                                             <span>TLF.:</span>
                                             <span t-field="res_company.phone"/>
-                                            <span>FAX.: 976373775</span>
+                                        </div>
+                                        <div>
+                                            <span t-field="res_company.email"/>
                                         </div>
                                         <div>
                                             <span t-field="res_company.zip"/>
                                             <span></span>
-                                            <span t-field="res_company.state_id"/>
+                                            <span t-field="res_company.state_id.name"/>
                                             <span>(</span>
                                             <span t-field="res_company.country_id.name"/>
                                             <span>)</span>
