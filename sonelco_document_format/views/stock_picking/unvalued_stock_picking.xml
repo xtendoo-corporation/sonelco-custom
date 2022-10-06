@@ -5,7 +5,7 @@
                 <report
                     id="sonelco_document_format.sonelco_report_picking"
                     model="stock.picking"
-                    string="Unvalued Report Picking"
+                    string="Albarán sin valorar"
                     report_type="qweb-pdf"
                     name="sonelco_document_format.sonelco_report_picking"
                     print_report_name="'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
