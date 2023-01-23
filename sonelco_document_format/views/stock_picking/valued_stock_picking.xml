@@ -13,9 +13,9 @@
         />
 
 
-        <record id="sonelco_valued_report_picking" model="ir.actions.report">
-            <field name="paperformat_id" ref="sonelco_A4_papperformat" />
-        </record>
+<!--        <record id="sonelco_valued_report_picking" model="ir.actions.report">-->
+<!--            <field name="paperformat_id" ref="sonelco_A4_papperformat" />-->
+<!--        </record>-->
 
         <template id="sonelco_document_format.sonelco_valued_report_picking">
             <t t-name="sonelco_document_format.sonelco_valued_report_picking">
