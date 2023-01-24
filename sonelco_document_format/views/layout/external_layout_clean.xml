@@ -14,7 +14,7 @@
                         <span t-field="company.state_id.name"></span>
                         <span t-field="company.country_id.name"></span>
                     </p>
-                    <p style="margin:0">Telf.
+                    <p style="margin:0">Phone
                         <span t-field="company.phone"/>
                     </p>
                     <p style="margin:0">Email:
@@ -29,28 +29,28 @@
                         <span t-esc="website_name"/>
                     </p>
                 </div>
-                <t t-if="partner_invoice">
-                    <div class="col-6" name="partner_invoice">
-                        <strong>Dirección de facturación:</strong>
+                <t t-if="partner_direction">
+                    <div class="col-6" name="partner_direction">
+<!--                        <strong>Billing Address:</strong>-->
                         <div style="width:100%;display:block;">
-                            <t t-if="partner_invoice.parent_id">
-                                <span t-esc="partner_invoice.parent_id.name"/>
+                            <t t-if="partner_direction.parent_id">
+                                <span t-esc="partner_direction.parent_id.name"/>
                                 <span>,</span>
                             </t>
-                            <span t-esc="partner_invoice.name"/>
+                            <span t-esc="partner_direction.name"/>
                         </div>
-                        <span style="width:100%;display:block;" t-esc="partner_invoice.street"/>
+                        <span style="width:100%;display:block;" t-esc="partner_direction.street"/>
                         <div style="width:100%;display:block;">
-                            <span t-esc="partner_invoice.zip"/>
+                            <span t-esc="partner_direction.zip"/>
                             <span></span>
-                            <span t-esc="partner_invoice.city"/>
+                            <span t-esc="partner_direction.city"/>
                         </div>
-                        <div t-if="partner_invoice.vat">
+                        <div t-if="partner_direction.vat">
                             <span>NIF:</span>
-                            <span t-field="partner_invoice.vat"></span>
+                            <span t-field="partner_direction.vat"></span>
                         </div>
 
-                        <span style="width:100%;display:block;" t-esc="partner_invoice.country_id.name"/>
+                        <span style="width:100%;display:block;" t-esc="partner_direction.country_id.name"/>
 
                     </div>
                 </t>

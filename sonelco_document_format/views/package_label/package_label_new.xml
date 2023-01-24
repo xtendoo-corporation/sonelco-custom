@@ -55,7 +55,8 @@
                                                 style="width:100%;display:block;float:left;height:20px;margin-top:10px;margin-left:3%;color:black;">
                                                 <span>Consignatario/Consignee:</span>
                                             </div>
-                                            <div style="margin-left:2%;width:100%;display:block;float:left;text-align:center;margin-top:16px;font-weight:bolder;font-size:1.2em;">
+                                            <div
+                                                style="margin-left:2%;width:100%;display:block;float:left;text-align:center;margin-top:16px;font-weight:bolder;font-size:1.2em;">
                                                 <ul class="list-unstyled">
                                                     <strong>
                                                         <li t-if="o.delivery_id.partner_id.name">
@@ -69,11 +70,14 @@
                                                         <span t-field="o.delivery_id.partner_id.street2"/>
                                                     </li>
                                                     <li>
-                                                        <span t-if="o.delivery_id.partner_id.city" t-field="o.delivery_id.partner_id.city"/>
+                                                        <span t-if="o.delivery_id.partner_id.city"
+                                                              t-field="o.delivery_id.partner_id.city"/>
                                                     </li>
                                                     <li>
-                                                        <span t-if="o.delivery_id.partner_id.zip" t-field="o.delivery_id.partner_id.zip"/>
-                                                        <span t-if="o.delivery_id.partner_id.state_id.name" t-field="o.delivery_id.partner_id.state_id.name"/>
+                                                        <span t-if="o.delivery_id.partner_id.zip"
+                                                              t-field="o.delivery_id.partner_id.zip"/>
+                                                        <span t-if="o.delivery_id.partner_id.state_id.name"
+                                                              t-field="o.delivery_id.partner_id.state_id.name"/>
                                                     </li>
                                                     <li t-if="o.delivery_id.partner_id.country_id.name">
                                                         <span t-field="o.delivery_id.partner_id.country_id.name"/>
@@ -83,36 +87,46 @@
                                         </div>
 
                                         <!--line-->
-                                        <div style="height:5px;background-color:black;clear:both;width:112%;margin-left:-5%;"/>
+                                        <div
+                                            style="height:5px;background-color:black;clear:both;width:112%;margin-left:-5%;"/>
                                         <!--end line-->
 
-                                        <div style="width:60%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
+                                        <div
+                                            style="width:60%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
                                             <span>Número de bultos/Packing:</span>
                                         </div>
-                                        <div style="width:40%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
+                                        <div
+                                            style="width:40%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
                                             <span t-esc="iteration"/>
                                             <span>/</span>
                                             <span t-field="o.package"/>
                                         </div>
 
-                                        <div style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
+                                        <div
+                                            style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
                                             <span>Kilos/Weight:</span>
                                         </div>
-                                        <div style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
+                                        <div
+                                            style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
                                             <span t-field="o.shipping_weight"/>
                                         </div>
 
-                                        <div style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
+                                        <div
+                                            style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
                                             <span>Fecha/Date:</span>
                                         </div>
-                                        <div style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
-                                            <span t-field="o.delivery_id.scheduled_date" t-options="{&quot;format&quot;: &quot;MM-dd-yyyy&quot;}"/>
+                                        <div
+                                            style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
+                                            <span t-field="o.delivery_id.scheduled_date"
+                                                  t-options="{&quot;format&quot;: &quot;MM-dd-yyyy&quot;}"/>
                                         </div>
 
-                                        <div style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
+                                        <div
+                                            style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
                                             <span>Enviado por/Send by:</span>
                                         </div>
-                                        <div style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
+                                        <div
+                                            style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
                                             <span t-field="o.delivery_id.carrier_id.name"/>
                                         </div>
                                     </div>

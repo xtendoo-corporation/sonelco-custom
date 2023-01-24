@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-07 10:33+0000\n"
-"PO-Revision-Date: 2022-02-07 10:33+0000\n"
+"POT-Creation-Date: 2023-01-24 09:53+0000\n"
+"PO-Revision-Date: 2023-01-24 09:53+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,106 +16,196 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: sonelco_document_format
-#: model:ir.actions.report,print_report_name:sonelco_document_format.label_packaging_sonelco
+#: model:ir.actions.report,print_report_name:sonelco_document_format.action_report_delivery_unvalued
+msgid ""
+"'Delivery unvalued - %s - %s' % (object.partner_id.name or '', object.name)"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model:ir.actions.report,print_report_name:sonelco_document_format.action_sonelco_valued_report_picking
+msgid ""
+"'Delivery valued - %s - %s' % (object.partner_id.name or '', object.name)"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model:ir.actions.report,print_report_name:sonelco_document_format.label_packaging_sonelco_new
 msgid "'Etiqueta - %s' % (object.name)"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid "<span style=\"color:white;font-size:4em;font-weight:bold;\">SONELCO</span>"
+#: model:ir.actions.report,print_report_name:sonelco_document_format.report_invoice_without_grouped
+msgid "'Invoice - %s' % (object.name)"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<b><span>Shipping Address</span></b>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
 msgid ""
-"<span style=\"font-size:1.1em;margin-top:-3px;text-align:center;width:100%;display:block;color:white;font-weight:bolder;\">MATERIAL ELECTORNICO</span>\n"
-"                                            <span style=\"font-size:1.1em;text-align:center;width:100%;display:block;color:white;font-weight:bolder;margin-top:-5px;\">ELECTRIC MATERIAL</span>"
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Total</span>\n"
+"                                        <span groups=\"account.group_show_line_subtotals_tax_included\">Total</span>"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco_new
+msgid "<span>Consignatario/Consignee:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<span>Delivery Slip:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<span>Description</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco_new
+msgid "<span>Destino/Destination:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
+msgid "<span>Disc.%</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco_new
+msgid "<span>Enviado por/Send by:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco_new
+msgid "<span>Fecha/Date:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco_new
+msgid "<span>Kilos/Weight:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.external_layout_clean_xtendoo
+msgid "<span>NIF:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco_new
+msgid "<span>Número de bultos/Packing:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<span>Quantity</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<span>Reference:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<span>Sale order:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<span>Source Document</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco_new
+msgid "<span>TLF.:</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<span>Unit Price</span>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
 msgid ""
-"<span>CONSIGNATARIO/</span>\n"
-"                                                <span>CONSIGNEE:</span>"
+"<strong>\n"
+"                                                    <span>Without reference</span>\n"
+"                                                </strong>"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid ""
-"<span>DESTINO/</span>\n"
-"                                            <span>DESTINATION:</span>"
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
+msgid "<strong>Billing address</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid "<span>DOMICILIO/ADDRESS:</span>"
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<strong>Customer Code:</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid ""
-"<span>ENVIO POR/</span>\n"
-"                                                        <span>SEND BY:</span>"
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<strong>Date:</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid "<span>FAX.: 976373775</span>"
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Delivery date:</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid ""
-"<span>FECHA/</span>\n"
-"                                                        <span>DATE:</span>"
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Discount</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid ""
-"<span>KILOS/</span>\n"
-"                                                        <span>WEIGHT:</span>"
-msgstr ""
-
-#. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid ""
-"<span>MERCANCIA/</span>\n"
-"                                            <span>GOODS:</span>"
-msgstr ""
-
-#. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid ""
-"<span>NUM. DE BULTOS/</span>\n"
-"                                                        <span>PACKING:</span>"
-msgstr ""
-
-#. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid "<span>PAIS/COUNTRY:</span>"
-msgstr ""
-
-#. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid "<span>POBLACION/CITY:</span>"
-msgstr ""
-
-#. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid ""
-"<span>PORTES/</span>\n"
-"                                                        <span>CARRIAGE:</span>"
-msgstr ""
-
-#. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid "<span>TLF.: </span>"
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<strong>Due Date:</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
 msgid "<strong>Offer made by:</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Price Unit</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Product</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Quantity</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<strong>Reference:</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Reserved</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
@@ -125,21 +215,185 @@ msgid "<strong>Sale Code</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_packaging_sonelco
-msgid "AUTOVIA DE LOGROÑO. Km 2,400"
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Sale order:</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
+msgid "<strong>Shipping Address</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
+msgid "<strong>Shipping and billing address</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<strong>Source:</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>SubTotal</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Subtotal</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Taxes</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Total</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+msgid "<strong>quantity</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model:ir.actions.report,name:sonelco_document_format.action_report_delivery_unvalued
+msgid "Albarán sin valorar"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model:ir.actions.report,name:sonelco_document_format.action_sonelco_valued_report_picking
+msgid "Albarán valorado"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "Cancelled Invoice"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
 msgid "Code"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model:ir.actions.report,name:sonelco_document_format.label_packaging_sonelco
-msgid "Etiqueta"
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "Credit Note"
 msgstr ""
 
 #. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
-msgid "Price"
+msgid "Description"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "Draft Invoice"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.external_layout_clean_xtendoo
+msgid "Email:"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model:ir.actions.report,name:sonelco_document_format.label_packaging_sonelco_new
+msgid "Etiqueta"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model:ir.actions.report,name:sonelco_document_format.product_lot_label
+msgid "Etiqueta nº lote"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model:ir.actions.report,name:sonelco_document_format.product_serial_label
+msgid "Etiqueta nº serie"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model:ir.actions.report,name:sonelco_document_format.product_label
+msgid "Etiqueta producto"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model:ir.actions.report,name:sonelco_document_format.report_invoice_without_grouped
+msgid "Factura Sonelco"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "Invoice"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_lot
+msgid "Ln"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "Lot/Serial Number"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.external_layout_clean_xtendoo
+msgid ""
+"Page:\n"
+"                        <span class=\"page\"/>\n"
+"                        /\n"
+"                        <span class=\"topage\"/>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.external_layout_clean_xtendoo
+msgid "Phone"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
+msgid "Quantity"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_serial
+msgid "Sn"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
+msgid "Total"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
+msgid "Unit Price"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "Vendor Bill"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "Vendor Credit Note"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.external_layout_clean_xtendoo
+msgid "Web:"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "on"
 msgstr ""
