@@ -162,9 +162,8 @@
                                                       groups="account.group_show_line_subtotals_tax_excluded"/>
                                                 <span class="text-nowrap" t-field="line.price_total"
                                                       groups="account.group_show_line_subtotals_tax_included"/>
-                                                <t t-if="picking == next_picking[0]">
-                                                    <t t-set="subtotal" t-value="subtotal + line.price_total"/>
-                                                </t>
+
+                                                <t t-set="subtotal" t-value="subtotal + line.price_subtotal"/>
                                             </td>
                                         </t>
                                         <t t-if="line.display_type == 'line_section'">
@@ -210,6 +209,26 @@
                                 <div
                                     t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
                                     <table class="table table-sm" style="page-break-inside: avoid;">
+                                        <t t-if="o.global_discount_ids">
+                <tr>
+                    <td>
+                        <strong>Subtotal w/o disc.</strong>
+                    </td>
+                    <td class="text-right">
+                        <span t-field="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                    </td>
+                </tr>
+                <tr style="border-bottom:1px solid #dddddd;">
+                    <td>
+                        <strong>Global Discounts</strong>
+                        <br/>
+                        <t t-esc="'→'.join(['{:.2f}%'.format(x.discount) for x in o.global_discount_ids])"/>
+                    </td>
+                    <td class="text-right">
+                        <span t-field="o.amount_global_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                    </td>
+                </tr>
+            </t>
                                         <tr class="border-black o_subtotal" style="">
                                             <td>
                                                 <strong>Subtotal</strong>

@@ -20,6 +20,7 @@
         "stock_picking_report_valued",
         "rma",
         "account_invoice_report_grouped_by_picking",
+        "account_global_discount",
     ],
     "data": [
         "views/papper_format/papper_format_A4.xml",
