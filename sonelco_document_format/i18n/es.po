@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-24 09:53+0000\n"
-"PO-Revision-Date: 2023-01-24 09:53+0000\n"
+"POT-Creation-Date: 2023-01-27 12:38+0000\n"
+"PO-Revision-Date: 2023-01-27 12:38+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -43,8 +43,14 @@ msgstr "'Factura - %s' % (object.name)"
 #. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
-msgid "<b><span>Shipping Address</span></b>"
-msgstr "<b><span>Dirección de envío</span></b>"
+msgid ""
+"<b>\n"
+"                                            <span>Shipping Address</span>\n"
+"                                        </b>"
+msgstr ""
+"<b>\n"
+"                                            <span>Dirección de envío</span>\n"
+"                                        </b>"
 
 #. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
@@ -135,23 +141,12 @@ msgid "<span>Unit Price</span>"
 msgstr "<span>Precio/U</span>"
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
 msgid "<strong class=\"mr16\">Subtotal</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
-msgid ""
-"<strong>\n"
-"                                                    <span>Without reference</span>\n"
-"                                                </strong>"
-msgstr ""
-"<strong>\n"
-"                                                    <span>Sin referencia</span>\n"
-"                                                </strong>"
-
-#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_rma_document_sonelco
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
 msgid "<strong>Billing address</strong>"
 msgstr "<strong>Dirección de facturación</strong>"
@@ -181,6 +176,13 @@ msgstr "<strong>Descuento</strong>"
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
 msgid "<strong>Due Date:</strong>"
 msgstr "<strong>Fecha de vencimiento:</strong>"
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid ""
+"<strong>Global Discounts</strong>\n"
+"                        <br/>"
+msgstr ""
 
 #. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
@@ -227,11 +229,13 @@ msgid "<strong>Sale order:</strong>"
 msgstr "<strong>Pedido:</strong>"
 
 #. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_rma_document_sonelco
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
 msgid "<strong>Shipping Address</strong>"
 msgstr "<strong>Dirección de envío</strong>"
 
 #. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_rma_document_sonelco
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
 msgid "<strong>Shipping and billing address</strong>"
 msgstr "<strong>Dirección de envío y facturación</strong>"
@@ -244,6 +248,16 @@ msgstr "<strong>Origen:</strong>"
 #. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
 msgid "<strong>SubTotal</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<strong>Subtotal w/o disc.</strong>"
+msgstr "<strong>Subtotal sin desc.</strong>"
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
+msgid "<strong>Subtotal:</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
@@ -338,6 +352,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
 msgid "Invoice"
 msgstr "Factura"
+
+#. module: sonelco_document_format
+#: model:ir.model,name:sonelco_document_format.model_account_move
+msgid "Journal Entries"
+msgstr "Asientos contables"
 
 #. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_label_lot
