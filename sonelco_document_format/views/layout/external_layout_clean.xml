@@ -29,31 +29,31 @@
                         <span t-esc="website_name"/>
                     </p>
                 </div>
-                <t t-if="partner_direction">
-                    <div class="col-6" name="partner_direction">
-<!--                        <strong>Billing Address:</strong>-->
-                        <div style="width:100%;display:block;">
-                            <t t-if="partner_direction.parent_id">
-                                <span t-esc="partner_direction.parent_id.name"/>
-                                <span>,</span>
-                            </t>
-                            <span t-esc="partner_direction.name"/>
-                        </div>
-                        <span style="width:100%;display:block;" t-esc="partner_direction.street"/>
-                        <div style="width:100%;display:block;">
-                            <span t-esc="partner_direction.zip"/>
-                            <span></span>
-                            <span t-esc="partner_direction.city"/>
-                        </div>
-                        <div t-if="partner_direction.vat">
-                            <span>NIF:</span>
-                            <span t-field="partner_direction.vat"></span>
-                        </div>
+<!--                <t t-if="partner_direction">-->
+<!--                    <div class="col-6" name="partner_direction">-->
+<!--&lt;!&ndash;                        <strong>Billing Address:</strong>&ndash;&gt;-->
+<!--                        <div style="width:100%;display:block;">-->
+<!--                            <t t-if="partner_direction.parent_id">-->
+<!--                                <span t-esc="partner_direction.parent_id.name"/>-->
+<!--                                <span>,</span>-->
+<!--                            </t>-->
+<!--                            <span t-esc="partner_direction.name"/>-->
+<!--                        </div>-->
+<!--                        <span style="width:100%;display:block;" t-esc="partner_direction.street"/>-->
+<!--                        <div style="width:100%;display:block;">-->
+<!--                            <span t-esc="partner_direction.zip"/>-->
+<!--                            <span></span>-->
+<!--                            <span t-esc="partner_direction.city"/>-->
+<!--                        </div>-->
+<!--                        <div t-if="partner_direction.vat">-->
+<!--                            <span>NIF:</span>-->
+<!--                            <span t-field="partner_direction.vat"></span>-->
+<!--                        </div>-->
 
-                        <span style="width:100%;display:block;" t-esc="partner_direction.country_id.name"/>
+<!--                        <span style="width:100%;display:block;" t-esc="partner_direction.country_id.name"/>-->
 
-                    </div>
-                </t>
+<!--                    </div>-->
+<!--                </t>-->
             </xpath>
 
             <xpath expr="//div[@class='text-center']" position="replace">

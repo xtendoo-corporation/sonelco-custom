@@ -6,149 +6,76 @@
                   inherit_id="sale.report_saleorder_document">
 
             <xpath expr="//t[@t-set='address']" position="replace">
-                <t t-set="partner_direction" t-value="doc.partner_id"/>
-                <t t-set="have_invoice_direction" t-value="0"></t>
-                <t t-set="have_delivery_direction" t-value="0"></t>
-                <t t-set="have_direction" t-value="0"></t>
-
-                <t t-if="doc.partner_invoice_id and (doc.partner_invoice_id != doc.partner_id)">
-                    <t t-set="have_invoice_direction" t-value="1"></t>
-                </t>
-
-                <t t-if="doc.partner_shipping_id and (doc.partner_shipping_id != doc.partner_id)">
-                    <t t-set="have_delivery_direction" t-value="1"></t>
-                </t>
-                <t t-if="have_invoice_direction == 1 or have_delivery_direction == 1">
-                    <t t-set="have_direction" t-value="1"></t>
-                </t>
-                <t t-if="have_direction == 1">
-                    <div style="width:100%;" class="row">
-                        <t t-if="have_invoice_direction == 1 and have_delivery_direction == 1 and doc.partner_shipping_id != doc.partner_invoice_id">
-                            <div class="col-6">
-                                <strong>Shipping Address</strong>
+               <t t-set="have_directions" t-value="0"></t>
+                      <t t-if="doc.partner_invoice_id and (doc.partner_invoice_id != doc.partner_id)">
+                          <t t-set="have_directions" t-vaue="1"></t>
+                      </t>
+                      <t t-if="doc.partner_shipping_id and (doc.partner_shipping_id != doc.partner_id)">
+                            <t t-set="have_directions" t-value="1"></t>
+                        </t>
+                <div style="width:100%;">
+                    <div style="width:50%;float:left;display:block;">
+                      <t t-if="have_directions == 0">
+                        <div style="width:100%;">
+                          <span style="color:white;">aaa</span>
+                        </div>
+                      </t>
+                      <t t-else="">
+                          <t t-if="doc.partner_invoice_id and (doc.partner_invoice_id != doc.partner_id)">
+                            <strong>Billing Address:</strong>
                                 <div>
                                     <div style="width:100%;display:block;">
-                                        <t t-if="doc.partner_shipping_id.parent_id and (doc.partner_shipping_id.parent_id.name != doc.partner_shipping_id.name)">
-                                            <span t-esc="doc.partner_shipping_id.parent_id.name"/>
-                                            <span>,</span>
-                                        </t>
-                                        <span t-esc="doc.partner_shipping_id.name"/>
-                                    </div>
-                                    <span style="width:100%;display:block;" t-esc="doc.partner_shipping_id.street"/>
-                                    <div style="width:100%;display:block;">
-                                        <span t-esc="doc.partner_shipping_id.zip"/>
-                                        <span></span>
-                                        <span t-esc="doc.partner_shipping_id.city"/>
-                                    </div>
-                                    <span style="width:100%;display:block;"
-                                          t-esc="doc.partner_shipping_id.country_id.name"/>
-                                    <span t-if="doc.partner_shipping_id.phone" style="width:100%;display:block;"
-                                          t-esc="doc.partner_shipping_id.phone"/>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <strong>Billing address</strong>
-                                <div>
-                                    <div style="width:100%;display:block;">
-                                        <t t-if="doc.partner_invoice_id.parent_id and (doc.partner_invoice_id.parent_id.name != doc.partner_invoice_id.name)">
-                                            <span t-esc="doc.partner_invoice_id.parent_id.name"/>
-                                            <span>,</span>
-                                        </t>
                                         <span t-esc="doc.partner_invoice_id.name"/>
                                     </div>
                                     <span style="width:100%;display:block;" t-esc="doc.partner_invoice_id.street"/>
                                     <div style="width:100%;display:block;">
                                         <span t-esc="doc.partner_invoice_id.zip"/>
-                                        <span></span>
+                                        <span> </span>
                                         <span t-esc="doc.partner_invoice_id.city"/>
                                     </div>
-                                    <span style="width:100%;display:block;"
-                                          t-esc="doc.partner_invoice_id.country_id.name"/>
-                                    <span t-if="doc.partner_invoice_id.phone" style="width:100%;display:block;"
-                                          t-esc="doc.partner_invoice_id.phone"/>
+                                    <span style="width:100%;display:block;" t-esc="doc.partner_invoice_id.country_id.name"/>
+                                    <span t-if="doc.partner_invoice_id.phone" style="width:100%;display:block;" t-esc="doc.partner_invoice_id.phone"/>
                                 </div>
-                            </div>
                         </t>
-                        <t t-else="">
-                            <div class="col-6">
-
-                            </div>
-                            <div class="col-6">
-                                <t t-if="doc.partner_shipping_id == doc.partner_invoice_id">
-                                    <strong>Shipping and billing address</strong>
-                                    <div>
-                                        <div style="width:100%;display:block;">
-                                            <t t-if="doc.partner_invoice_id.parent_id and (doc.partner_invoice_id.parent_id.name != doc.partner_invoice_id.name)">
-                                                <span t-esc="doc.partner_invoice_id.parent_id.name"/>
-                                                <span>,</span>
-                                            </t>
-                                            <span t-esc="doc.partner_invoice_id.name"/>
-                                        </div>
-                                        <span style="width:100%;display:block;" t-esc="doc.partner_invoice_id.street"/>
-                                        <div style="width:100%;display:block;">
-                                            <span t-esc="doc.partner_invoice_id.zip"/>
-                                            <span></span>
-                                            <span t-esc="doc.partner_invoice_id.city"/>
-                                        </div>
-                                        <span style="width:100%;display:block;"
-                                              t-esc="doc.partner_invoice_id.country_id.name"/>
-                                        <span t-if="doc.partner_invoice_id.phone" style="width:100%;display:block;"
-                                              t-esc="doc.partner_invoice_id.phone"/>
+                        <t t-if="doc.partner_shipping_id and (doc.partner_shipping_id != doc.partner_id)">
+                            <strong>Delivery address:</strong>
+                                <div>
+                                    <div style="width:100%;display:block;">
+                                        <span t-esc="doc.partner_shipping_id.name"/>
                                     </div>
-                                </t>
-                                <t t-else="">
-                                    <t t-if="have_invoice_direction == 1">
-                                        <strong>Billing address</strong>
-                                        <div>
-                                            <div style="width:100%;display:block;">
-                                                <t t-if="doc.partner_invoice_id.parent_id and (doc.partner_invoice_id.parent_id.name != doc.partner_invoice_id.name)">
-                                                    <span t-esc="doc.partner_invoice_id.parent_id.name"/>
-                                                    <span>,</span>
-                                                </t>
-                                                <span t-esc="doc.partner_invoice_id.name"/>
-                                            </div>
-                                            <span style="width:100%;display:block;"
-                                                  t-esc="doc.partner_invoice_id.street"/>
-                                            <div style="width:100%;display:block;">
-                                                <span t-esc="doc.partner_invoice_id.zip"/>
-                                                <span></span>
-                                                <span t-esc="doc.partner_invoice_id.city"/>
-                                            </div>
-                                            <span style="width:100%;display:block;"
-                                                  t-esc="doc.partner_invoice_id.country_id.name"/>
-                                            <span t-if="doc.partner_invoice_id.phone" style="width:100%;display:block;"
-                                                  t-esc="doc.partner_invoice_id.phone"/>
-                                        </div>
-                                    </t>
-                                    <t t-if="have_delivery_direction == 1">
-                                        <strong>Shipping Address</strong>
-                                        <div>
-                                            <div style="width:100%;display:block;">
-                                                <t t-if="doc.partner_shipping_id.parent_id and (doc.partner_shipping_id.parent_id.name != doc.partner_shipping_id.name)">
-                                                    <span t-esc="doc.partner_shipping_id.parent_id.name"/>
-                                                    <span>,</span>
-                                                </t>
-                                                <span t-esc="doc.partner_shipping_id.name"/>
-                                            </div>
-                                            <span style="width:100%;display:block;"
-                                                  t-esc="doc.partner_shipping_id.street"/>
-                                            <div style="width:100%;display:block;">
-                                                <span t-esc="doc.partner_shipping_id.zip"/>
-                                                <span></span>
-                                                <span t-esc="doc.partner_shipping_id.city"/>
-                                            </div>
-                                            <span style="width:100%;display:block;"
-                                                  t-esc="doc.partner_shipping_id.country_id.name"/>
-                                            <span t-if="doc.partner_shipping_id.phone" style="width:100%;display:block;"
-                                                  t-esc="doc.partner_shipping_id.phone"/>
-                                        </div>
-                                    </t>
-                                </t>
-                            </div>
+                                    <span style="width:100%;display:block;" t-esc="doc.partner_shipping_id.street"/>
+                                    <div style="width:100%;display:block;">
+                                        <span t-esc="doc.partner_shipping_id.zip"/>
+                                        <span> </span>
+                                        <span t-esc="doc.partner_shipping_id.city"/>
+                                    </div>
+                                    <span style="width:100%;display:block;" t-esc="doc.partner_shipping_id.country_id.name"/>
+                                    <span t-if="doc.partner_shipping_id.phone" style="width:100%;display:block;" t-esc="doc.partner_shipping_id.phone"/>
+                                </div>
                         </t>
+                      </t>
                     </div>
-                </t>
+                    <div style="width:50%;float:left;display:block;">
+                     <div>
+
+                         <div style="width:100%;display:block;">
+                             <span t-esc="doc.partner_id.name"/>
+                         </div>
+                         <span style="width:100%;display:block;" t-esc="doc.partner_id.street"/>
+                         <div style="width:100%;display:block;">
+                             <span t-esc="doc.partner_id.zip"/>
+                             <span> </span>
+                             <span t-esc="doc.partner_id.city"/>
+                         </div>
+                         <span style="width:100%;display:block;" t-esc="doc.partner_id.country_id.name"/>
+                         <span t-if="doc.partner_id.phone" style="width:100%;display:block;" t-esc="doc.partner_id.phone"/>
+                     </div>
+                 </div>
+                 <div style="clear:both;"/>
+                </div>
+
             </xpath>
+
 
             <xpath expr="//div[@id='informations']/div[@t-if='doc.user_id.name']" position="replace">
                 <div t-if="doc.user_id.name" class="col-auto mw-100 mb-2">

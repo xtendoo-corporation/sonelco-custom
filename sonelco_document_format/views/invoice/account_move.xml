@@ -26,8 +26,83 @@
             <t t-name="sonelco_document_format.report_invoice_document_sonelco">
                 <t t-call="web.external_layout">
                     <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
-                    <t t-set="partner_direction" t-value="o.partner_id"></t>
-                    <t t-set="address"/>
+                    <t t-set="address">
+                        <!--<div t-if="o.partner_id.vat" class="mt16">
+                            <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label" id="inv_tax_id_label"/>
+                            <t t-else="">Tax ID</t>: <span t-field="o.partner_id.vat"/></div>-->
+                        <t t-set="partner_invoice" t-value="o.partner_id"></t>
+                        <t t-set="partner_parent"
+                           t-value="o.picking_ids.move_lines[0].sale_line_id.order_id.partner_id"></t>
+                        <t t-set="information_block">
+                            <t t-if="partner_parent and (partner_parent != o.partner_id)">
+                                <!--                            <div groups="sale.group_delivery_invoice_address">-->
+                                <!--                                <strong>Dirección de entrega:</strong>-->
+                                <!--                                <div>-->
+                                <!--                                    <div style="width:100%;display:block;">-->
+                                <!--                                        <t t-if="partner_parent.parent_id">-->
+                                <!--                                            <span t-esc="partner_parent.parent_id.name"/>-->
+                                <!--                                            <span>, </span>-->
+                                <!--                                        </t>-->
+                                <!--                                        <span t-esc="partner_parent.name"/>-->
+                                <!--                                    </div>-->
+                                <!--                                    <span style="width:100%;display:block;" t-esc="partner_parent.street"/>-->
+                                <!--                                    <div style="width:100%;display:block;">-->
+                                <!--                                        <span t-esc="partner_parent.zip"/>-->
+                                <!--                                        <span> </span>-->
+                                <!--                                        <span t-esc="partner_parent.city"/>-->
+                                <!--                                    </div>-->
+                                <!--                                    <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>-->
+                                <!--                                </div>-->
+                                <!--                            </div>-->
+                            </t>
+                        </t>
+                        <t t-if="partner_invoice">
+                            <div>
+                                <strong>Billing Address:</strong>
+                                <div style="width:100%;display:block;">
+<!--                                    <t t-if="o.partner_id.parent_id">-->
+<!--                                        <span t-esc="o.partner_id.parent_id.name"/>-->
+<!--                                        <span>,</span>-->
+<!--                                    </t>-->
+                                    <span t-esc="o.partner_id.name"/>
+                                </div>
+                                <span style="width:100%;display:block;" t-esc="o.partner_id.street"/>
+                                <div style="width:100%;display:block;">
+                                    <span t-esc="o.partner_id.zip"/>
+                                    <span></span>
+                                    <span t-esc="o.partner_id.city"/>
+                                </div>
+                                <div t-if="o.partner_id.vat">
+                                    <span>NIF:</span>
+                                    <span t-field="o.partner_id.vat"></span>
+                                </div>
+
+                                <span style="width:100%;display:block;" t-esc="o.partner_id.country_id.name"/>
+
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div>
+                                <div style="width:100%;display:block;">
+<!--                                    <t t-if="o.partner_id.parent_id">-->
+<!--                                        <span t-esc="o.partner_id.parent_id.name"/>-->
+<!--                                        <span>,</span>-->
+<!--                                    </t>-->
+                                    <span t-esc="o.partner_id.name"/>
+                                </div>
+                                <span style="width:100%;display:block;" t-esc="o.partner_id.street"/>
+                                <div style="width:100%;display:block;">
+                                    <span t-esc="o.partner_id.zip"/>
+                                    <span></span>
+                                    <span t-esc="o.partner_id.city"/>
+                                </div>
+                                <span style="width:100%;display:block;" t-esc="o.partner_id.country_id.name"/>
+                                <span t-if="o.partner_id.phone" style="width:100%;display:block;"
+                                      t-esc="o.partner_id.phone"/>
+                            </div>
+                        </t>
+                    </t>
+
                     <div class="page">
                         <h2>
                             <span t-if="o.type == 'out_invoice' and o.state == 'posted'">Invoice</span>

@@ -24,48 +24,75 @@
                 <t t-call="web.html_container">
                     <t t-call="web.external_layout">
                         <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+                             <t t-set="partner_client"
+                               t-value="o.move_lines[0].sale_line_id.order_id.partner_id"/>
+                            <t t-set="partner_parent"
+                               t-value="o.partner_id.parent_id or False"/>
+                            <t t-set="partner"
+                               t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
+                            <t t-if="partner_client and (partner_client != partner)" name="partner_header">
+                                <div style="width:50%;float:left;">
+                                        <b><span>Customer:</span></b>
+                                            <div>
+                                                <div style="width:100%;display:block;">
+<!--                                                    <t t-if="partner_client.parent_id">-->
+<!--                                                        <span t-esc="partner_client.parent_id.name"/>-->
+<!--                                                        <span>, </span>-->
+<!--                                                    </t>-->
+                                                    <span t-esc="partner_client.name"/>
+                                                </div>
+                                                <span style="width:100%;display:block;" t-esc="partner_client.street"/>
+                                                <div style="width:100%;display:block;">
+                                                    <span t-esc="partner_client.zip"/><span> </span><span t-esc="partner_client.city"/>
+                                                </div>
+                                                <span style="width:100%;display:block;" t-esc="partner_client.country_id.name"/>
 
-                        <t t-if="o.partner_id.parent_id">
-                            <t t-set="partner_direction" t-value="o.partner_id.parent_id"></t>
-                        </t>
-                        <t t-else="">
-                            <t t-set="partner_direction" t-value="o.partner_id"></t>
-                        </t>
-                        <t t-set="partner_client"
-                           t-value="o.move_lines[0].sale_line_id.order_id.partner_id"/>
-                        <t t-set="partner_parent"
-                           t-value="o.partner_id.parent_id or False"/>
-                        <t t-set="partner"
-                           t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
-                        <t t-if="partner_client and (partner_client != partner)" name="partner_header">
-                            <div class="row">
-                                <div class="col-6"></div>
-                                <div class="col-6">
-                                    <t t-if="partner" name="partner_header">
-                                        <b>
-                                            <span>Shipping Address</span>
-                                        </b>
+                                            </div>
+                                        </div>
+                                        <t t-if="partner" name="partner_header">
+                                            <b><span>Delivery address:</span></b>
+                                            <div style="width:50%;float:left;">
+                                                <div>
+                                                    <div style="width:100%;display:block;">
+<!--                                                        <t t-if="partner.parent_id">-->
+<!--                                                            <span t-esc="partner.parent_id.name"/>-->
+<!--                                                            <span>, </span>-->
+<!--                                                        </t>-->
+                                                        <span t-esc="partner.name"/>
+                                                    </div>
+                                                    <span style="width:100%;display:block;" t-esc="partner.street"/>
+                                                    <div style="width:100%;display:block;">
+                                                        <span t-esc="partner.zip"/>
+                                                        <span> </span>
+                                                        <span t-esc="partner.city"/>
+                                                    </div>
+                                                    <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
+                                                </div>
+                                            </div>
+                                        </t>
+                            </t>
+                            <t t-else="">
+                                <div style="width:50%;float:left;">
+                                </div>
+                                <t t-if="partner" name="partner_header">
+                                    <div style="width:50%;float:right;">
                                         <div>
                                             <div style="width:100%;display:block;">
-                                                <t t-if="partner.parent_id">
-                                                    <span t-esc="partner.parent_id.name"/>
-                                                    <span>,</span>
-                                                </t>
+<!--                                                <t t-if="partner.parent_id">-->
+<!--                                                    <span t-esc="partner.parent_id.name"/>-->
+<!--                                                    <span>, </span>-->
+<!--                                                </t>-->
                                                 <span t-esc="partner.name"/>
                                             </div>
                                             <span style="width:100%;display:block;" t-esc="partner.street"/>
                                             <div style="width:100%;display:block;">
-                                                <span t-esc="partner.zip"/>
-                                                <span></span>
-                                                <span t-esc="partner.city"/>
+                                                <span t-esc="partner.zip"/><span> </span><span t-esc="partner.city"/>
                                             </div>
                                             <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
                                         </div>
-                                    </t>
-                                </div>
-                            </div>
-
-                        </t>
+                                    </div>
+                                </t>
+                            </t>
 
                         <div class="page" style="clear:both;">
                             <h2>
