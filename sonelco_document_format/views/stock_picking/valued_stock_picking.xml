@@ -48,7 +48,7 @@
                                                     <span t-esc="partner_client.zip"/><span> </span><span t-esc="partner_client.city"/>
                                                 </div>
                                                 <span style="width:100%;display:block;" t-esc="partner_client.country_id.name"/>
-
+                                                <span t-if="partner_client.phone" style="width:100%;display:block;" t-esc="partner_client.phone"/>
                                             </div>
                                         </div>
                                         <t t-if="partner" name="partner_header">
@@ -69,6 +69,7 @@
                                                         <span t-esc="partner.city"/>
                                                     </div>
                                                     <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
+                                                    <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner.phone"/>
                                                 </div>
                                             </div>
                                         </t>
@@ -91,6 +92,7 @@
                                                 <span t-esc="partner.zip"/><span> </span><span t-esc="partner.city"/>
                                             </div>
                                             <span style="width:100%;display:block;" t-esc="partner.country_id.name"/>
+                                            <span t-if="partner.phone" style="width:100%;display:block;" t-esc="partner.phone"/>
                                         </div>
                                     </div>
                                 </t>
@@ -108,11 +110,33 @@
                                 <div t-if="o.state" class="col-auto" name="div_sched_date">
                                     <strong>Delivery date:</strong>
                                     <t t-if="o.state == 'done'">
-                                        <p t-field="o.date_done"/>
+                                        <p t-field="o.date_done"
+                                           t-options='{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}'/>
                                     </t>
                                     <t t-if="o.state != 'done'">
-                                        <p t-field="o.scheduled_date"/>
+                                        <p t-field="o.scheduled_date"
+                                           t-options='{&quot;format&quot;: &quot;dd/MM/yyyy&quot;}'/>
                                     </t>
+                                </div>
+                                <div t-if="o.picking_type_id.code == 'outgoing' and o.carrier_id" class="col-auto">
+                                    <strong>Carrier:</strong>
+                                    <p t-field="o.carrier_id"/>
+                                </div>
+                                <div t-if="o.shipping_weight" class="col-auto">
+                                    <strong>Weight:</strong>
+                                    <br/>
+                                    <span t-field="o.shipping_weight"/>
+                                    <span t-field="o.weight_uom_name"/>
+                                </div>
+                                <div t-if="o.carrier_tracking_ref" class="col-auto">
+                                    <strong>Tracking Number:</strong>
+                                    <p t-field="o.carrier_tracking_ref"/>
+                                </div>
+                                <div class="row justify-content-end" t-if="o.sudo().sale_id.client_order_ref">
+                                    <div class="col-auto">
+                                        <strong>Customer Reference:</strong>
+                                        <p t-field="o.sudo().sale_id.client_order_ref"/>
+                                    </div>
                                 </div>
                             </div>
                             <table class="table table-sm" t-if="o.state!='done'" name="stock_move_table">

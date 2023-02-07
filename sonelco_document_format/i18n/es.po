@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 13:05+0000\n"
-"PO-Revision-Date: 2023-02-03 13:05+0000\n"
+"POT-Creation-Date: 2023-02-07 11:52+0000\n"
+"PO-Revision-Date: 2023-02-07 11:52+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -42,12 +42,26 @@ msgstr "'Factura - %s' % (object.name)"
 
 #. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+msgid ""
+"<b>\n"
+"                                    <span>Customer:</span>\n"
+"                                </b>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+msgid ""
+"<b>\n"
+"                                    <span>Delivery address:</span>\n"
+"                                </b>"
+msgstr ""
+
+#. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
 msgid "<b><span>Customer:</span></b>"
 msgstr "<b><span>Cliente:</span></b>"
 
 #. module: sonelco_document_format
-#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
 msgid "<b><span>Delivery address:</span></b>"
 msgstr "<b><span>Dirección de envío:</span></b>"
@@ -159,9 +173,21 @@ msgid "<strong>Billing Address:</strong>"
 msgstr "<strong>Dirección de facturación:</strong>"
 
 #. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Carrier:</strong>"
+msgstr "<strong>Portador:</strong>"
+
+#. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
 msgid "<strong>Customer Code:</strong>"
 msgstr "<strong>Código de proveedor:</strong>"
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Customer Reference:</strong>"
+msgstr "<strong>Referencia del cliente:</strong>"
 
 #. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_invoice_document_sonelco
@@ -279,6 +305,22 @@ msgstr "<strong>Impuestos</strong>"
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
 msgid "<strong>Total</strong>"
 msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid "<strong>Tracking Number:</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
+msgid ""
+"<strong>Weight:</strong>\n"
+"                                    <br/>"
+msgstr ""
+"<strong>Peso:</strong>\n"
+"                                    <br/>"
 
 #. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
