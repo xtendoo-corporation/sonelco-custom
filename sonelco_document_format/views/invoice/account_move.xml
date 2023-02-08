@@ -31,30 +31,30 @@
                             <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label" id="inv_tax_id_label"/>
                             <t t-else="">Tax ID</t>: <span t-field="o.partner_id.vat"/></div>-->
                         <t t-set="partner_invoice" t-value="o.partner_id"></t>
-                        <t t-set="partner_parent"
-                           t-value="o.picking_ids.move_lines[0].sale_line_id.order_id.partner_id"></t>
+<!--                        <t t-set="partner_parent"-->
+<!--                           t-value="o.picking_ids.move_lines[0].sale_line_id.order_id.partner_id"></t>-->
                         <t t-set="information_block">
-                            <t t-if="partner_parent and (partner_parent != o.partner_id)">
-                                <!--                            <div groups="sale.group_delivery_invoice_address">-->
-                                <!--                                <strong>Dirección de entrega:</strong>-->
-                                <!--                                <div>-->
-                                <!--                                    <div style="width:100%;display:block;">-->
-                                <!--                                        <t t-if="partner_parent.parent_id">-->
-                                <!--                                            <span t-esc="partner_parent.parent_id.name"/>-->
-                                <!--                                            <span>, </span>-->
-                                <!--                                        </t>-->
-                                <!--                                        <span t-esc="partner_parent.name"/>-->
-                                <!--                                    </div>-->
-                                <!--                                    <span style="width:100%;display:block;" t-esc="partner_parent.street"/>-->
-                                <!--                                    <div style="width:100%;display:block;">-->
-                                <!--                                        <span t-esc="partner_parent.zip"/>-->
-                                <!--                                        <span> </span>-->
-                                <!--                                        <span t-esc="partner_parent.city"/>-->
-                                <!--                                    </div>-->
-                                <!--                                    <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>-->
-                                <!--                                </div>-->
-                                <!--                            </div>-->
-                            </t>
+<!--                            <t t-if="partner_parent and (partner_parent != o.partner_id)">-->
+<!--                                &lt;!&ndash;                            <div groups="sale.group_delivery_invoice_address">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                <strong>Dirección de entrega:</strong>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                <div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    <div style="width:100%;display:block;">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        <t t-if="partner_parent.parent_id">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                            <span t-esc="partner_parent.parent_id.name"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                            <span>, </span>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        </t>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        <span t-esc="partner_parent.name"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    <span style="width:100%;display:block;" t-esc="partner_parent.street"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    <div style="width:100%;display:block;">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        <span t-esc="partner_parent.zip"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        <span> </span>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        <span t-esc="partner_parent.city"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                            </t>-->
                         </t>
                         <t t-if="partner_invoice">
                             <div>
