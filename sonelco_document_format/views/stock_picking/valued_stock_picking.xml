@@ -222,18 +222,33 @@
                                         </td>
 
                                         <td class="text-right">
-                                            <span t-field="move_line.sale_price_unit"/>
+                                            <t t-if="move_line.sale_price_unit">
+                                                <span t-field="move_line.sale_price_unit"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span style="color:white">abc</span>
+                                            </t>
                                         </td>
                                         <td class="text-right" groups="product.group_discount_per_so_line">
-                                            <span t-field="move_line.sale_discount"/>
+                                            <t t-if="move_line.sale_discount">
+                                                <span t-field="move_line.sale_discount"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span style="color:white">abc</span>
+                                            </t>
                                         </td>
                                         <td class="text-right">
-                                            <span t-field="move_line.sale_price_subtotal"/>
+                                            <t t-if="move_line.sale_discount">
+                                                <span t-field="move_line.sale_price_subtotal"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span style="color:white">abc</span>
+                                            </t>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <table class="table table-sm mt32" t-if="o.state=='done'">
+                            <table class="table table-sm mt32" t-if="o.state=='done' and o.amount_untaxed">
                                 <thead>
                                     <tr>
                                         <th class="text-right">

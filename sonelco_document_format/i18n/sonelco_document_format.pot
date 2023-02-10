@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-07 11:52+0000\n"
-"PO-Revision-Date: 2023-02-07 11:52+0000\n"
+"POT-Creation-Date: 2023-02-10 11:47+0000\n"
+"PO-Revision-Date: 2023-02-10 11:47+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -193,6 +193,11 @@ msgstr ""
 
 #. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_rma_document_sonelco
+msgid "<strong>Delivered qty:</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_rma_document_sonelco
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_saleorder_document_sonelco
 msgid "<strong>Delivery address:</strong>"
 msgstr ""
@@ -231,9 +236,19 @@ msgid "<strong>Price Unit</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_rma_document_sonelco
+msgid "<strong>Product:</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_report_picking_template
 #: model_terms:ir.ui.view,arch_db:sonelco_document_format.sonelco_valued_report_picking_template
 msgid "<strong>Product</strong>"
+msgstr ""
+
+#. module: sonelco_document_format
+#: model_terms:ir.ui.view,arch_db:sonelco_document_format.report_rma_document_sonelco
+msgid "<strong>Quantity:</strong>"
 msgstr ""
 
 #. module: sonelco_document_format
