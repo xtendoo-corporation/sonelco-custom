@@ -118,7 +118,7 @@
                                         <div
                                             style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
                                             <span t-field="o.delivery_id.scheduled_date"
-                                                  t-options="{&quot;format&quot;: &quot;MM-dd-yyyy&quot;}"/>
+                                                  t-options="{&quot;format&quot;: &quot;dd-MM-yyyy&quot;}"/>
                                         </div>
 
                                         <div

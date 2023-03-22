@@ -251,28 +251,6 @@
                                     <p class="m-0" t-field="o.ref"/>
                                 </div>
                             </t>
-                            <!--                            <div class="col-auto mb-2" t-if="o.invoice_date" name="invoice_date">-->
-                            <!--                                <strong>Date:</strong>-->
-                            <!--                                <p class="m-0" t-field="o.invoice_date"/>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="col-auto mb-2"-->
-                            <!--                                 t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'"-->
-                            <!--                                 name="due_date">-->
-                            <!--                                <strong>Due Date:</strong>-->
-                            <!--                                <p class="m-0" t-field="o.invoice_date_due"/>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="col-auto mb-2" t-if="o.invoice_origin" name="origin">-->
-                            <!--                                <strong>Source:</strong>-->
-                            <!--                                <p class="m-0" t-field="o.invoice_origin"/>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="col-auto mb-2" t-if="o.partner_id.ref" name="customer_code">-->
-                            <!--                                <strong>Customer Code:</strong>-->
-                            <!--                                <p class="m-0" t-field="o.partner_id.ref"/>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="col-auto mb-2" t-if="o.ref" name="reference">-->
-                            <!--                                <strong>Reference:</strong>-->
-                            <!--                                <p class="m-0" t-field="o.ref"/>-->
-                            <!--                            </div>-->
                         </div>
 
                         <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
