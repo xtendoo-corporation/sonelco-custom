@@ -31,39 +31,39 @@
                             <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label" id="inv_tax_id_label"/>
                             <t t-else="">Tax ID</t>: <span t-field="o.partner_id.vat"/></div>-->
                         <t t-set="partner_invoice" t-value="o.partner_id"></t>
-                        <!--                        <t t-set="partner_parent"-->
-                        <!--                           t-value="o.picking_ids.move_lines[0].sale_line_id.order_id.partner_id"></t>-->
+<!--                        <t t-set="partner_parent"-->
+<!--                           t-value="o.picking_ids.move_lines[0].sale_line_id.order_id.partner_id"></t>-->
                         <t t-set="information_block">
-                            <!--                            <t t-if="partner_parent and (partner_parent != o.partner_id)">-->
-                            <!--                                &lt;!&ndash;                            <div groups="sale.group_delivery_invoice_address">&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                <strong>Dirección de entrega:</strong>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                <div>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                    <div style="width:100%;display:block;">&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                        <t t-if="partner_parent.parent_id">&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                            <span t-esc="partner_parent.parent_id.name"/>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                            <span>, </span>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                        </t>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                        <span t-esc="partner_parent.name"/>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                    <span style="width:100%;display:block;" t-esc="partner_parent.street"/>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                    <div style="width:100%;display:block;">&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                        <span t-esc="partner_parent.zip"/>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                        <span> </span>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                        <span t-esc="partner_parent.city"/>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                    <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                                </div>&ndash;&gt;-->
-                            <!--                                &lt;!&ndash;                            </div>&ndash;&gt;-->
-                            <!--                            </t>-->
+<!--                            <t t-if="partner_parent and (partner_parent != o.partner_id)">-->
+<!--                                &lt;!&ndash;                            <div groups="sale.group_delivery_invoice_address">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                <strong>Dirección de entrega:</strong>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                <div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    <div style="width:100%;display:block;">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        <t t-if="partner_parent.parent_id">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                            <span t-esc="partner_parent.parent_id.name"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                            <span>, </span>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        </t>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        <span t-esc="partner_parent.name"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    <span style="width:100%;display:block;" t-esc="partner_parent.street"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    <div style="width:100%;display:block;">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        <span t-esc="partner_parent.zip"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        <span> </span>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                        <span t-esc="partner_parent.city"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    <span style="width:100%;display:block;" t-esc="partner_parent.country_id.name"/>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                            </t>-->
                         </t>
                         <t t-if="partner_invoice">
                             <div>
                                 <strong>Billing Address:</strong>
                                 <div style="width:100%;display:block;">
-                                    <!--                                    <t t-if="o.partner_id.parent_id">-->
-                                    <!--                                        <span t-esc="o.partner_id.parent_id.name"/>-->
-                                    <!--                                        <span>,</span>-->
-                                    <!--                                    </t>-->
+<!--                                    <t t-if="o.partner_id.parent_id">-->
+<!--                                        <span t-esc="o.partner_id.parent_id.name"/>-->
+<!--                                        <span>,</span>-->
+<!--                                    </t>-->
                                     <span t-esc="o.partner_id.name"/>
                                 </div>
                                 <span style="width:100%;display:block;" t-esc="o.partner_id.street"/>
@@ -84,10 +84,10 @@
                         <t t-else="">
                             <div>
                                 <div style="width:100%;display:block;">
-                                    <!--                                    <t t-if="o.partner_id.parent_id">-->
-                                    <!--                                        <span t-esc="o.partner_id.parent_id.name"/>-->
-                                    <!--                                        <span>,</span>-->
-                                    <!--                                    </t>-->
+<!--                                    <t t-if="o.partner_id.parent_id">-->
+<!--                                        <span t-esc="o.partner_id.parent_id.name"/>-->
+<!--                                        <span>,</span>-->
+<!--                                    </t>-->
                                     <span t-esc="o.partner_id.name"/>
                                 </div>
                                 <span style="width:100%;display:block;" t-esc="o.partner_id.street"/>
@@ -115,142 +115,28 @@
                         </h2>
 
                         <div id="informations" class="row mt32 mb32">
-                            <t t-set="col_num" t-value="0"></t>
-                            <t t-if="o.invoice_date">
-                                <t t-set="col_num" t-value="col_num +1"></t>
-                            </t>
-                            <t t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'">
-                                <t t-set="col_num" t-value="col_num +1"></t>
-                            </t>
-                            <t t-if="o.invoice_origin">
-                                <t t-set="col_num" t-value="col_num +1"></t>
-                            </t>
-                            <t t-if="o.partner_id.ref">
-                                <t t-set="col_num" t-value="col_num +1"></t>
-                            </t>
-                            <t t-if="o.ref">
-                                <t t-set="col_num" t-value="col_num +1"></t>
-                            </t>
-                            <t t-if="col_num == 1">
-                                <div class="col-12 mb-2" t-if="o.invoice_date" name="invoice_date">
-                                    <strong>Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date"/>
-                                </div>
-                                <div class="col-12 mb-2"
-                                     t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'"
-                                     name="due_date">
-                                    <strong>Due Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date_due"/>
-                                </div>
-                                <div class="col-12 mb-2" t-if="o.invoice_origin" name="origin">
-                                    <strong>Source:</strong>
-                                    <p class="m-0" t-field="o.invoice_origin"/>
-                                </div>
-                                <div class="col-12 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                                    <strong>Customer Code:</strong>
-                                    <p class="m-0" t-field="o.partner_id.ref"/>
-                                </div>
-                                <div class="col-12 mb-2" t-if="o.ref" name="reference">
-                                    <strong>Reference:</strong>
-                                    <p class="m-0" t-field="o.ref"/>
-                                </div>
-                            </t>
-                            <t t-if="col_num == 2">
-                                <div class="col-6 mb-2" t-if="o.invoice_date" name="invoice_date">
-                                    <strong>Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date"/>
-                                </div>
-                                <div class="col-6 mb-2"
-                                     t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'"
-                                     name="due_date">
-                                    <strong>Due Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date_due"/>
-                                </div>
-                                <div class="col-6 mb-2" t-if="o.invoice_origin" name="origin">
-                                    <strong>Source:</strong>
-                                    <p class="m-0" t-field="o.invoice_origin"/>
-                                </div>
-                                <div class="col-6 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                                    <strong>Customer Code:</strong>
-                                    <p class="m-0" t-field="o.partner_id.ref"/>
-                                </div>
-                                <div class="col-6 mb-2" t-if="o.ref" name="reference">
-                                    <strong>Reference:</strong>
-                                    <p class="m-0" t-field="o.ref"/>
-                                </div>
-                            </t>
-                            <t t-if="col_num == 3">
-                                <div class="col-2 mb-2" t-if="o.invoice_date" name="invoice_date">
-                                    <strong>Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date"/>
-                                </div>
-                                <div class="col-2 mb-2"
-                                     t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'"
-                                     name="due_date">
-                                    <strong>Due Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date_due"/>
-                                </div>
-                                <div class="col-5 mb-2" t-if="o.invoice_origin" name="origin">
-                                    <strong>Source:</strong>
-                                    <p class="m-0" t-field="o.invoice_origin"/>
-                                </div>
-                                <div class="col-4 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                                    <strong>Customer Code:</strong>
-                                    <p class="m-0" t-field="o.partner_id.ref"/>
-                                </div>
-                                <div class="col-5 mb-2" t-if="o.ref" name="reference">
-                                    <strong>Reference:</strong>
-                                    <p class="m-0" t-field="o.ref"/>
-                                </div>
-                            </t>
-                            <t t-if="col_num == 4">
-                                <div class="col-2 mb-2" t-if="o.invoice_date" name="invoice_date">
-                                    <strong>Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date"/>
-                                </div>
-                                <div class="col-2 mb-2"
-                                     t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'"
-                                     name="due_date">
-                                    <strong>Due Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date_due"/>
-                                </div>
-                                <div class="col-4 mb-2" t-if="o.invoice_origin" name="origin">
-                                    <strong>Source:</strong>
-                                    <p class="m-0" t-field="o.invoice_origin"/>
-                                </div>
-                                <div class="col-3 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                                    <strong>Customer Code:</strong>
-                                    <p class="m-0" t-field="o.partner_id.ref"/>
-                                </div>
-                                <div class="col-4 mb-2" t-if="o.ref" name="reference">
-                                    <strong>Reference:</strong>
-                                    <p class="m-0" t-field="o.ref"/>
-                                </div>
-                            </t>
-                             <t t-if="col_num == 5">
-                                <div class="col-2 mb-2" t-if="o.invoice_date" name="invoice_date">
-                                    <strong>Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date"/>
-                                </div>
-                                <div class="col-2 mb-2"
-                                     t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'"
-                                     name="due_date">
-                                    <strong>Due Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date_due"/>
-                                </div>
-                                <div class="col-2 mb-2" t-if="o.invoice_origin" name="origin">
-                                    <strong>Source:</strong>
-                                    <p class="m-0" t-field="o.invoice_origin"/>
-                                </div>
-                                <div class="col-2 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                                    <strong>Customer Code:</strong>
-                                    <p class="m-0" t-field="o.partner_id.ref"/>
-                                </div>
-                                <div class="col-2 mb-2" t-if="o.ref" name="reference">
-                                    <strong>Reference:</strong>
-                                    <p class="m-0" t-field="o.ref"/>
-                                </div>
-                            </t>
+                            <div class="col-auto mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
+                                <strong>Date:</strong>
+                                <p class="m-0" t-field="o.invoice_date"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2"
+                                 t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'"
+                                 name="due_date">
+                                <strong>Due Date:</strong>
+                                <p class="m-0" t-field="o.invoice_date_due"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2" t-if="o.invoice_origin" name="origin">
+                                <strong>Source:</strong>
+                                <p class="m-0" t-field="o.invoice_origin"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">
+                                <strong>Customer Code:</strong>
+                                <p class="m-0" t-field="o.partner_id.ref"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2" t-if="o.ref" name="reference">
+                                <strong>Reference:</strong>
+                                <p class="m-0" t-field="o.ref"/>
+                            </div>
                         </div>
 
                         <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
@@ -347,12 +233,15 @@
                                                 <span class="text-nowrap" t-field="line.discount"/>
                                             </td>
                                             <td class="text-right o_price_total">
-                                                <span class="text-nowrap" t-field="line.price_subtotal"
-                                                      groups="account.group_show_line_subtotals_tax_excluded"/>
-                                                <span class="text-nowrap" t-field="line.price_total"
-                                                      groups="account.group_show_line_subtotals_tax_included"/>
+                                                <t t-set="total_line" t-value="(line.price_subtotal / line.quantity) * lines_group['quantity']"></t>
+                                                <span class="text-nowrap" t-esc="total_line" t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                            />
+<!--                                                <span class="text-nowrap" t-field="line.price_subtotal"-->
+<!--                                                      groups="account.group_show_line_subtotals_tax_excluded"/>-->
+<!--                                                <span class="text-nowrap" t-field="line.price_total"-->
+<!--                                                      groups="account.group_show_line_subtotals_tax_included"/>-->
 
-                                                <t t-set="subtotal" t-value="subtotal + line.price_subtotal"/>
+                                                <t t-set="subtotal" t-value="subtotal + total_line"/>
                                             </td>
                                         </t>
                                         <t t-if="line.display_type == 'line_section'">
@@ -399,27 +288,25 @@
                                     t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
                                     <table class="table table-sm" style="page-break-inside: avoid;">
                                         <t t-if="o.global_discount_ids">
-                                            <tr>
-                                                <td>
-                                                    <strong>Subtotal w/o disc.</strong>
-                                                </td>
-                                                <td class="text-right">
-                                                    <span t-field="o.amount_untaxed_before_global_discounts"
-                                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                                                </td>
-                                            </tr>
-                                            <tr style="border-bottom:1px solid #dddddd;">
-                                                <td>
-                                                    <strong>Global Discounts</strong>
-                                                    <br/>
-                                                    <t t-esc="'→'.join(['{:.2f}%'.format(x.discount) for x in o.global_discount_ids])"/>
-                                                </td>
-                                                <td class="text-right">
-                                                    <span t-field="o.amount_global_discount"
-                                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                                                </td>
-                                            </tr>
-                                        </t>
+                <tr>
+                    <td>
+                        <strong>Subtotal w/o disc.</strong>
+                    </td>
+                    <td class="text-right">
+                        <span t-field="o.amount_untaxed_before_global_discounts" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                    </td>
+                </tr>
+                <tr style="border-bottom:1px solid #dddddd;">
+                    <td>
+                        <strong>Global Discounts</strong>
+                        <br/>
+                        <t t-esc="'→'.join(['{:.2f}%'.format(x.discount) for x in o.global_discount_ids])"/>
+                    </td>
+                    <td class="text-right">
+                        <span t-field="o.amount_global_discount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                    </td>
+                </tr>
+            </t>
                                         <tr class="border-black o_subtotal" style="">
                                             <td>
                                                 <strong>Subtotal</strong>
