@@ -36,6 +36,7 @@
         "views/label/product_label.xml",
         "views/label/stock_production_lot.xml",
         "views/label/stock_production_serial.xml",
+        "views/product_template.xml",
     ],
     "installable": True,
     "auto_install": False,
