@@ -156,6 +156,7 @@
                                               groups="account.group_show_line_subtotals_tax_included"/>
                                     </td>
                                 </t>
+
                                 <t t-if="line.display_type == 'line_section'">
                                     <td name="td_section_line" colspan="99">
                                         <span t-field="line.name"/>
@@ -169,7 +170,13 @@
                                     </td>
                                 </t>
                             </tr>
-
+                             <t t-if="line.product_id">
+                                <tr t-if="line.product_id.link">
+                                    <td colspan="6">
+                                         <span style="margin-left:5px;text-decoration:underline;color:blue;" t-field="line.product_id.link"/>
+                                    </td>
+                                </tr>
+                            </t>
                             <t t-if="current_section and (line_last or doc.order_line[line_index+1].display_type == 'line_section')">
                                 <tr class="is-subtotal text-right">
                                     <td name="td_section_subtotal" colspan="99">
