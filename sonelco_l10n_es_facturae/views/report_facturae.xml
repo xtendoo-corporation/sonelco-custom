@@ -530,11 +530,10 @@
                             <SequenceNumber t-if="False" />
 
                             <DeliveryNotesReferences t-if="line.move_line_ids.picking_id">
-
                                 <DeliveryNote>
                                     <t t-foreach="line.move_line_ids.picking_id" t-as="picking">
                                         <DeliveryNoteNumber t-esc="picking.name"/>
-                                        <DeliveryNoteDate t-esc="picking.date_done.strftime('%d-%m-%Y')"/>
+                                        <DeliveryNoteDate t-esc="picking.date_done.strftime('%Y-%m-%d')"/>
                                     </t>
                                 </DeliveryNote>
                             </DeliveryNotesReferences>
