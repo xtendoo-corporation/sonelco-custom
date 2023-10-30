@@ -487,6 +487,11 @@
                                 t-if="line.facturae_issuer_contract_reference"
                                 t-esc="line.facturae_issuer_contract_reference"
                             />
+                            <IssuerContractReference
+                                t-length="20"
+                                t-if="not line.facturae_issuer_contract_reference"
+                                t-esc="move.ref"
+                            />
                             <IssuerContractDate
                                 t-if="line.facturae_issuer_contract_date"
                                 t-esc="line.facturae_issuer_contract_date"
@@ -495,6 +500,11 @@
                                 t-length="20"
                                 t-if="line.facturae_issuer_transaction_reference"
                                 t-esc="line.facturae_issuer_transaction_reference"
+                            />
+                            <IssuerTransactionReference
+                                t-length="20"
+                                t-if="not line.facturae_issuer_transaction_reference"
+                                t-esc="move.ref"
                             />
                             <IssuerTransactionDate
                                 t-if="line.facturae_issuer_transaction_date"
@@ -505,6 +515,11 @@
                                 t-if="line.facturae_receiver_contract_reference"
                                 t-esc="line.facturae_receiver_contract_reference"
                             />
+                            <ReceiverContractReference
+                                t-length="20"
+                                t-if="not line.facturae_receiver_contract_reference"
+                                t-esc="move.ref"
+                            />
                             <ReceiverContractDate
                                 t-if="line.facturae_receiver_contract_date"
                                 t-esc="line.facturae_receiver_contract_date"
@@ -513,6 +528,11 @@
                                 t-length="20"
                                 t-if="line.facturae_receiver_transaction_reference"
                                 t-esc="line.facturae_receiver_transaction_reference"
+                            />
+                            <ReceiverTransactionReference
+                                t-length="20"
+                                t-if="not line.facturae_receiver_transaction_reference"
+                                t-esc="move.ref"
                             />
                             <ReceiverTransactionDate
                                 t-if="line.facturae_receiver_transaction_date"
