@@ -1,4 +1,4 @@
-# Copyright 2021 Manuel Calero - Xtendoo
+# Copyright 2024 Daniel Domínguez - Xtendoo
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
