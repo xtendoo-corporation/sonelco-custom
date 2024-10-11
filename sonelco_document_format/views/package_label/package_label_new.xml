@@ -1,0 +1,176 @@
+<odoo>
+    <data>
+
+        <record id="sonelco_document_format.label_sonelco_100x150" model="report.paperformat">
+            <field name="name">Label Packaging 100 x 150 New</field>
+            <field name="default" eval="False"/>
+            <field name="format">custom</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_right">0</field>
+            <field name="margin_left">0</field>
+            <field name="page_height">150</field>
+            <field name="page_width">100</field>
+            <field name="orientation">Portrait</field>
+            <field name="header_line">False</field>
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+            string="Etiqueta"
+            id="sonelco_document_format.label_packaging_sonelco_new"
+            model="stock.quant.package"
+            report_type="qweb-pdf"
+            name="sonelco_document_format.report_label_packaging_sonelco_new"
+            file="sonelco_document_format.report_label_packaging_sonelco_new"
+            paperformat="sonelco_document_format.label_sonelco_100x150"
+            print_report_name="'Etiqueta - %s' % (object.name)"
+        />
+
+        <template id="sonelco_document_format.report_label_packaging_sonelco_new">
+            <t t-name="sonelco_document_format.report_label_packaging_sonelco_new">
+                <t t-call="web.basic_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <t t-set="num_copy" t-value="o.package"/>
+                        <t t-if="num_copy == 0">
+                            <t t-set="num_copy" t-value="1"/>
+                        </t>
+                        <t t-set="iteration" t-value="1"/>
+                        <t t-foreach="int(num_copy)" t-as="">
+                            <div class="page" style="border:5px solid black;width:106%;margin-left:-3%;">
+                                <div class="container">
+                                    <div style="width:98%;display:block;float:left;height:460px;">
+                                        <div
+                                            style="font-size:0.9em;width:100%;display:block;float:left;height:20px;margin-top:15px;margin-left:3%;color:black;">
+                                            <span>Destino/Destination:</span>
+                                        </div>
+                                        <div
+                                            style="font-size:1.2em;width:100%;display:block;float:left;margin-left:2%;margin-top:11px;font-weight:bolder;">
+                                            <span style="text-align:center;width:100%;display:block;"
+                                                  t-field="o.delivery_id.partner_id.name"/>
+                                        </div>
+                                        <div style="clear:both;font-size:1em; height:30px;">
+                                            <div
+                                                style="width:100%;display:block;float:left;height:20px;margin-top:10px;margin-left:3%;color:black;">
+                                                <span>Consignatario/Consignee:</span>
+                                            </div>
+                                            <div
+                                                style="margin-left:2%;width:100%;display:block;float:left;text-align:center;margin-top:16px;font-weight:bolder;font-size:1.2em;">
+                                                <ul class="list-unstyled">
+                                                    <strong>
+                                                        <li t-if="o.delivery_id.partner_id.name">
+                                                            <span t-field="o.delivery_id.partner_id.name"/>
+                                                        </li>
+                                                    </strong>
+                                                    <li t-if="o.delivery_id.partner_id.street">
+                                                        <span t-field="o.delivery_id.partner_id.street"/>
+                                                    </li>
+                                                    <li t-if="o.delivery_id.partner_id.street2">
+                                                        <span t-field="o.delivery_id.partner_id.street2"/>
+                                                    </li>
+                                                    <li>
+                                                        <span t-if="o.delivery_id.partner_id.city"
+                                                              t-field="o.delivery_id.partner_id.city"/>
+                                                    </li>
+                                                    <li>
+                                                        <span t-if="o.delivery_id.partner_id.zip"
+                                                              t-field="o.delivery_id.partner_id.zip"/>
+                                                        <span t-if="o.delivery_id.partner_id.state_id.name"
+                                                              t-field="o.delivery_id.partner_id.state_id.name"/>
+                                                    </li>
+                                                    <li t-if="o.delivery_id.partner_id.country_id.name">
+                                                        <span t-field="o.delivery_id.partner_id.country_id.name"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <!--line-->
+                                        <div
+                                            style="height:5px;background-color:black;clear:both;width:112%;margin-left:-5%;"/>
+                                        <!--end line-->
+
+                                        <div
+                                            style="width:60%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
+                                            <span>Número de bultos/Packing:</span>
+                                        </div>
+                                        <div
+                                            style="width:40%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
+                                            <span t-esc="iteration"/>
+                                            <span>/</span>
+                                            <span t-field="o.package"/>
+                                        </div>
+
+                                        <div
+                                            style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
+                                            <span>Kilos/Weight:</span>
+                                        </div>
+                                        <div
+                                            style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
+                                            <span t-field="o.shipping_weight"/>
+                                        </div>
+
+                                        <div
+                                            style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
+                                            <span>Fecha/Date:</span>
+                                        </div>
+                                        <div
+                                            style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
+                                            <span t-field="o.delivery_id.scheduled_date"
+                                                  t-options="{&quot;format&quot;: &quot;MM-dd-yyyy&quot;}"/>
+                                        </div>
+
+                                        <div
+                                            style="width:50%;display:block;float:left;height:20px;margin-top:3px;color:black;font-weight:bolder;">
+                                            <span>Enviado por/Send by:</span>
+                                        </div>
+                                        <div
+                                            style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
+                                            <span t-field="o.delivery_id.carrier_id.name"/>
+                                        </div>
+                                    </div>
+
+                                    <div style="width:110%;margin-left:-5%;border-width:50px;">
+                                        <img style="margin-left:30%;display:block;width:40%;margin-top:-500px;"
+                                             src="/sonelco_document_format/static/src/img/logo_sonelco.png"/>
+                                    </div>
+
+                                    <div
+                                        style="margin-top:10px;text-align:center;width:100%;color:black;font-size:1em;font-weight:bolder;">
+                                        <div>
+                                            <span t-if="res_company.name" t-field="res_company.name"/>
+                                        </div>
+                                        <div>
+                                            <span t-if="res_company.street" t-field="res_company.street"/>
+                                        </div>
+                                        <div>
+                                            <span t-if="res_company.street2" t-field="res_company.street2"/>
+                                        </div>
+                                        <div>
+                                            <span>TLF.:</span>
+                                            <span t-field="res_company.phone"/>
+                                        </div>
+                                        <div>
+                                            <span t-field="res_company.email"/>
+                                        </div>
+                                        <div>
+                                            <span t-field="res_company.zip"/>
+                                            <span></span>
+                                            <span t-field="res_company.state_id.name"/>
+                                            <span>(</span>
+                                            <span t-field="res_company.country_id.name"/>
+                                            <span>)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p style="page-break-before:always;"></p>
+                            <t t-set="iteration" t-value="iteration + 1"/>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
