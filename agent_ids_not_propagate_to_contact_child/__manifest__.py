@@ -3,7 +3,7 @@
 
 {
     "name": "Agent_ids not propagate to contact child",
-    "version": "13.0.0.0",
+    "version": "14.0.0.0",
     "summary": "Agent_ids not propagate to contact child",
     "author": "Dani Domínguez",
     "company": "Xtendoo",
