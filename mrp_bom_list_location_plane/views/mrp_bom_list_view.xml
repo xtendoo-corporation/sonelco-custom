@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="mrp_bom_list_location" model="ir.ui.view">
+            <field name="name">mrp.bom.list.location</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='product_uom_id']" position="after">
+                    <field name="location_plane"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="mrp_bom_line_view_form_location" model="ir.ui.view">
+        <field name="name">mrp.bom.line.view.form - mrp_bom_location</field>
+        <field name="model">mrp.bom.line</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_line_view_form" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="before">
+                <field name="location_plane" />
+            </field>
+        </field>
+    </record>
+          <template id="report_mrp_bom_pdf_line_location" inherit_id="mrp.report_mrp_bom_pdf_line">
+        <xpath expr="//tr" position="inside">
+            <td class="text-left">
+                <span t-esc="l['location_plane']" />
+            </td>
+        </xpath>
+    </template>
+    </data>
+</odoo>
