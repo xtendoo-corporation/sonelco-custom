@@ -22,7 +22,7 @@ class AccountMove(models.Model):
         # order invoicing process after picking reverse transfer
         sign = (
             -1.0
-            if self.type == "out_refund"
+            if self.move_type == "out_refund"
             and (
                 not self.reversed_entry_id
                 or self.reversed_entry_id.picking_ids != self.picking_ids

@@ -297,10 +297,10 @@
                         <InvoiceSeriesCode t-length="20" t-esc="''" />
                         <InvoiceDocumentType t-esc="'FC'" />
                         <InvoiceClass
-                            t-esc="'OR' if move.type == 'out_refund' and move.reversed_entry_id else 'OO'"
+                            t-esc="'OR' if move.move_type == 'out_refund' and move.reversed_entry_id else 'OO'"
                         />
                         <Corrective
-                            t-if="move.type == 'out_refund' and move.reversed_entry_id"
+                            t-if="move.move_type == 'out_refund' and move.reversed_entry_id"
                         >
                             <InvoiceNumber
                                 t-length="20"
@@ -383,7 +383,7 @@
                                 </TaxableBase>
                                 <t
                                     t-set="sign"
-                                    t-value="1 if move.type != 'out_invoice' else -1"
+                                    t-value="1 if move.move_type != 'out_invoice' else -1"
                                 />
                                 <TaxAmount>
                                     <TotalAmount
@@ -418,7 +418,7 @@
                                 </TaxableBase>
                                 <t
                                     t-set="sign"
-                                    t-value="1 if move.type != 'out_invoice' else -1"
+                                    t-value="1 if move.move_type != 'out_invoice' else -1"
                                 />
                                 <TaxAmount>
                                     <TotalAmount
@@ -566,7 +566,7 @@
                             />
                             <t
                                 t-set="subtotal_gross"
-                                t-value="line._get_price_total_and_subtotal_model(line.price_unit, line.quantity,0,line.move_id.currency_id, line.product_id, line.move_id.partner_id, line.tax_ids, line.move_id.type,).get('price_subtotal', 0.0)"
+                                t-value="line._get_price_total_and_subtotal_model(line.price_unit, line.quantity,0,line.move_id.currency_id, line.product_id, line.move_id.partner_id, line.tax_ids, line.move_id.move_type,).get('price_subtotal', 0.0)"
                             />
                             <TotalCost
                                 t-esc="('%.6f' if version == '3_2' else '%.8f') % subtotal_gross"
