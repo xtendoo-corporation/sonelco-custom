@@ -117,8 +117,13 @@
                                         </div>
                                         <div
                                             style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
-                                            <span t-field="o.delivery_id.date_done"
-                                                  t-options="{&quot;format&quot;: &quot;dd-MM-yyyy&quot;}"/>
+                                            <t t-if="o.delivery_id.date_done">
+                                                <span t-field="o.delivery_id.date_done"
+                                                      t-options="{&quot;format&quot;: &quot;dd-MM-yyyy&quot;}"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span style="color:white;"> abc</span>
+                                            </t>
                                         </div>
 
                                         <div
@@ -127,7 +132,12 @@
                                         </div>
                                         <div
                                             style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
-                                            <span t-field="o.delivery_id.carrier_id.name"/>
+                                            <t t-if="o.delivery_id.carrier_id.name">
+                                                <span t-field="o.delivery_id.carrier_id.name"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span style="color:white;"> abc</span>
+                                            </t>
                                         </div>
                                     </div>
 
