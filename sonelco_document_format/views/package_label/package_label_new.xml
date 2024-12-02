@@ -117,8 +117,8 @@
                                         </div>
                                         <div
                                             style="width:50%;display:block;float:left;margin-top:3px;color:black;font-weight:bolder;text-align:right;">
-                                            <t t-if="o.delivery_id.date_done">
-                                                <span t-field="o.delivery_id.date_done"
+                                            <t t-if="o.write_date">
+                                                <span t-field="o.write_date"
                                                       t-options="{&quot;format&quot;: &quot;dd-MM-yyyy&quot;}"/>
                                             </t>
                                             <t t-else="">
