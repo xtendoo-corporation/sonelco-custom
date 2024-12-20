@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="report_mrp_bom_sonelco" inherit_id="mrp.report_mrp_bom">
+            <xpath expr="//table/thead" position="replace">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th name="th_mrp_bom_h">LdM</th>
+                        <th class="text-right">Cantidad</th>
+                        <th class="text-left" groups="uom.group_uom">Unidad</th>
+                        <th t-if="data['report_structure'] != 'bom_structure'" class="o_mrp_prod_cost text-right" title="This is the cost defined on the product.">Coste</th>
+                        <th t-if="data['report_structure'] != 'bom_structure'" class="o_mrp_bom_cost text-right" title="This is the cost based on the BoM of the product. It is computed by summing the costs of the components and operations needed to build the product.">LdM Coste</th>
+                        <th t-if="data['report_type'] == 'html' and data['has_attachments']" class="o_mrp_has_attachments" title="Files attached to the product">Attachments</th>
+                        <th>
+                            <span>Posición</span>
+                        </th>
+                    </tr>
+                </thead>
+            </xpath>
+        </template>
+
+        <template id="report_mrp_bom_line_sonelco" inherit_id="mrp.report_mrp_bom_pdf_line">
+            <xpath expr="//tr/td[last()]" position="replace">
+                <td>
+                    <span>
+                        <t t-esc="l['location_plane']"/>
+                    </span>
+                </td>
+            </xpath>
+        </template>
+
+
+        <template id="report_mrp_bom_line_sonelco" inherit_id="mrp.report_mrp_bom_line">
+        <xpath expr="//tr/td[last()]" position="replace">
+            <td>
+                <span>
+                        <t t-esc="l['location_plane']"/>
+                    </span>
+            </td>
+        </xpath>
+    </template>
+    </data>
+</odoo>
