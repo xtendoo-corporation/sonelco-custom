@@ -32,6 +32,7 @@
         "views/stock_picking/valued_stock_picking.xml",
         "views/purchase/purchase_order_view.xml",
         "views/invoice/account_move.xml",
+        "views/invoice/report_facturae.xml",
         "views/label/papper_format.xml",
         "views/label/product_label.xml",
         "views/label/stock_production_lot.xml",
