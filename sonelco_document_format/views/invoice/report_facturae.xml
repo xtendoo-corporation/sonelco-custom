@@ -114,6 +114,7 @@
             </t>
         </Individual>
     </template>
+
     <template id="address_contact">
         <AddressInSpain t-if="administrative_partner.country_id.code == 'ES'">
             <Address
@@ -262,220 +263,217 @@
                 </BuyerParty>
             </Parties>
             <Invoices>
-                <Invoice>
-                    <t t-set="tax_info" t-value="move._get_facturae_tax_info()" />
-                    <t t-set="output_taxes" t-value="tax_info[0]" />
-                    <t t-set="withheld_taxes" t-value="tax_info[1]" />
-                    <t t-set="withheld" t-value="False" />
-                    <t t-set="amount_tax" t-value="0.00" />
-                    <t t-set="amount_tax_withheld" t-value="0.00" />
-                    <t t-foreach="move.line_ids" t-as="tax_line">
-                        <t t-if="tax_line.tax_line_id.amount &lt; 0">
-                            <t t-set="withheld" t-value="True" />
-                            <t
-                                t-set="amount_tax_withheld"
-                                t-value="amount_tax_withheld - tax_line.balance"
-                            />
-                        </t>
-                        <t t-if="tax_line.tax_line_id.amount &gt; 0">
-                            <t
-                                t-set="amount_tax"
-                                t-value="amount_tax + tax_line.balance"
-                            />
-                        </t>
+                <t t-set="tax_info" t-value="move._get_facturae_tax_info()" />
+                <t t-set="output_taxes" t-value="tax_info[0]" />
+                <t t-set="withheld_taxes" t-value="tax_info[1]" />
+                <t t-set="withheld" t-value="False" />
+                <t t-set="amount_tax" t-value="0.00" />
+                <t t-set="amount_tax_withheld" t-value="0.00" />
+                <t t-foreach="move.line_ids" t-as="tax_line">
+                    <t t-if="tax_line.tax_line_id.amount &lt; 0">
+                        <t t-set="withheld" t-value="True" />
+                        <t
+                            t-set="amount_tax_withheld"
+                            t-value="amount_tax_withheld - tax_line.balance"
+                        />
                     </t>
-                    <InvoiceHeader>
-                        <t t-if="not move.thirdparty_number">
-                            <InvoiceNumber t-length="20" t-esc="move.name" />
-                        </t>
-                        <t t-if="move.thirdparty_number">
-                            <InvoiceNumber
-                                t-length="20"
-                                t-esc="move.thirdparty_number"
-                            />
-                        </t>
+                    <t t-if="tax_line.tax_line_id.amount &gt; 0">
+                        <t
+                            t-set="amount_tax"
+                            t-value="amount_tax + tax_line.balance"
+                        />
+                    </t>
+                </t>
+                <InvoiceHeader>
+                    <t t-if="not move.thirdparty_number">
+                        <InvoiceNumber t-length="20" t-esc="move.name" />
+                    </t>
+                    <t t-if="move.thirdparty_number">
+                        <InvoiceNumber
+                            t-length="20"
+                            t-esc="move.thirdparty_number"
+                        />
+                    </t>
+                    <InvoiceSeriesCode t-length="20" t-esc="''" />
+                    <InvoiceDocumentType t-esc="'FC'" />
+                    <InvoiceClass
+                        t-esc="'OR' if move.move_type == 'out_refund' and move.reversed_entry_id else 'OO'"
+                    />
+                    <Corrective
+                        t-if="move.move_type == 'out_refund' and move.reversed_entry_id"
+                    >
+                        <InvoiceNumber
+                            t-length="20"
+                            t-esc="move.reversed_entry_id.name"
+                        />
                         <InvoiceSeriesCode t-length="20" t-esc="''" />
-                        <InvoiceDocumentType t-esc="'FC'" />
-                        <InvoiceClass
-                            t-esc="'OR' if move.move_type == 'out_refund' and move.reversed_entry_id else 'OO'"
+                        <ReasonCode t-esc="move.facturae_refund_reason" />
+                        <ReasonDescription
+                            t-esc="move.get_refund_reason_string()"
                         />
-                        <Corrective
-                            t-if="move.move_type == 'out_refund' and move.reversed_entry_id"
-                        >
-                            <InvoiceNumber
-                                t-length="20"
-                                t-esc="move.reversed_entry_id.name"
+                        <TaxPeriod>
+                            <StartDate
+                                t-esc="move.reversed_entry_id.invoice_date"
                             />
-                            <InvoiceSeriesCode t-length="20" t-esc="''" />
-                            <ReasonCode t-esc="move.facturae_refund_reason" />
-                            <ReasonDescription
-                                t-esc="move.get_refund_reason_string()"
-                            />
-                            <TaxPeriod>
-                                <StartDate
-                                    t-esc="move.reversed_entry_id.invoice_date"
-                                />
-                                <EndDate t-esc="move.reversed_entry_id.invoice_date" />
-                            </TaxPeriod>
-                            <CorrectionMethod t-esc="move.correction_method" />
-                            <CorrectionMethodDescription
-                                t-esc="move.get_correction_method_string()"
-                            />
-                            <AdditionalReasonDescription
-                                t-length="2500"
-                                t-esc="move.name"
-                            />
-                            <t t-if="version not in ('3_2', '3_2_1')">
-                                <InvoiceIssueDate
-                                    t-esc="move.reversed_entry_id.invoice_date"
-                                />
-                            </t>
-                        </Corrective>
-                    </InvoiceHeader>
-                    <InvoiceIssueData>
-                        <IssueDate t-esc="move.invoice_date" />
-                        <OperationDate t-if="False" />
-                        <PlaceOfIssue t-if="False" />
-                        <InvoicingPeriod
-                            t-if="move.facturae_start_date and move.facturae_end_date"
-                        >
-                            <StartDate t-esc="move.facturae_start_date" />
-                            <EndDate t-esc="move.facturae_end_date" />
-                        </InvoicingPeriod>
-                        <InvoiceCurrencyCode t-esc="move.currency_id.name" />
-                        <ExchangeRateDetails t-if="move.currency_id.name != 'EUR'">
-                            <ExchangeRate
-                                t-esc="('%.2f' if version == '3_2' else '%.8f') % (euro_rate / currency_rate)"
-                            />
-                            <ExchangeRateDate
-                                t-esc="move.get_exchange_rate(euro, currency)"
-                            />
-                        </ExchangeRateDetails>
-                        <TaxCurrencyCode t-esc="'EUR'" />
-                        <!-- Los impuestos siempre deben estar en euros -->
-                        <LanguageName t-esc="company.partner_id.lang[:2]" />
+                            <EndDate t-esc="move.reversed_entry_id.invoice_date" />
+                        </TaxPeriod>
+                        <CorrectionMethod t-esc="move.correction_method" />
+                        <CorrectionMethodDescription
+                            t-esc="move.get_correction_method_string()"
+                        />
+                        <AdditionalReasonDescription
+                            t-length="2500"
+                            t-esc="move.name"
+                        />
                         <t t-if="version not in ('3_2', '3_2_1')">
-                            <InvoiceDescription
-                                t-length="2500"
-                                t-if="move.narration"
-                                t-esc="move.narration"
+                            <InvoiceIssueDate
+                                t-esc="move.reversed_entry_id.invoice_date"
                             />
-                            <ReceiverTransactionReference t-length="20" t-if="False" />
-                            <FileReference t-length="20" t-if="False" />
-                            <ReceiverContractReference t-length="20" t-if="False" />
                         </t>
-                    </InvoiceIssueData>
-                    <TaxesOutputs>
-                        <t t-foreach="output_taxes" t-as="tax">
-                            <Tax>
-                                <t t-set="tax_line" t-value="output_taxes[tax]" />
-                                <TaxTypeCode t-esc="tax.facturae_code" />
-                                <TaxRate
-                                    t-esc="('%.2f' if version == '3_2' else '%.8f') % (tax.amount)"
+                    </Corrective>
+                </InvoiceHeader>
+                <InvoiceIssueData>
+                    <IssueDate t-esc="move.invoice_date" />
+                    <OperationDate t-if="False" />
+                    <PlaceOfIssue t-if="False" />
+                    <InvoicingPeriod
+                        t-if="move.facturae_start_date and move.facturae_end_date"
+                    >
+                        <StartDate t-esc="move.facturae_start_date" />
+                        <EndDate t-esc="move.facturae_end_date" />
+                    </InvoicingPeriod>
+                    <InvoiceCurrencyCode t-esc="move.currency_id.name" />
+                    <ExchangeRateDetails t-if="move.currency_id.name != 'EUR'">
+                        <ExchangeRate
+                            t-esc="('%.2f' if version == '3_2' else '%.8f') % (euro_rate / currency_rate)"
+                        />
+                        <ExchangeRateDate
+                            t-esc="move.get_exchange_rate(euro, currency)"
+                        />
+                    </ExchangeRateDetails>
+                    <TaxCurrencyCode t-esc="'EUR'" />
+                    <!-- Los impuestos siempre deben estar en euros -->
+                    <LanguageName t-esc="company.partner_id.lang[:2]" />
+                    <t t-if="version not in ('3_2', '3_2_1')">
+                        <InvoiceDescription
+                            t-length="2500"
+                            t-if="move.narration"
+                            t-esc="move.narration"
+                        />
+                        <ReceiverTransactionReference t-length="20" t-if="False" />
+                        <FileReference t-length="20" t-if="False" />
+                        <ReceiverContractReference t-length="20" t-if="False" />
+                    </t>
+                </InvoiceIssueData>
+                <TaxesOutputs>
+                    <t t-foreach="output_taxes" t-as="tax">
+                        <Tax>
+                            <t t-set="tax_line" t-value="output_taxes[tax]" />
+                            <TaxTypeCode t-esc="tax.facturae_code" />
+                            <TaxRate
+                                t-esc="('%.2f' if version == '3_2' else '%.8f') % (tax.amount)"
+                            />
+                            <TaxableBase>
+                                <TotalAmount
+                                    t-esc="('%.2f' if version == '3_2' else '%.8f') % tax_line['base']"
                                 />
-                                <TaxableBase>
-                                    <TotalAmount
-                                        t-esc="('%.2f' if version == '3_2' else '%.8f') % tax_line['base']"
-                                    />
-                                    <EquivalentInEuros
-                                        t-esc="'%.2f' % (tax_line['base'] * euro_rate / currency_rate)"
-                                    />
-                                </TaxableBase>
-                                <t
-                                    t-set="sign"
-                                    t-value="1 if move.move_type != 'out_invoice' else -1"
+                                <EquivalentInEuros
+                                    t-esc="'%.2f' % (tax_line['base'] * euro_rate / currency_rate)"
                                 />
-                                <TaxAmount>
-                                    <TotalAmount
-                                        t-esc="('%.2f' if version == '3_2' else '%.8f') % ( tax_line['amount'] )"
-                                    />
-                                    <EquivalentInEuros
-                                        t-esc="'%.2f' % (( tax_line['amount']) * euro_rate / currency_rate)"
-                                    />
-                                </TaxAmount>
-                                <SpecialTaxableBase t-if="False" />
-                                <SpecialTaxAmount t-if="False" />
-                                <EquivalenceSurcharge t-if="False" />
-                                <EquivalenceSurchargeAmount t-if="False" />
-                            </Tax>
-                        </t>
-                    </TaxesOutputs>
-                    <TaxesWithheld t-if="withheld">
-                        <t t-foreach="withheld_taxes" t-as="tax">
-                            <Tax>
-                                <t t-set="tax_line" t-value="withheld_taxes[tax]" />
-                                <TaxTypeCode t-esc="tax.facturae_code" />
-                                <TaxRate
-                                    t-esc="('%.2f' if version == '3_2' else '%.8f') % (-tax.amount)"
+                            </TaxableBase>
+                            <t
+                                t-set="sign"
+                                t-value="1 if move.move_type != 'out_invoice' else -1"
+                            />
+                            <TaxAmount>
+                                <TotalAmount
+                                    t-esc="('%.2f' if version == '3_2' else '%.8f') % ( tax_line['amount'] )"
                                 />
-                                <TaxableBase>
-                                    <TotalAmount
-                                        t-esc="('%.2f' if version == '3_2' else '%.8f') % tax_line['base']"
-                                    />
-                                    <EquivalentInEuros
-                                        t-esc="'%.2f' % (tax_line['base'] * euro_rate / currency_rate)"
-                                    />
-                                </TaxableBase>
-                                <t
-                                    t-set="sign"
-                                    t-value="1 if move.move_type != 'out_invoice' else -1"
+                                <EquivalentInEuros
+                                    t-esc="'%.2f' % (( tax_line['amount']) * euro_rate / currency_rate)"
                                 />
-                                <TaxAmount>
-                                    <TotalAmount
-                                        t-esc="('%.2f' if version == '3_2' else '%.8f') % (- tax_line['amount'])"
-                                    />
-                                    <EquivalentInEuros
-                                        t-esc="'%.2f' % (( -tax_line['amount'] ) * euro_rate / currency_rate)"
-                                    />
-                                </TaxAmount>
-                            </Tax>
-                        </t>
-                    </TaxesWithheld>
-                    <InvoiceTotals>
-                        <TotalGrossAmount
-                            t-esc="('%.2f' if version == '3_2' else '%.8f') % move.amount_untaxed"
-                        />
-                        <GeneralDiscounts t-if="False" />
-                        <GeneralSurcharges t-if="False" />
-                        <TotalGeneralDiscounts t-if="False" />
-                        <TotalGeneralSurcharges t-if="False" />
-                        <TotalGrossAmountBeforeTaxes
-                            t-esc="('%.2f' if version == '3_2' else '%.8f') % move.amount_untaxed"
-                        />
-                        <TotalTaxOutputs
-                            t-esc="('%.2f' if version == '3_2' else '%.8f') % (-amount_tax)"
-                        />
-                        <TotalTaxesWithheld
-                            t-esc="('%.2f' if version == '3_2' else '%.8f') % (-amount_tax_withheld)"
-                        />
-                        <InvoiceTotal
-                            t-esc="('%.2f' if version == '3_2' else '%.8f') % move.amount_total"
-                        />
-                        <Subsidies t-if="False" />
-                        <PaymentsOnAccount t-if="False" />
-                        <ReimbursableExpenses t-if="False" />
-                        <TotalFinancialExpenses t-if="False" />
-                        <TotalOutstandingAmount
-                            t-esc="('%.2f' if version == '3_2' else '%.8f') % move.amount_total"
-                        />
-                        <TotalPaymentsOnAccount t-if="False" />
-                        <AmountsWithheld t-if="False" />
-                        <TotalExecutableAmount
-                            t-esc="('%.2f' if version == '3_2' else '%.8f') % move.amount_total"
-                        />
-                        <TotalReimbursableExpenses t-if="False" />
-                        <t t-if="version not in ('3_2', '3_2_1')">
-                            <PaymentInKind t-if="False">
-                                <PaymentInKindReason t-length="2500" />
-                                <PaymentInKindAmount />
-                            </PaymentInKind>
-                        </t>
-                    </InvoiceTotals>
-                    <Items>
-                        <InvoiceLine
-                            t-foreach="move.line_ids.filtered(lambda r: not r.display_type and not r.exclude_from_invoice_tab)"
-                            t-as="line"
-                        >
+                            </TaxAmount>
+                            <SpecialTaxableBase t-if="False" />
+                            <SpecialTaxAmount t-if="False" />
+                            <EquivalenceSurcharge t-if="False" />
+                            <EquivalenceSurchargeAmount t-if="False" />
+                        </Tax>
+                    </t>
+                </TaxesOutputs>
+                <TaxesWithheld t-if="withheld">
+                    <t t-foreach="withheld_taxes" t-as="tax">
+                        <Tax>
+                            <t t-set="tax_line" t-value="withheld_taxes[tax]" />
+                            <TaxTypeCode t-esc="tax.facturae_code" />
+                            <TaxRate
+                                t-esc="('%.2f' if version == '3_2' else '%.8f') % (-tax.amount)"
+                            />
+                            <TaxableBase>
+                                <TotalAmount
+                                    t-esc="('%.2f' if version == '3_2' else '%.8f') % tax_line['base']"
+                                />
+                                <EquivalentInEuros
+                                    t-esc="'%.2f' % (tax_line['base'] * euro_rate / currency_rate)"
+                                />
+                            </TaxableBase>
+                            <t
+                                t-set="sign"
+                                t-value="1 if move.move_type != 'out_invoice' else -1"
+                            />
+                            <TaxAmount>
+                                <TotalAmount
+                                    t-esc="('%.2f' if version == '3_2' else '%.8f') % (- tax_line['amount'])"
+                                />
+                                <EquivalentInEuros
+                                    t-esc="'%.2f' % (( -tax_line['amount'] ) * euro_rate / currency_rate)"
+                                />
+                            </TaxAmount>
+                        </Tax>
+                    </t>
+                </TaxesWithheld>
+                <InvoiceTotals>
+                    <TotalGrossAmount
+                        t-esc="('%.2f' if version == '3_2' else '%.8f') % move.amount_untaxed"
+                    />
+                    <GeneralDiscounts t-if="False" />
+                    <GeneralSurcharges t-if="False" />
+                    <TotalGeneralDiscounts t-if="False" />
+                    <TotalGeneralSurcharges t-if="False" />
+                    <TotalGrossAmountBeforeTaxes
+                        t-esc="('%.2f' if version == '3_2' else '%.8f') % move.amount_untaxed"
+                    />
+                    <TotalTaxOutputs
+                        t-esc="('%.2f' if version == '3_2' else '%.8f') % (-amount_tax)"
+                    />
+                    <TotalTaxesWithheld
+                        t-esc="('%.2f' if version == '3_2' else '%.8f') % (-amount_tax_withheld)"
+                    />
+                    <InvoiceTotal
+                        t-esc="('%.2f' if version == '3_2' else '%.8f') % move.amount_total"
+                    />
+                    <Subsidies t-if="False" />
+                    <PaymentsOnAccount t-if="False" />
+                    <ReimbursableExpenses t-if="False" />
+                    <TotalFinancialExpenses t-if="False" />
+                    <TotalOutstandingAmount
+                        t-esc="('%.2f' if version == '3_2' else '%.8f') % move.amount_total"
+                    />
+                    <TotalPaymentsOnAccount t-if="False" />
+                    <AmountsWithheld t-if="False" />
+                    <TotalExecutableAmount
+                        t-esc="('%.2f' if version == '3_2' else '%.8f') % move.amount_total"
+                    />
+                    <TotalReimbursableExpenses t-if="False" />
+                    <t t-if="version not in ('3_2', '3_2_1')">
+                        <PaymentInKind t-if="False">
+                            <PaymentInKindReason t-length="2500" />
+                            <PaymentInKindAmount />
+                        </PaymentInKind>
+                    </t>
+                </InvoiceTotals>
+                <Items>
+                    <InvoiceLine>
+                        <t t-foreach="move.line_ids.filtered(lambda r: not r.display_type and not r.exclude_from_invoice_tab)" t-as="line">
                             <t t-set="withheld" t-value="False" />
                             <t t-foreach="line.tax_ids" t-as="line_tax">
                                 <t t-if="line_tax.amount &lt; 0">
@@ -548,7 +546,6 @@
                                 t-esc="line.facturae_file_date"
                             />
                             <SequenceNumber t-if="False" />
-
                             <DeliveryNotesReferences t-if="line.move_line_ids.picking_id">
                                 <DeliveryNote>
                                     <t t-foreach="line.move_line_ids.picking_id" t-as="picking">
@@ -557,7 +554,6 @@
                                     </t>
                                 </DeliveryNote>
                             </DeliveryNotesReferences>
-
                             <ItemDescription t-length="2500" t-esc="line.name" />
                             <Quantity t-esc="line.quantity" />
                             <UnitOfMeasure t-if="False" />
@@ -659,106 +655,116 @@
                                 t-if="line.product_id.default_code"
                             />
                             <Extensions t-if="False" />
-                        </InvoiceLine>
-                    </Items>
-                    <PaymentDetails t-if="move.payment_mode_id">
-                        <Installment>
-                            <InstallmentDueDate
-                                t-esc="move.invoice_date_due or move.invoice_date"
-                            />
-                            <InstallmentAmount
-                                t-esc="'%.2f' % (move.amount_residual)"
-                            />
-                            <t
-                                t-set="partner_bank"
-                                t-value="move.partner_banks_to_show()[:1]"
-                            />
-                            <t t-set="bank" t-value="partner_bank.bank_id" />
-                            <t
-                                t-set="payment_means"
-                                t-value="move.payment_mode_id.facturae_code if partner_bank or move.payment_mode_id.facturae_code not in ['02', '04'] else '01'"
-                            />
-                            <PaymentMeans t-esc="payment_means" />
-                            <AccountToBeDebited t-if="payment_means == '02'">
-                                <IBAN
-                                    t-minlength="5"
-                                    t-length="34"
-                                    t-esc="''.join(partner_bank.acc_number.split())"
-                                />
-                                <BankCode
-                                    t-length="60"
-                                    t-esc="bank.code"
-                                    t-if="bank.code"
-                                />
-                                <BranchCode t-length="60" t-if="False" />
-                                <BIC
-                                    t-minlength="11"
-                                    t-length="11"
-                                    t-esc="bank.bic"
-                                    t-if="bank.bic"
-                                />
-                                <PaymentReconciliationReference
-                                    t-length="60"
-                                    t-if="False"
-                                />
-                            </AccountToBeDebited>
-                            <AccountToBeCredited t-if="payment_means == '04'">
-                                <IBAN
-                                    t-minlength="5"
-                                    t-length="34"
-                                    t-esc="''.join(partner_bank.acc_number.split())"
-                                />
-                                <BankCode
-                                    t-length="60"
-                                    t-esc="bank.code"
-                                    t-if="bank.code"
-                                />
-                                <BranchCode t-length="60" t-if="False" />
-                                <BIC
-                                    t-minlength="11"
-                                    t-length="11"
-                                    t-esc="bank.bic"
-                                    t-if="bank.bic"
-                                />
-                            </AccountToBeCredited>
-                            <CollectionAdditionalInformation t-if="False" />
-                            <RegulatoryReportingData t-if="False" />
-                            <DebitReconciliationReference t-if="False" />
-                        </Installment>
-                    </PaymentDetails>
-                    <LegalLiterals t-if="False" />
-                    <t
-                        t-set="attachments"
-                        t-value="move._get_facturae_move_attachments()"
-                    />
-                    <AdditionalData t-if="move.narration or attachments">
-                        <RelatedInvoice t-if="False" />
-                        <RelatedDocuments t-if="attachments">
-                            <Attachment t-foreach="attachments" t-as="attachment">
-                                <AttachmentCompressionAlgorithm
-                                    t-esc="attachment.get('compression', False)"
-                                    t-if="attachment.get('compression', False)"
-                                />
-                                <AttachmentFormat t-esc="attachment['content_type']" />
-                                <AttachmentEncoding
-                                    t-esc="attachment.get('encoding', False)"
-                                    t-if="attachment.get('encoding', False)"
-                                />
-                                <AttachmentDescription
-                                    t-esc="attachment.get('description', False)"
-                                    t-if="attachment.get('description', False)"
-                                />
-                                <AttachmentData t-esc="attachment['data']" />
-                            </Attachment>
-                        </RelatedDocuments>
-                        <InvoiceAdditionalInformation
-                            t-length="2500"
-                            t-esc="move.narration"
-                            t-if="move.narration"
+
+                        </t>
+                    </InvoiceLine>
+                </Items>
+                <PaymentDetails t-if="move.payment_mode_id">
+                    <Installment>
+                        <InstallmentDueDate
+                            t-esc="move.invoice_date_due or move.invoice_date"
                         />
-                        <Extensions t-if="False" />
-                    </AdditionalData>
-                </Invoice>
+                        <InstallmentAmount
+                            t-esc="'%.2f' % (move.amount_residual)"
+                        />
+                        <t
+                            t-set="partner_bank"
+                            t-value="move.partner_banks_to_show()[:1]"
+                        />
+                        <t t-set="bank" t-value="partner_bank.bank_id" />
+                        <t
+                            t-set="payment_means"
+                            t-value="move.payment_mode_id.facturae_code if partner_bank or move.payment_mode_id.facturae_code not in ['02', '04'] else '01'"
+                        />
+                        <PaymentMeans t-esc="payment_means" />
+                        <AccountToBeDebited t-if="payment_means == '02'">
+                            <IBAN
+                                t-minlength="5"
+                                t-length="34"
+                                t-esc="''.join(partner_bank.acc_number.split())"
+                            />
+                            <BankCode
+                                t-length="60"
+                                t-esc="bank.code"
+                                t-if="bank.code"
+                            />
+                            <BranchCode t-length="60" t-if="False" />
+                            <BIC
+                                t-minlength="11"
+                                t-length="11"
+                                t-esc="bank.bic"
+                                t-if="bank.bic"
+                            />
+                            <PaymentReconciliationReference
+                                t-length="60"
+                                t-if="False"
+                            />
+                        </AccountToBeDebited>
+                        <AccountToBeCredited t-if="payment_means == '04'">
+                            <IBAN
+                                t-minlength="5"
+                                t-length="34"
+                                t-esc="''.join(partner_bank.acc_number.split())"
+                            />
+                            <BankCode
+                                t-length="60"
+                                t-esc="bank.code"
+                                t-if="bank.code"
+                            />
+                            <BranchCode t-length="60" t-if="False" />
+                            <BIC
+                                t-minlength="11"
+                                t-length="11"
+                                t-esc="bank.bic"
+                                t-if="bank.bic"
+                            />
+                        </AccountToBeCredited>
+                        <CollectionAdditionalInformation t-if="False" />
+                        <RegulatoryReportingData t-if="False" />
+                        <DebitReconciliationReference t-if="False" />
+                    </Installment>
+                </PaymentDetails>
+                <LegalLiterals t-if="False" />
+                <t
+                    t-set="attachments"
+                    t-value="move._get_facturae_move_attachments()"
+                />
+                <AdditionalData t-if="move.narration or attachments">
+                    <RelatedInvoice t-if="False" />
+                    <RelatedDocuments t-if="attachments">
+                        <Attachment t-foreach="attachments" t-as="attachment">
+                            <AttachmentCompressionAlgorithm
+                                t-esc="attachment.get('compression', False)"
+                                t-if="attachment.get('compression', False)"
+                            />
+                            <AttachmentFormat t-esc="attachment['content_type']" />
+                            <AttachmentEncoding
+                                t-esc="attachment.get('encoding', False)"
+                                t-if="attachment.get('encoding', False)"
+                            />
+                            <AttachmentDescription
+                                t-esc="attachment.get('description', False)"
+                                t-if="attachment.get('description', False)"
+                            />
+                            <AttachmentData t-esc="attachment['data']" />
+                        </Attachment>
+                    </RelatedDocuments>
+<!--                    <InvoiceAdditionalInformation-->
+<!--                        t-length="2500"-->
+<!--                        t-raw="move.narration"-->
+<!--                        t-if="move.narration"-->
+<!--                    />-->
+                        <t t-if="move.narration">
+                            <t t-set="clean_narration" t-value="move.narration.strip()" />
+                            <t t-if="clean_narration != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'">
+                                <InvoiceAdditionalInformation>
+                                    <t t-esc="clean_narration" />
+                                </InvoiceAdditionalInformation>
+                            </t>
+                        </t>
+                    <Extensions t-if="False" />
+                </AdditionalData>
+
             </Invoices>
             <Extensions t-if="False" />
         </t>

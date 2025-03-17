@@ -21,6 +21,7 @@
         "rma",
         "account_invoice_report_grouped_by_picking",
         "account_global_discount",
+        "l10n_es_facturae",
     ],
     "data": [
         "views/papper_format/papper_format_A4.xml",
