@@ -6,7 +6,7 @@
             inherit_id="web.external_layout_standard"
         >
             <xpath expr="//div[@name='company_address']" position="replace">
-                <div class="col-6" name="company_address">
+                <div class="col-6" name="company_address" style="font-size:0.8em;">
                     <p style="margin:0" t-field="company.name"></p>
                     <p style="margin:0" t-field="company.street"></p>
                     <p style="margin:0">
