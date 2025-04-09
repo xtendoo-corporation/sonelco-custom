@@ -143,7 +143,6 @@
             <t t-if="administrative_partner.state_id">
                 <Province t-length="20" t-esc="administrative_partner.state_id.name"/>
             </t>
-            <!--            <Province t-length="20" t-esc="administrative_partner.state_id.name" />-->
             <CountryCode t-esc="administrative_partner.country_id.code_alpha3"/>
         </OverseasAddress>
         <ContactDetails>
@@ -267,7 +266,6 @@
             </Parties>
             <Invoices>
                 <Invoice>
-
                     <t t-set="tax_info" t-value="move._get_facturae_tax_info()"/>
                     <t t-set="output_taxes" t-value="tax_info[0]"/>
                     <t t-set="withheld_taxes" t-value="tax_info[1]"/>
