@@ -29,34 +29,34 @@
                         <span t-esc="website_name"/>
                     </p>
                 </div>
-<!--                <t t-if="partner_direction">-->
-<!--                    <div class="col-6" name="partner_direction">-->
-<!--&lt;!&ndash;                        <strong>Billing Address:</strong>&ndash;&gt;-->
-<!--                        <div style="width:100%;display:block;">-->
-<!--                            <t t-if="partner_direction.parent_id">-->
-<!--                                <span t-esc="partner_direction.parent_id.name"/>-->
-<!--                                <span>,</span>-->
-<!--                            </t>-->
-<!--                            <span t-esc="partner_direction.name"/>-->
-<!--                        </div>-->
-<!--                        <span style="width:100%;display:block;" t-esc="partner_direction.street"/>-->
-<!--                        <div style="width:100%;display:block;">-->
-<!--                            <span t-esc="partner_direction.zip"/>-->
-<!--                            <span></span>-->
-<!--                            <span t-esc="partner_direction.city"/>-->
-<!--                        </div>-->
-<!--                        <div t-if="partner_direction.vat">-->
-<!--                            <span>NIF:</span>-->
-<!--                            <span t-field="partner_direction.vat"></span>-->
-<!--                        </div>-->
+                <!--                <t t-if="partner_direction">-->
+                <!--                    <div class="col-6" name="partner_direction">-->
+                <!--&lt;!&ndash;                        <strong>Billing Address:</strong>&ndash;&gt;-->
+                <!--                        <div style="width:100%;display:block;">-->
+                <!--                            <t t-if="partner_direction.parent_id">-->
+                <!--                                <span t-esc="partner_direction.parent_id.name"/>-->
+                <!--                                <span>,</span>-->
+                <!--                            </t>-->
+                <!--                            <span t-esc="partner_direction.name"/>-->
+                <!--                        </div>-->
+                <!--                        <span style="width:100%;display:block;" t-esc="partner_direction.street"/>-->
+                <!--                        <div style="width:100%;display:block;">-->
+                <!--                            <span t-esc="partner_direction.zip"/>-->
+                <!--                            <span></span>-->
+                <!--                            <span t-esc="partner_direction.city"/>-->
+                <!--                        </div>-->
+                <!--                        <div t-if="partner_direction.vat">-->
+                <!--                            <span>NIF:</span>-->
+                <!--                            <span t-field="partner_direction.vat"></span>-->
+                <!--                        </div>-->
 
-<!--                        <span style="width:100%;display:block;" t-esc="partner_direction.country_id.name"/>-->
+                <!--                        <span style="width:100%;display:block;" t-esc="partner_direction.country_id.name"/>-->
 
-<!--                    </div>-->
-<!--                </t>-->
+                <!--                    </div>-->
+                <!--                </t>-->
             </xpath>
 
-            <xpath expr="//div[@class='text-center']" position="replace">
+            <xpath expr="//div[hasclass('text-center')]" position="replace">
                 <div class="text-center" style="border-top: 1px solid black;font-size:0.8em;">
                     <ul class="list-inline mb4">
                         <li t-if="company.vat" class="list-inline-item d-inline"><t
@@ -80,7 +80,6 @@
                     </div>
                 </div>
             </xpath>
-
 
         </template>
     </data>
