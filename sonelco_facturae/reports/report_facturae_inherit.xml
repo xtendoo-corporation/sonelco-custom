@@ -1,7 +1,7 @@
 <!-- `sonelco_facturae/reports/report_facturae_inherit.xml` -->
 <odoo>
     <template id="report_facturae_inherit" inherit_id="l10n_es_facturae.report_facturae">
-        <xpath expr="//SequenceNumber" position="after">
+        <xpath expr="//ItemDescription" position="before">
             <DeliveryNotesReferences t-if="line.move_line_ids.picking_id">
                 <DeliveryNote>
                     <t t-foreach="line.move_line_ids.picking_id" t-as="picking">
