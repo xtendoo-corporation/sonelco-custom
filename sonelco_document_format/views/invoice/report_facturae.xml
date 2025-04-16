@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <report
-        id="sonelco_report_facturae"
-        name="sonelco_document_format.template_facturae"
-        string="Factura-E Sonelco sin firmar"
-        report_type="qweb-xml"
-        model="account.move"
-    />
+<!--    <report-->
+<!--        id="sonelco_report_facturae"-->
+<!--        name="sonelco_document_format.template_facturae"-->
+<!--        string="Factura-E Sonelco sin firmar"-->
+<!--        report_type="qweb-xml"-->
+<!--        model="account.move"-->
+<!--    />-->
+
+    <record id="sonelco_report_facturae" model="ir.actions.report">
+        <field name="report_name">sonelco_document_format.template_facturae</field>
+        <field name="name">Facturae Sonelco sin firmar</field>
+        <field name="report_type">qweb-xml</field>
+        <field name="model">account.move</field>
+    </record>
+
     <template id="facturae_header">
         <t t-if="version == '3_2'">
             &lt;fe:Facturae xmlns:fe="http://www.facturae.es/Facturae/2009/v3.2/Facturae"
