@@ -558,6 +558,10 @@
                             />
                             <SequenceNumber t-if="False" />
 
+                            <DeliveryNotesReferences>
+                                DeliveryNote
+                            </DeliveryNotesReferences>
+
                             <DeliveryNotesReferences t-if="line.move_line_ids.picking_id">
                                 <DeliveryNote>
                                     <t t-foreach="line.move_line_ids.picking_id" t-as="picking">
