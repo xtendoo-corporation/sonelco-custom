@@ -65,3 +65,7 @@ class AccountMove(models.Model):
             for key, value in picking_dict.items()
         ]
         return self._sort_grouped_lines(with_picking) + no_picking
+
+    @api.onchange('ref')
+    def _onchange_ref(self):
+        self.facturae_receiver_contract_reference = self.ref
