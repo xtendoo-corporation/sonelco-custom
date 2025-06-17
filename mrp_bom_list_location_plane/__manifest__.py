@@ -3,7 +3,7 @@
 
 {
     "name": "MRP bom list location plane",
-    "version": "15.0.0.0",
+    "version": "16.0.0.0",
     "summary": "MRP bom list location plane",
     "author": "Dani Domínguez",
     "company": "Xtendoo",

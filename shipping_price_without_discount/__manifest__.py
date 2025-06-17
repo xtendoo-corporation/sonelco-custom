@@ -3,7 +3,7 @@
 
 {
     "name": "shipping price without discount",
-    "version": "15.0.0.0",
+    "version": "16.0.0.0",
     "summary": "shipping price without discount",
     "author": "Dani Domínguez",
     "company": "Xtendoo",

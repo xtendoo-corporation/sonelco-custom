@@ -3,7 +3,7 @@
 
 {
     "name": "Purchase global discount apply in account",
-    "version": "15.0.0.0",
+    "version": "16.0.0.0",
     "summary": "Purchase global discount apply in account",
     "author": "Dani Domínguez",
     "company": "Xtendoo",

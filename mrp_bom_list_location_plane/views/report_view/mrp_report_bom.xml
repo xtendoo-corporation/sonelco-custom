@@ -31,14 +31,14 @@
         </template>
 
 
-        <template id="report_mrp_bom_line_sonelco" inherit_id="mrp.report_mrp_bom_line">
-        <xpath expr="//tr/td[last()]" position="replace">
-            <td>
-                <span>
-                        <t t-esc="l['location_plane']"/>
-                    </span>
-            </td>
-        </xpath>
-    </template>
+<!--        <template id="report_mrp_bom_line_sonelco" inherit_id="mrp.report_mrp_bom_line">-->
+<!--        <xpath expr="//tr/td[last()]" position="replace">-->
+<!--            <td>-->
+<!--                <span>-->
+<!--                        <t t-esc="l['location_plane']"/>-->
+<!--                    </span>-->
+<!--            </td>-->
+<!--        </xpath>-->
+<!--    </template>-->
     </data>
 </odoo>

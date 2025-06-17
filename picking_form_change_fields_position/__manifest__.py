@@ -3,7 +3,7 @@
 
 {
     "name": "Picking form change fields position",
-    "version": "15.0.0.0",
+    "version": "16.0.0.0",
     "summary": "Cambio de posición de varios campos en el formulario del picking",
     "author": "Dani Domínguez",
     "company": "Xtendoo",

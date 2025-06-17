@@ -3,7 +3,7 @@
 
 {
     "name": "Sonelco Document Format",
-    "version": "15.0.0.0",
+    "version": "16.0.0.0",
     "summary": "Formatos de impresión para Sonelco",
     "author": "Dani Domínguez",
     "company": "Xtendoo",
@@ -27,7 +27,7 @@
         "views/papper_format/papper_format_A4.xml",
         "views/layout/external_layout_clean.xml",
         "views/sale/sale_order_view.xml",
-        "views/rma/rma_view.xml",
+        #"views/rma/rma_view.xml",
         "views/package_label/package_label_new.xml",
         "views/stock_picking/unvalued_stock_picking.xml",
         "views/stock_picking/valued_stock_picking.xml",

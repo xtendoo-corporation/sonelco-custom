@@ -92,7 +92,7 @@
                 </div>
 
             </xpath>
-            <xpath expr="//div[@id='product_information']" position="replace">
+            <xpath expr="//tr[@id='product_information']" position="replace">
                 <div class="row mb32 mt32">
                     <div class="col-8">
                         <strong>Product:</strong>
