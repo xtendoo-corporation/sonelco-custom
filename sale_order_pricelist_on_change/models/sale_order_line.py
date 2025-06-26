@@ -21,9 +21,9 @@ class SaleOrderLine(models.Model):
 
     @api.onchange('product_id')
     def product_id_change(self):
-        result = super().product_id_change()
+        # result = super().product_id_change()
         self.pricelist_id = self.order_id.pricelist_id.id
-        return result
+        # return result
 
 
 
