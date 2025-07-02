@@ -35,7 +35,7 @@ class AccountMove(models.Model):
         for line in self.invoice_line_ids.filtered(lambda x: x.display_type == 'line_section' or x.display_type == 'line_note'):
             key = line
             lines_dict.setdefault(key, 0)
-        for line in self.invoice_line_ids.filtered(lambda x: not x.display_type):
+        for line in self.invoice_line_ids.filtered(lambda x: x.display_type == 'product'):
             remaining_qty = line.quantity
             for move in line.move_line_ids:
                 key = (move.picking_id, line)
