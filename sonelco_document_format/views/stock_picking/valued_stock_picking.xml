@@ -103,35 +103,35 @@
                             <h2 style="clear:both;">
                                 <span t-field="o.name"/>
                             </h2>
-                           <div class="row mt32 mb32" style="width: 100%; display: table; table-layout: fixed;">
-    <div t-if="o.origin" style="display: table-cell; padding: 5px;">
-        <strong>Sale order:</strong>
-        <p t-field="o.origin"/>
-    </div>
-    <div t-if="o.state" style="display: table-cell; padding: 5px;">
-        <strong>Delivery date:</strong>
-        <t t-if="o.state == 'done'">
-            <p t-field="o.date_done" t-options='{"format": "dd/MM/yyyy"}'/>
-        </t>
-        <t t-if="o.state != 'done'">
-            <p t-field="o.scheduled_date" t-options='{"format": "dd/MM/yyyy"}'/>
-        </t>
-    </div>
-    <div t-if="o.picking_type_id.code == 'outgoing' and o.carrier_id" style="display: table-cell; padding: 5px;">
-        <strong>Carrier:</strong>
-        <p t-field="o.carrier_id"/>
-    </div>
-    <div t-if="o.shipping_weight" style="display: table-cell; padding: 5px;">
-        <strong>Weight:</strong>
-        <br/>
-        <span t-field="o.shipping_weight"/>
-        <span t-field="o.weight_uom_name"/>
-    </div>
-    <div t-if="o.carrier_tracking_ref" style="display: table-cell; padding: 5px;">
-        <strong>Tracking Number:</strong>
-        <p t-field="o.carrier_tracking_ref"/>
-    </div>
-</div>
+                          <div class="row mt32 mb32" style="width: 100%; display: table; table-layout: fixed; font-size:0.9em;">
+                                <div t-if="o.origin" style="display: table-cell; padding: 5px;">
+                                    <strong>Sale order:</strong>
+                                    <p t-field="o.origin"/>
+                                </div>
+                                <div t-if="o.state" style="display: table-cell; padding: 5px;">
+                                    <strong>Delivery date:</strong>
+                                    <t t-if="o.state == 'done'">
+                                        <p t-field="o.date_done" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </t>
+                                    <t t-if="o.state != 'done'">
+                                        <p t-field="o.scheduled_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </t>
+                                </div>
+                                <div t-if="o.picking_type_id.code == 'outgoing' and o.carrier_id" style="display: table-cell; padding: 5px;">
+                                    <strong>Carrier:</strong>
+                                    <p t-field="o.carrier_id"/>
+                                </div>
+                                <div t-if="o.shipping_weight" style="display: table-cell; padding: 5px;">
+                                    <strong>Weight:</strong>
+                                    <br/>
+                                    <span t-field="o.shipping_weight"/>
+                                    <span t-field="o.weight_uom_name"/>
+                                </div>
+                                <div t-if="o.sudo().sale_id.client_order_ref" style="display: table-cell; padding: 5px;">
+                                    <strong>Customer Reference:</strong>
+                                    <p t-field="o.sudo().sale_id.client_order_ref"/>
+                                </div>
+                            </div>
                             <table class="table table-sm" t-if="o.state!='done'" name="stock_move_table">
                                 <thead>
                                     <tr>
