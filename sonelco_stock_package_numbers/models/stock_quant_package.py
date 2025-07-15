@@ -29,7 +29,7 @@ class StockQuantPackage(models.Model):
     @api.depends("quant_ids")
     def _compute_delivery_id(self):
         self.delivery_id = self._get_delivery_id()
-        self.property_delivery_carrier_id = self.partner_id.property_delivery_carrier_id
+       # self.property_delivery_carrier_id = self.partner_id.property_delivery_carrier_id
 
     def _get_delivery_id(self):
         delivery_id = False
