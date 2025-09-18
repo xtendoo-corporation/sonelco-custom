@@ -1,0 +1,15 @@
+<!-- `sonelco_facturae/reports/report_facturae_inherit.xml` -->
+<odoo>
+    <template id="report_facturae_inherit" inherit_id="l10n_es_facturae.report_facturae">
+        <xpath expr="//ItemDescription" position="before">
+            <DeliveryNotesReferences t-if="line.move_line_ids.picking_id">
+                <DeliveryNote>
+                    <t t-foreach="line.move_line_ids.picking_id" t-as="picking">
+                        <DeliveryNoteNumber t-esc="picking.name"/>
+                        <DeliveryNoteDate t-esc="picking.date_done and picking.date_done.strftime('%Y-%m-%d') or ''"/>
+                    </t>
+                </DeliveryNote>
+            </DeliveryNotesReferences>
+        </xpath>
+    </template>
+</odoo>
