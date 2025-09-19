@@ -3,7 +3,7 @@
 
 {
     "name": "Sonelco Stock Package Numbers",
-    "version": "18.0.0.0",
+    "version": "18.0.1",
     "summary": "Número de bultos en un paquete",
     "author": "Manuel Calero",
     "company": "Xtendoo",

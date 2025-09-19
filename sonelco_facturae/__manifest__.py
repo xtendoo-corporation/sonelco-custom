@@ -1,7 +1,7 @@
 # `sonelco_facturae/__manifest__.py`
 {
     'name': 'Sonelco Facturae',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1',
     'author': 'Xtendoo',
     'category': 'Accounting',
     'depends': [
