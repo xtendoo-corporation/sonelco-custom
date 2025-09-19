@@ -1,6 +1,6 @@
 {
     'name': 'Sale Order Pricelist onChange',
-    'version': '18.0.1',
+    "version": "18.0.1.0",
     'category': 'Sales Management',
     'author': 'Dani-xtendoo',
     'website': 'https://www.xtendoo.es',
