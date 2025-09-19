@@ -13,7 +13,7 @@
         Agent_ids not propagate to contact child
     """,
     "depends": [
-        "sale_commission",
+        "sale_commission_oca",
         "contacts",
     ],
     "data": [
