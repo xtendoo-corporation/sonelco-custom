@@ -25,7 +25,7 @@
     ],
     "data": [
         "views/papper_format/papper_format_A4.xml",
-        "views/layout/external_layout_clean.xml",
+        #"views/layout/external_layout_clean.xml",
         "views/sale/sale_order_view.xml",
         #"views/rma/rma_view.xml",
         "views/package_label/package_label_new.xml",
