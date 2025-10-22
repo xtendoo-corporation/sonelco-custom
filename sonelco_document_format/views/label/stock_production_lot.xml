@@ -2,13 +2,23 @@
 <odoo>
     <data>
 
-        <report
-            id="product_lot_label"
-            string="Etiqueta nº lote"
-            model="stock.production.lot"
-            report_type="qweb-pdf"
-            name="sonelco_document_format.report_product_lot_label"
-        />
+                <record id="sonelco_document_format.product_lot_label" model="ir.actions.report">
+            <field name="name">Etiqueta nº lote</field>
+            <field name="model">stock.lot</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sonelco_document_format.report_product_lot_label</field>
+            <field name="report_file">sonelco_document_format.report_product_lot_label</field>
+            <field name="attachment"/>
+            <field name="binding_model_id" eval="False"/>
+        </record>
+
+<!--        <report-->
+<!--            id="product_lot_label"-->
+<!--            string="Etiqueta nº lote"-->
+<!--            model="stock.production.lot"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="sonelco_document_format.report_product_lot_label"-->
+<!--        />-->
         <template id="report_product_lot_label">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">

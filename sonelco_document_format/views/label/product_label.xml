@@ -2,12 +2,22 @@
 <odoo>
     <data>
 
-        <report
-            id="product_label"
-            string="Etiqueta producto"
-            model="stock.production.lot"
-            report_type="qweb-pdf"
-            name="sonelco_document_format.report_product_label"
+        <record id="sonelco_document_format.product_label" model="ir.actions.report">
+            <field name="name">Etiqueta product</field>
+            <field name="model">stock.lot</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sonelco_document_format.report_product_label</field>
+            <field name="report_file">sonelco_document_format.report_product_label</field>
+            <field name="attachment"/>
+            <field name="binding_model_id" eval="False"/>
+        </record>
+
+<!--        <report-->
+<!--            id="product_label"-->
+<!--            string="Etiqueta producto"-->
+<!--            model="stock.production.lot"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="sonelco_document_format.report_product_label"-->
         />
         <template id="report_product_label">
             <t t-call="web.html_container">
@@ -64,9 +74,11 @@
                                                               t-options='{"widget": "image"}' style="witdh:100%;"/>
                                                     </td>
                                                     <td style="width:20%;text-align:center;">
-                                                        <span t-field="o.company_id.favicon"
-                                                              t-options='{"widget": "image"}'
-                                                              style="witdh:100%;margin-left:10px;"/>
+<!--                                                        <span t-field="o.company_id.favicon"-->
+<!--                                                              t-options='{"widget": "image"}'-->
+<!--                                                              style="witdh:100%;margin-left:10px;"/>-->
+                                                        <img style="width:100%;"
+                                             src="/sonelco_document_format/static/src/img/fav-icon-sonelco.png"/>
                                                     </td>
                                                     <td style="width:60%; text-align:center;margin:0;padding:0;">
                                                         <img t-if="o.product_id.barcode"
