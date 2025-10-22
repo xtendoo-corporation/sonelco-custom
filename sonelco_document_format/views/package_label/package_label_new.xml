@@ -17,16 +17,28 @@
             <field name="dpi">90</field>
         </record>
 
-        <report
-            string="Etiqueta"
-            id="sonelco_document_format.label_packaging_sonelco_new"
-            model="stock.quant.package"
-            report_type="qweb-pdf"
-            name="sonelco_document_format.report_label_packaging_sonelco_new"
-            file="sonelco_document_format.report_label_packaging_sonelco_new"
-            paperformat="sonelco_document_format.label_sonelco_100x150"
-            print_report_name="'Etiqueta - %s' % (object.name)"
-        />
+         <record id="sonelco_document_format.label_packaging_sonelco_new" model="ir.actions.report">
+            <field name="name">Etiqueta</field>
+            <field name="model">stock.quant.package</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sonelco_document_format.report_label_packaging_sonelco_new</field>
+            <field name="report_file">sonelco_document_format.report_label_packaging_sonelco_new</field>
+            <field name="is_invoice_report">True</field>
+            <field name="print_report_name">'Etiqueta - %s' % (object.name)</field>
+            <field name="attachment"/>
+            <field name="binding_model_id" eval="False"/>  <!-- removes the action from the Print menu (forced False value for update) -->
+        </record>
+
+<!--        <report-->
+<!--            string="Etiqueta"-->
+<!--            id="sonelco_document_format.label_packaging_sonelco_new"-->
+<!--            model="stock.quant.package"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="sonelco_document_format.report_label_packaging_sonelco_new"-->
+<!--            file="sonelco_document_format.report_label_packaging_sonelco_new"-->
+<!--            paperformat="sonelco_document_format.label_sonelco_100x150"-->
+<!--            print_report_name="'Etiqueta - %s' % (object.name)"-->
+<!--        />-->
 
         <template id="sonelco_document_format.report_label_packaging_sonelco_new">
             <t t-name="sonelco_document_format.report_label_packaging_sonelco_new">
@@ -37,7 +49,7 @@
                             <t t-set="num_copy" t-value="1"/>
                         </t>
                         <t t-set="iteration" t-value="1"/>
-                        <t t-foreach="int(num_copy)" t-as="">
+                        <t t-foreach="int(num_copy)" t-as="i">
                             <div class="page" style="border:5px solid black;width:106%;margin-left:-3%;">
                                 <div class="container">
                                     <div style="width:98%;display:block;float:left;height:460px;">
