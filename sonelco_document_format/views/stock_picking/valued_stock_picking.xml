@@ -2,15 +2,26 @@
 
 <odoo>
     <data>
-        <report id="action_sonelco_valued_report_picking"
-                model="stock.picking"
-                string="Albarán valorado"
-                name="sonelco_document_format.sonelco_valued_report_picking"
-                file="sonelco_document_format.sonelco_valued_report_picking"
-                report_type="qweb-pdf"
-                print_report_name="'Delivery valued - %s - %s' % (object.partner_id.name or '', object.name)"
-                paperformat="paperformat_sonelco_A4"
-        />
+<!--        <report id="action_sonelco_valued_report_picking"-->
+<!--                model="stock.picking"-->
+<!--                string="Albarán valorado"-->
+<!--                name="sonelco_document_format.sonelco_valued_report_picking"-->
+<!--                file="sonelco_document_format.sonelco_valued_report_picking"-->
+<!--                report_type="qweb-pdf"-->
+<!--                print_report_name="'Delivery valued - %s - %s' % (object.partner_id.name or '', object.name)"-->
+<!--                paperformat="paperformat_sonelco_A4"-->
+<!--        />-->
+
+                        <record id="sonelco_document_format.action_sonelco_valued_report_picking" model="ir.actions.report">
+            <field name="name">Albarán valorado</field>
+            <field name="model">stock.picking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sonelco_document_format.sonelco_valued_report_picking</field>
+            <field name="report_file">sonelco_document_format.sonelco_valued_report_picking</field>
+            <field name="print_report_name">'Delivery valued - %s - %s' % (object.partner_id.name or '', object.name)</field>
+            <field name="attachment"/>
+            <field name="binding_model_id" eval="False"/>
+        </record>
 
         <template id="sonelco_document_format.sonelco_valued_report_picking">
             <t t-name="sonelco_document_format.sonelco_valued_report_picking">
@@ -158,7 +169,7 @@
                                             </p>
                                         </td>
                                         <td class="text-right">
-                                            <span t-esc="'%.0f'%move.quantity_done"/>
+                                            <span t-esc="'%.0f'%move.quantity"/>
                                         </td>
                                         <t t-if="o.state != 'done'">
                                             <td class="text-right">
@@ -211,7 +222,7 @@
                                             <span t-field="move_line.lot_name"/>
                                         </td>
                                         <td class="text-right">
-                                            <span t-esc="'%.0f'%move_line.qty_done"/>
+                                            <span t-esc="'%.0f'%move_line.quantity"/>
                                         </td>
 
                                         <td class="text-right">

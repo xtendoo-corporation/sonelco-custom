@@ -2,15 +2,26 @@
 
 <odoo>
     <data>
-        <report id="action_report_delivery_unvalued"
-                model="stock.picking"
-                string="Albarán sin valorar"
-                name="sonelco_document_format.sonelco_report_picking"
-                file="sonelco_document_format.sonelco_report_picking"
-                report_type="qweb-pdf"
-                print_report_name="'Delivery unvalued - %s - %s' % (object.partner_id.name or '', object.name)"
-                paperformat="paperformat_sonelco_A4"
-        />
+<!--        <report id="action_report_delivery_unvalued"-->
+<!--                model="stock.picking"-->
+<!--                string="Albarán sin valorar"-->
+<!--                name="sonelco_document_format.sonelco_report_picking"-->
+<!--                file="sonelco_document_format.sonelco_report_picking"-->
+<!--                report_type="qweb-pdf"-->
+<!--                print_report_name="'Delivery unvalued - %s - %s' % (object.partner_id.name or '', object.name)"-->
+<!--                paperformat="paperformat_sonelco_A4"-->
+<!--        />-->
+
+                <record id="sonelco_document_format.action_report_delivery_unvalued" model="ir.actions.report">
+            <field name="name">Albarán sin valorar</field>
+            <field name="model">stock.picking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sonelco_document_format.sonelco_report_picking</field>
+            <field name="report_file">sonelco_document_format.sonelco_report_picking</field>
+            <field name="print_report_name">'Delivery unvalued - %s - %s' % (object.partner_id.name or '', object.name)</field>
+            <field name="attachment"/>
+            <field name="binding_model_id" eval="False"/>
+        </record>
         <template id="sonelco_document_format.sonelco_report_picking">
             <t t-name="sonelco_document_format.sonelco_report_picking">
                 <t t-foreach="docs" t-as="o">
