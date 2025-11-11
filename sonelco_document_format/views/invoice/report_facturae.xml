@@ -73,7 +73,7 @@
             <TaxIdentificationNumber
                 t-minlength="3"
                 t-length="30"
-                t-esc="partner.vat"
+                t-esc="('ES' + partner.vat.strip()) if partner.vat and not partner.vat.strip().upper().startswith('ES') else (partner.vat.strip() if partner.vat else '')"
             />
         </TaxIdentification>
         <PartyIdentification t-if="False" />
@@ -498,7 +498,7 @@
                     </InvoiceTotals>
                     <Items>
                         <InvoiceLine
-                            t-foreach="move.line_ids.filtered(lambda r: not r.display_type and not r.exclude_from_invoice_tab)"
+                            t-foreach="move.line_ids"
                             t-as="line"
                         >
                             <t
