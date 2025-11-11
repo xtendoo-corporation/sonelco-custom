@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <template id="report_invoice_document_inherit"
+                  inherit_id="account.report_invoice_document">
+            <xpath expr="//t[@t-set='information_block']" position="replace">
+                <t t-set="information_block"/>
+            </xpath>
+            <xpath expr="//div[@name='delivery_date']" position="replace">
+            </xpath>
+            <xpath expr="//span[@id='payment_terms_note_id']" position="replace">
+                <p name="payment_mode" t-if="o.payment_mode_id">
+                    <strong>Modo de Pago: </strong>
+                    <span t-esc="o.payment_mode_id.name"/>
+                </p>
+            </xpath>
+            <xpath expr="//p[@name='payment_communication']" position="replace">
+            </xpath>
+        </template>
+
+        <template id="report_invoice_document_grouped_inherit"
+                  inherit_id="account_invoice_report_grouped_by_picking.report_invoice_document">
+            <xpath expr="//tr[@t-if='picking != next_picking[0]']" position="replace">
+                <tr t-if="picking != next_picking[0]">
+                <td colspan="10" style="text-align: right;">
+                    <strong>Subtotal: </strong>
+                    <strong t-esc="subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                </td>
+                <t t-set="subtotal" t-value="0.0"/>
+            </tr>
+            </xpath>
+        </template>
+        <template id="report_invoice_document_payment_inherit"
+                  inherit_id="account_payment_partner.report_invoice_payment_mode">
+            <xpath expr="//p[@t-if='o.payment_mode_id.note']" position="replace">
+            </xpath>
+            <xpath expr="//p[@t-foreach='o.sudo().partner_banks_to_show()']" position="replace">
+                <p t-if="o.payment_mode_id.name and o.payment_mode_id.name == 'Cobro por transferencia'">
+                    <t t-if="o.partner_bank_id">
+                        <strong>Cuenta Bancaria:</strong>
+                        <t t-esc="o.partner_bank_id.acc_number"/>
+                    </t>
+                </p>
+<!--            <t t-if="o.payment_mode_id and o.payment_mode_id.show_bank_account != 'no'">-->
+<!--                <p t-foreach="o.sudo().partner_banks_to_show()" t-as="partner_bank">-->
+<!--                    <strong>Bank Account:</strong>-->
+<!--                    <t t-if="partner_bank.bank_id">-->
+<!--                        <t t-esc="partner_bank.bank_id.name + ('' if not partner_bank.bank_id.bic else ' (' + partner_bank.bank_id.bic + ')')"/>-->
+<!--                    </t>-->
+<!--                    <t t-if="o.payment_mode_id.show_bank_account == 'full'">-->
+<!--                        <span t-field="partner_bank.acc_number"/>-->
+<!--                    </t>-->
+<!--                    <t t-elif="o.payment_mode_id.show_bank_account == 'first'">-->
+<!--                        <span t-esc="partner_bank.acc_number[:o.payment_mode_id.show_bank_account_chars] + '*' * (len(partner_bank.acc_number) - o.payment_mode_id.show_bank_account_chars)"/>-->
+<!--                    </t>-->
+<!--                    <t t-elif="o.payment_mode_id.show_bank_account == 'last'">-->
+<!--                        <span t-esc="'*' * (len(partner_bank.acc_number) - o.payment_mode_id.show_bank_account_chars) + partner_bank.acc_number[-o.payment_mode_id.show_bank_account_chars:]"/>-->
+<!--                    </t>-->
+<!--                </p>-->
+<!--            </t>-->
+            </xpath>
+        </template>
+    </data>
+</odoo>
