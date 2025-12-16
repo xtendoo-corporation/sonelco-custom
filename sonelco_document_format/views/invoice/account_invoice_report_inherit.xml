@@ -17,6 +17,16 @@
             </xpath>
             <xpath expr="//p[@name='payment_communication']" position="replace">
             </xpath>
+            <xpath expr="//th[@name='th_discount']" position="replace">
+            </xpath>
+            <xpath expr="//th[@name='th_taxes']" position="replace">
+            </xpath>
+            <xpath expr="//td[@name='td_discount']" position="replace">
+            </xpath>
+            <xpath expr="//td[@name='td_taxes']" position="replace">
+            </xpath>
+            <xpath expr="//td[@name='td_taxes']" position="replace">
+            </xpath>
         </template>
 
         <template id="report_invoice_document_grouped_inherit"

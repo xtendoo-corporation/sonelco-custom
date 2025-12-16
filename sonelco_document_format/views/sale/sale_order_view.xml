@@ -67,6 +67,10 @@
             </xpath>
             <xpath expr="//td[@name='td_taxes']" position="replace">
             </xpath>
+            <xpath expr="//th[@name='th_discount']" position="replace">
+            </xpath>
+            <xpath expr="//td[@t-if='display_discount']" position="replace">
+            </xpath>
 
 
             <!--            <xpath expr="">-->
