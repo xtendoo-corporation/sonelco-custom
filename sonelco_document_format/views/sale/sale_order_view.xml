@@ -22,10 +22,10 @@
             </xpath>
 
             <xpath expr="//td[@name='td_name']" position="replace">
-                <t t-set="description_name" t-value="line.name"/>
-                <t t-set="code_position" t-value="description_name.find('product.id.name') + len('product.id.name')"/>
+               <t t-set="description_name" t-value="line.name"/>
+                <t t-set="code_position" t-value="description_name.find(']')"/>
                 <t t-if="code_position &gt; 0">
-                    <t t-set="description_name" t-value="description_name[code_position:]"/>
+                    <t t-set="description_name" t-value="description_name[code_position+1:]"/>
                 </t>
                 <td name="td_name" style="width:45%!important;">
                     <t t-if="doc.state not in ['draft','sent']">
