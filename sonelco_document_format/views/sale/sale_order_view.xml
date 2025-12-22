@@ -22,7 +22,7 @@
             </xpath>
 
             <xpath expr="//td[@name='td_name']" position="replace">
-               <t t-set="description_name" t-value="line.name"/>
+                <t t-set="description_name" t-value="line.name"/>
                 <t t-set="code_position" t-value="description_name.find(']')"/>
                 <t t-if="code_position &gt; 0">
                     <t t-set="description_name" t-value="description_name[code_position+1:]"/>
@@ -67,10 +67,10 @@
             </xpath>
             <xpath expr="//td[@name='td_taxes']" position="replace">
             </xpath>
-            <xpath expr="//th[@name='th_discount']" position="replace">
-            </xpath>
-            <xpath expr="//td[@t-if='display_discount']" position="replace">
-            </xpath>
+<!--            <xpath expr="//th[@name='th_discount']" position="replace">-->
+<!--            </xpath>-->
+<!--            <xpath expr="//td[@t-if='display_discount']" position="replace">-->
+<!--            </xpath>-->
 
 
             <!--            <xpath expr="">-->

@@ -24,6 +24,7 @@
         "l10n_es_facturae",
     ],
     "data": [
+        "views/stock_picking_view.xml",
         "views/papper_format/papper_format_A4.xml",
         "views/layout/external_layout_clean.xml",
         "views/sale/sale_order_view.xml",

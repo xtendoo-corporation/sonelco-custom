@@ -8,3 +8,4 @@ class ProductTemplate(models.Model):
     link = fields.Char(
         string='Link'
     )
+
