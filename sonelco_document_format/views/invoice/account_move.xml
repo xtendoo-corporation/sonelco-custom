@@ -135,144 +135,29 @@
                             <span t-if="o.name != '/'" t-field="o.name"/>
                         </h2>
 
-                         <div id="informations" class="row mt32 mb32">
-                            <t t-set="col_num" t-value="0"></t>
-                            <t t-if="o.invoice_date">
-                                <t t-set="col_num" t-value="col_num +1"></t>
-                            </t>
-                            <t t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'">
-                                <t t-set="col_num" t-value="col_num +1"></t>
-                            </t>
-                            <t t-if="o.invoice_origin">
-                                <t t-set="col_num" t-value="col_num +1"></t>
-                            </t>
-                            <t t-if="o.partner_id.ref">
-                                <t t-set="col_num" t-value="col_num +1"></t>
-                            </t>
-                            <t t-if="o.ref">
-                                <t t-set="col_num" t-value="col_num +1"></t>
-                            </t>
-                            <t t-if="col_num == 1">
-                                <div class="col-12 mb-2" t-if="o.invoice_date" name="invoice_date">
-                                    <strong>Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date"/>
-                                </div>
-                                <div class="col-12 mb-2"
-                                     t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'"
-                                     name="due_date">
-                                    <strong>Fecha de vencimiento:</strong>
-                                    <p class="m-0" t-field="o.invoice_date_due"/>
-                                </div>
-                                <div class="col-12 mb-2" t-if="o.invoice_origin" name="origin">
-                                    <strong>Origen:</strong>
-                                    <p class="m-0" t-field="o.invoice_origin"/>
-                                </div>
-                                <div class="col-12 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                                    <strong>Customer Code:</strong>
-                                    <p class="m-0" t-field="o.partner_id.ref"/>
-                                </div>
-                                <div class="col-12 mb-2" t-if="o.ref" name="reference">
-                                    <strong>Referencia:</strong>
-                                    <p class="m-0" t-field="o.ref"/>
-                                </div>
-                            </t>
-                            <t t-if="col_num == 2">
-                                <div class="col-6 mb-2" t-if="o.invoice_date" name="invoice_date">
-                                    <strong>Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date"/>
-                                </div>
-                                <div class="col-6 mb-2"
-                                     t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'"
-                                     name="due_date">
-                                    <strong>Fecha de vencimiento:</strong>
-                                    <p class="m-0" t-field="o.invoice_date_due"/>
-                                </div>
-                                <div class="col-6 mb-2" t-if="o.invoice_origin" name="origin">
-                                    <strong>Origen:</strong>
-                                    <p class="m-0" t-field="o.invoice_origin"/>
-                                </div>
-                                <div class="col-6 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                                    <strong>Customer Code:</strong>
-                                    <p class="m-0" t-field="o.partner_id.ref"/>
-                                </div>
-                                <div class="col-6 mb-2" t-if="o.ref" name="reference">
-                                    <strong>Referencia:</strong>
-                                    <p class="m-0" t-field="o.ref"/>
-                                </div>
-                            </t>
-                            <t t-if="col_num == 3">
-                                <div class="col-2 mb-2" t-if="o.invoice_date" name="invoice_date">
-                                    <strong>Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date"/>
-                                </div>
-                                <div class="col-2 mb-2"
-                                     t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'"
-                                     name="due_date">
-                                    <strong>Fecha de vencimiento:</strong>
-                                    <p class="m-0" t-field="o.invoice_date_due"/>
-                                </div>
-                                <div class="col-5 mb-2" t-if="o.invoice_origin" name="origin">
-                                    <strong>Origen:</strong>
-                                    <p class="m-0" t-field="o.invoice_origin"/>
-                                </div>
-                                <div class="col-4 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                                    <strong>Customer Code:</strong>
-                                    <p class="m-0" t-field="o.partner_id.ref"/>
-                                </div>
-                                <div class="col-5 mb-2" t-if="o.ref" name="reference">
-                                    <strong>Referencia:</strong>
-                                    <p class="m-0" t-field="o.ref"/>
-                                </div>
-                            </t>
-                            <t t-if="col_num == 4">
-                                <div class="col-2 mb-2" t-if="o.invoice_date" name="invoice_date">
-                                    <strong>Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date"/>
-                                </div>
-                                <div class="col-2 mb-2"
-                                     t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'"
-                                     name="due_date">
-                                    <strong>Fecha de vencimiento:</strong>
-                                    <p class="m-0" t-field="o.invoice_date_due"/>
-                                </div>
-                                <div class="col-4 mb-2" t-if="o.invoice_origin" name="origin">
-                                    <strong>Origen:</strong>
-                                    <p class="m-0" t-field="o.invoice_origin"/>
-                                </div>
-                                <div class="col-3 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                                    <strong>Customer Code:</strong>
-                                    <p class="m-0" t-field="o.partner_id.ref"/>
-                                </div>
-                                <div class="col-4 mb-2" t-if="o.ref" name="reference">
-                                    <strong>Referencia:</strong>
-                                    <p class="m-0" t-field="o.ref"/>
-                                </div>
-                            </t>
-                             <t t-if="col_num == 5">
-                                <div class="col-2 mb-2" t-if="o.invoice_date" name="invoice_date">
-                                    <strong>Date:</strong>
-                                    <p class="m-0" t-field="o.invoice_date"/>
-                                </div>
-                                <div class="col-2 mb-2"
-                                     t-if="o.invoice_date_due and o.type == 'out_invoice' and o.state == 'posted'"
-                                     name="due_date">
-                                    <strong>Fecha de vencimiento:</strong>
-                                    <p class="m-0" t-field="o.invoice_date_due"/>
-                                </div>
-                                <div class="col-2 mb-2" t-if="o.invoice_origin" name="origin">
-                                    <strong>Origen:</strong>
-                                    <p class="m-0" t-field="o.invoice_origin"/>
-                                </div>
-                                <div class="col-2 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                                    <strong>Customer Code:</strong>
-                                    <p class="m-0" t-field="o.partner_id.ref"/>
-                                </div>
-                                <div class="col-2 mb-2" t-if="o.ref" name="reference">
-                                    <strong>Referencia:</strong>
-                                    <p class="m-0" t-field="o.ref"/>
-                                </div>
-                            </t>
-
+                         <!-- Información de la factura - distribución automática con espacio entre columnas -->
+                         <div id="informations" class="d-flex flex-wrap justify-content-between mt-4 mb-4" style="width: 100%;">
+                            <div t-if="o.invoice_date" name="invoice_date" class="mb-2" style="min-width: 100px;">
+                                <strong>Fecha:</strong>
+                                <p class="m-0" t-field="o.invoice_date"/>
+                            </div>
+                            <div t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'"
+                                 name="due_date" class="mb-2" style="min-width: 120px;">
+                                <strong>Fecha de vencimiento:</strong>
+                                <p class="m-0" t-field="o.invoice_date_due"/>
+                            </div>
+                            <div t-if="o.invoice_origin" name="origin" class="mb-2" style="min-width: 100px;">
+                                <strong>Origen:</strong>
+                                <p class="m-0" t-field="o.invoice_origin"/>
+                            </div>
+                            <div t-if="o.partner_id.ref" name="customer_code" class="mb-2" style="min-width: 100px;">
+                                <strong>Código Cliente:</strong>
+                                <p class="m-0" t-field="o.partner_id.ref"/>
+                            </div>
+                            <div t-if="o.ref" name="reference" class="mb-2" style="min-width: 100px;">
+                                <strong>Referencia:</strong>
+                                <p class="m-0" t-field="o.ref"/>
+                            </div>
                         </div>
 
                         <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
