@@ -2,48 +2,72 @@
 
 <odoo>
     <data>
+        <!-- 
+            Heredamos la plantilla base de RMA para personalizarla según los requisitos de Sonelco.
+            La plantilla original es 'rma.report_rma_document' del módulo RMA.
+        -->
         <template id="report_rma_document_sonelco"
                   inherit_id="rma.report_rma_document">
 
-            <!-- Reemplazar el div de general_information para agregar mejor espaciado -->
+            <!-- 
+                XPATH 1: Ocultar el bloque de direcciones original
+                El bloque original mostraba tanto la dirección de facturación como la de envío,
+                causando duplicación cuando ambas son iguales.
+                Usamos position="replace" sin contenido para eliminar completamente este bloque.
+            -->
+            <xpath expr="//t[@t-set='information_block']" position="replace"/>
+
+            <!-- 
+                XPATH 2: Añadir solo la dirección de facturación
+                Insertamos la dirección de facturación justo después de la dirección de la empresa.
+                - t-field="doc.partner_invoice_id": Campo que contiene la dirección de facturación del RMA
+                - widget="contact": Widget de Odoo que formatea direcciones automáticamente
+                - fields: Especificamos qué datos mostrar (dirección, nombre, teléfono)
+                - no_marker=True: No mostrar el icono de localización
+                - phone_icons=True: Mostrar iconos junto a los teléfonos
+            -->
+            <xpath expr="//t[@t-set='address']" position="after">
+                <t t-set="information_block"> 
+                    <strong>Dirección de envío:</strong> 
+                    <div t-field="doc.partner_shipping_id" 
+                        t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                </t>
+            </xpath>
+
+            <!-- 
+                XPATH 3: Reemplazar la sección de información general del RMA
+                Personalizamos esta sección para:
+                1. Mantener: Referencia y Fecha
+                2. Quitar: Fecha límite, Responsable y Estado (no son necesarios según cliente)
+                3. Añadir: Campo Etiqueta (tag_ids)
+                4. Modificar: Formato de fecha para mostrar solo día/mes/año (sin hora)
+            -->
             <xpath expr="//div[@id='general_information']" position="replace">
                 <div id="general_information" class="d-flex flex-wrap justify-content-between mt-4 mb-4" style="width: 100%;">
-                    <div t-if="doc.origin" class="mb-2" style="min-width: 100px;">
-                        <strong>Referencia:</strong>
-                        <p class="m-0" t-field="doc.origin"/>
-                    </div>
+                    
+                    <!-- 
+                        Fecha del RMA sin hora
+                        t-options='{"widget": "date"}' formatea la fecha como dd/mm/yyyy
+                        sin incluir la hora (hh:mm:ss)
+                    -->
                     <div class="mb-2" style="min-width: 100px;">
                         <strong>Fecha:</strong>
-                        <p class="m-0" t-field="doc.date"/>
+                        <p class="m-0" t-field="doc.date" t-options='{"widget": "date"}'/>
                     </div>
-                    <div t-if="doc.deadline" class="mb-2" style="min-width: 100px;">
-                        <strong>Fecha límite:</strong>
-                        <p class="m-0" t-field="doc.deadline"/>
-                    </div>
-                    <div t-if="doc.user_id" class="mb-2" style="min-width: 120px;">
-                        <strong>Responsable:</strong>
-                        <p class="m-0" t-field="doc.user_id"/>
-                    </div>
-                    <div class="mb-2" style="min-width: 100px;">
-                        <strong>Estado:</strong>
+                    
+                    <!-- 
+                        Etiquetas del RMA
+                        t-if="doc.tag_ids": Solo muestra este bloque si existen etiquetas
+                        t-foreach: Itera sobre todas las etiquetas asignadas al RMA
+                        tag_last: Variable automática que indica si es la última etiqueta
+                        Si no es la última, añade una coma separadora
+                    -->
+                    <div t-if="doc.tag_ids" class="mb-2" style="min-width: 120px;">
+                        <strong>Etiqueta:</strong>
                         <p class="m-0">
-                            <t t-if="doc.state in ['refunded', 'replaced', 'returned']">
-                                <span class="small text-success">
-                                    <i class="fa fa-fw fa-check"/>
-                                    <b><span t-field="doc.state"/></b>
-                                </span>
-                            </t>
-                            <t t-elif="doc.state in ['cancelled', 'locked']">
-                                <span class="small text-danger">
-                                    <i class="fa fa-fw fa-times"/>
-                                    <b><span t-field="doc.state"/></b>
-                                </span>
-                            </t>
-                            <t t-else="">
-                                <span class="small text-info">
-                                    <i class="fa fa-fw fa-clock-o"/>
-                                    <b><span t-field="doc.state"/></b>
-                                </span>
+                            <t t-foreach="doc.tag_ids" t-as="tag">
+                                <span t-field="tag.name"/>
+                                <t t-if="not tag_last">, </t>
                             </t>
                         </p>
                     </div>
