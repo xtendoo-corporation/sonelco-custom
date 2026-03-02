@@ -21,6 +21,9 @@
         "rma",
         "account_invoice_report_grouped_by_picking",
         "account_global_discount",
+        "l10n_es_facturae",
+        "l10n_es_edi_facturae",
+        "report_xml",
     ],
     "data": [
         "views/stock_picking_view.xml",

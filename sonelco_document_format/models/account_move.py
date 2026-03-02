@@ -33,10 +33,14 @@ class AccountMove(models.Model):
         # Let's get first a correspondance between pickings and sales order
         so_dict = {x.sale_id: x for x in self.picking_ids if x.sale_id}
         # Now group by picking by direct link or via same SO as picking's one
-        for line in self.invoice_line_ids.filtered(lambda x: x.display_type == 'line_section' or x.display_type == 'line_note'):
+        for line in self.invoice_line_ids.filtered(
+            lambda x: x.display_type == "line_section" or x.display_type == "line_note"
+        ):
             key = line
             lines_dict.setdefault(key, 0)
-        for line in self.invoice_line_ids.filtered(lambda x: x.display_type == 'product'):
+        for line in self.invoice_line_ids.filtered(
+            lambda x: x.display_type == "product"
+        ):
             remaining_qty = line.quantity
             for move in line.move_line_ids:
                 key = (move.picking_id, line)
@@ -67,17 +71,37 @@ class AccountMove(models.Model):
         ]
         return self._sort_grouped_lines(with_picking) + no_picking
 
-    @api.onchange('ref')
+    @api.onchange("ref")
     def _onchange_ref(self):
         self.facturae_receiver_contract_reference = self.ref
+
+    def _l10n_es_facturae_sign_xml(self, edi_data, signature_data):
+        """Override to replace single quotes with double quotes in XML declaration."""
+        result = super()._l10n_es_facturae_sign_xml(edi_data, signature_data)
+        if isinstance(result, bytes):
+            result = result.replace(
+                b"<?xml version='1.0' encoding='UTF-8'?>",
+                b'<?xml version="1.0" encoding="UTF-8"?>',
+            )
+        return result
+
 
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
     @api.model
-    def _get_price_total_and_subtotal_model(self, price_unit, quantity, discount, currency, product, partner, taxes,
-                                            move_type):
-        ''' This method is used to compute 'price_total' & 'price_subtotal'.
+    def _get_price_total_and_subtotal_model(
+        self,
+        price_unit,
+        quantity,
+        discount,
+        currency,
+        product,
+        partner,
+        taxes,
+        move_type,
+    ):
+        """This method is used to compute 'price_total' & 'price_subtotal'.
 
         :param price_unit:  The current price unit.
         :param quantity:    The current quantity.
@@ -88,7 +112,7 @@ class AccountMoveLine(models.Model):
         :param taxes:       The applied taxes.
         :param move_type:   The type of the move.
         :return:            A dictionary containing 'price_subtotal' & 'price_total'.
-        '''
+        """
         res = {}
 
         # Compute 'price_subtotal'.
@@ -97,15 +121,18 @@ class AccountMoveLine(models.Model):
 
         # Compute 'price_total'.
         if taxes:
-            taxes_res = taxes._origin.with_context(force_sign=1).compute_all(line_discount_price_unit,
-                                                                             quantity=quantity, currency=currency,
-                                                                             product=product, partner=partner,
-                                                                             is_refund=move_type in ('out_refund',
-                                                                                                     'in_refund'))
-            res['price_subtotal'] = taxes_res['total_excluded']
-            res['price_total'] = taxes_res['total_included']
+            taxes_res = taxes._origin.with_context(force_sign=1).compute_all(
+                line_discount_price_unit,
+                quantity=quantity,
+                currency=currency,
+                product=product,
+                partner=partner,
+                is_refund=move_type in ("out_refund", "in_refund"),
+            )
+            res["price_subtotal"] = taxes_res["total_excluded"]
+            res["price_total"] = taxes_res["total_included"]
         else:
-            res['price_total'] = res['price_subtotal'] = subtotal
+            res["price_total"] = res["price_subtotal"] = subtotal
         # In case of multi currency, round before it's use for computing debit credit
         if currency:
             res = {k: currency.round(v) for k, v in res.items()}
