@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
 
-                <record id="sonelco_document_format.product_lot_label" model="ir.actions.report">
+        <record id="sonelco_document_format.product_lot_label" model="ir.actions.report">
             <field name="name">Etiqueta nº lote</field>
             <field name="model">stock.lot</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">sonelco_document_format.report_product_lot_label</field>
             <field name="report_file">sonelco_document_format.report_product_lot_label</field>
-            <field name="attachment"/>
-            <field name="binding_model_id" eval="False"/>
+            <field name="attachment" />
+            <field name="binding_model_id" ref="stock.model_stock_lot" />
         </record>
 
-<!--        <report-->
-<!--            id="product_lot_label"-->
-<!--            string="Etiqueta nº lote"-->
-<!--            model="stock.production.lot"-->
-<!--            report_type="qweb-pdf"-->
-<!--            name="sonelco_document_format.report_product_lot_label"-->
-<!--        />-->
+        <!--        <report-->
+        <!--            id="product_lot_label"-->
+        <!--            string="Etiqueta nº lote"-->
+        <!--            model="stock.production.lot"-->
+        <!--            report_type="qweb-pdf"-->
+        <!--            name="sonelco_document_format.report_product_lot_label"-->
+        <!--        />-->
         <template id="report_product_lot_label">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
@@ -30,26 +30,25 @@
         </template>
 
         <record id="product_lot_label" model="ir.actions.report">
-            <field name="paperformat_id" ref="label_papperformat_little"/>
+            <field name="paperformat_id" ref="label_papperformat_little" />
         </record>
 
         <template id="sonelco_document_format.report_label_lot">
             <t t-name="sonelco_document_format.report_label_lot">
                 <t t-call="web.basic_layout">
                     <div class="page">
-                        <div class="oe_structure"/>
+                        <div class="oe_structure" />
                         <table style="width:100%;">
                             <tr>
                                 <td style="text-align: center;">
                                     <img t-if="o.name"
-                                         t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 1200, 150)"
-                                         style="width:140%;height:15%;margin-left:-20%;"/>
+                                        t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 1200, 150)"
+                                        style="width:140%;height:15%;margin-left:-20%;" />
                                 </td>
                             </tr>
                             <tr>
-                                <td style="text-align:center;font-size:0.7em;">
-                                    Ln
-                                    <span t-field="o.name"/>
+                                <td style="text-align:center;font-size:0.7em;"> Ln <span
+                                        t-field="o.name" />
                                 </td>
                             </tr>
                         </table>
