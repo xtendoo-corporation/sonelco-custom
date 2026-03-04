@@ -3,7 +3,7 @@
     <data>
         <record id="label_papperformat" model="report.paperformat">
             <field name="name">Etiqueta 6.4 x 3.4</field>
-            <field name="default" eval="False"/>
+            <field name="default" eval="False" />
             <field name="format">custom</field>
             <field name="margin_top">0</field>
             <field name="margin_bottom">0</field>
@@ -19,7 +19,7 @@
 
         <record id="label_papperformat_little" model="report.paperformat">
             <field name="name">Etiqueta 2.6x 1.2</field>
-            <field name="default" eval="False"/>
+            <field name="default" eval="False" />
             <field name="format">custom</field>
             <field name="margin_top">1.5</field>
             <field name="margin_bottom">0</field>
@@ -27,6 +27,37 @@
             <field name="margin_left">0</field>
             <field name="page_height">26</field>
             <field name="page_width">12</field>
+            <field name="orientation">Landscape</field>
+            <field name="header_line">False</field>
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+        <record id="label_paperformat_mrp_small" model="report.paperformat">
+            <field name="name">Etiqueta MRP 2.7x1.2</field>
+            <field name="default" eval="False" />
+            <field name="format">custom</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_right">0</field>
+            <field name="margin_left">0</field>
+            <field name="page_height">27</field>
+            <field name="page_width">12</field>
+            <field name="orientation">Landscape</field>
+            <field name="header_line">False</field>
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="label_paperformat_mrp_product" model="report.paperformat">
+            <field name="name">Etiqueta MRP Producto 6.5x3.3</field>
+            <field name="default" eval="False" />
+            <field name="format">custom</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_right">0</field>
+            <field name="margin_left">0</field>
+            <field name="page_height">65</field>
+            <field name="page_width">33</field>
             <field name="orientation">Landscape</field>
             <field name="header_line">False</field>
             <field name="header_spacing">35</field>

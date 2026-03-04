@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="action_mrp_label_serial" model="ir.actions.report">
+            <field name="name">Etiqueta Serie (Sn)</field>
+            <field name="model">mrp.production</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sonelco_document_format.mrp_label_serial_template</field>
+            <field name="report_file">sonelco_document_format.mrp_label_serial_template</field>
+            <field name="binding_model_id" ref="mrp.model_mrp_production" />
+            <field name="paperformat_id" ref="sonelco_document_format.label_papperformat_little" />
+        </record>
+
+        <template id="mrp_label_serial_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-foreach="get_serial_lines(o)" t-as="line">
+                        <t t-call="web.basic_layout">
+                            <div class="page" style="page-break-inside: avoid;">
+                                <div class="oe_structure" />
+                                <table class="table table-borderless"
+                                    style="width:100%; border:none; margin:0; padding:0; line-height: 1;">
+                                    <tr style="border:none;">
+                                        <td
+                                            style="text-align: center; padding: 0; padding-top: 2px;">
+                                            <img t-if="line['barcode_value']"
+                                                t-att-src="'/report/barcode/?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', line['barcode_value'], 600, 100)"
+                                                style="width:100%; height:auto; max-height: 0.8cm;" />
+                                        </td>
+                                    </tr>
+                                    <tr style="border:none;">
+                                        <td style="text-align:center; font-size:0.65em; padding: 0;">
+                                            <span t-esc="line['code']" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

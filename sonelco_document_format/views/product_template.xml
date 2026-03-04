@@ -8,11 +8,15 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='general_information']/group[1]" position="after">
                 <group string="Link" name="link">
-                    <field name="link" nolabel="1" placeholder="Link del producto en presupuestos"/>
+                    <field name="link" nolabel="1" placeholder="Link del producto en presupuestos" />
+                </group>
+                <group string="Etiqueta" name="label_info">
+                    <field name="x_version" placeholder="Ej: 02" />
                 </group>
             </xpath>
 
         </field>
     </record>
+
 
 </odoo>

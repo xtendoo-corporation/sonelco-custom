@@ -1,0 +1,173 @@
+[33mcommit 37e8eb772c300726e020924082cacb3a4cb7e109[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32m18.0[m[33m, [m[1;31morigin/18.0[m[33m)[m
+Author: Guillermo Bárcena López <barcenalopezguillermo@gmail.com>
+Date:   Wed Mar 4 10:49:01 2026 +0100
+
+    MRP serial labels format fixed
+
+[33mcommit da5b323688937f9d4719c597ad0231230fde1885[m
+Author: Guillermo Bárcena López <barcenalopezguillermo@gmail.com>
+Date:   Mon Mar 2 10:21:34 2026 +0100
+
+    binding model true
+
+[33mcommit 975d95bb93df73aeb5c3a0e00e6c4ddbc108c361[m
+Author: Guillermo Bárcena López <barcenalopezguillermo@gmail.com>
+Date:   Mon Mar 2 10:02:56 2026 +0100
+
+    fix: use double quotes in Facturae XML declaration
+
+[33mcommit 816a206401279c03cbe53db6ace50b4457635ef1[m
+Author: Guillermo Bárcena López <barcenalopezguillermo@gmail.com>
+Date:   Mon Mar 2 08:33:09 2026 +0100
+
+    binding model true
+
+[33mcommit 1a07e8c3a13e4c115640593fca85c45746342cc6[m
+Author: Guillermo Bárcena López <barcenalopezguillermo@gmail.com>
+Date:   Thu Feb 26 14:08:09 2026 +0100
+
+    add model
+
+[33mcommit ae480692c0a534fd435012ac23bfaae2d3b47fb6[m
+Author: EndikaPM <endika.perez.mas@gmail.com>
+Date:   Thu Feb 19 13:54:27 2026 +0100
+
+    modificacion de factura de RMA
+
+[33mcommit 040f714999fbfffe2303e97a091e1a04ef6f9eea[m
+Author: EndikaPM <endika.perez.mas@gmail.com>
+Date:   Wed Feb 18 10:10:07 2026 +0100
+
+    Fix template RMA
+
+[33mcommit 7ac2c43561f2d2d8c1d7b91c59983b2fe0069feb[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Fri Dec 26 12:05:12 2025 +0100
+
+    [ADD] sonelco_tracking
+
+[33mcommit 1cbaa1d74b4fcf999ccaaf4f0c0096805397be15[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Mon Dec 22 11:55:14 2025 +0100
+
+    sync
+
+[33mcommit 877a0c24eb5087fbe1a7d9e182690e894bec7270[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Wed Dec 17 12:06:34 2025 +0100
+
+    sync
+
+[33mcommit b385124cc8d15d240cf0bb3f3453e13293065b4c[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Wed Dec 17 08:57:06 2025 +0100
+
+    sync
+
+[33mcommit b1f5427717d5e1105e6842d0bc15a64cd499ac2c[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Tue Dec 16 12:35:10 2025 +0100
+
+    [ADD] sale_not_discount_in_carriage_lines
+
+[33mcommit 1b1486de6d059f39753000ecc2a22073d5d8824f[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Tue Dec 16 09:39:33 2025 +0100
+
+    sync
+
+[33mcommit 788cc932bcd9ef9110481f97c7d3091eadf9eaf9[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Wed Dec 10 12:51:53 2025 +0100
+
+    sync
+
+[33mcommit 527f09a812960911d347d5a379baca3e8e666f9b[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Fri Nov 21 13:47:21 2025 +0100
+
+    sync
+
+[33mcommit d800ba2c80d38ce950168eead046b5c98326c209[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Tue Nov 11 12:54:06 2025 +0100
+
+    cambios en formato sonepar
+
+[33mcommit ca8e7c4a7ec629a59661cab4afee8e68bfd83056[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Tue Nov 11 11:56:40 2025 +0100
+
+    cambios en formato factura standard de odoo para que use verifactu
+
+[33mcommit 6d7201fe2e21349dbf2fc3ef24e985f7f0c86c27[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Wed Oct 22 12:07:45 2025 +0200
+
+    [MOD] sonelco_document_format, terminados todos los documentos
+
+[33mcommit 57c5ff4e80a18caf83839922f0cca7b64c980c97[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Wed Oct 22 11:37:41 2025 +0200
+
+    [MOD] sonelco_document_format, facturas y etiquetas de productos ( los 3)
+
+[33mcommit 6e73aa02db5850b61b2c1f709b4b4982fca9513e[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Wed Oct 22 10:36:47 2025 +0200
+
+    [MOD] sonelco_document_format, arreglado etiqueta de paquetes y layout
+
+[33mcommit d233e9e7828952801b8a8eb417d95f2ac4d249b8[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Tue Oct 21 13:45:23 2025 +0200
+
+    [MOD] sonelco_document_format, arreglado presupuesto
+
+[33mcommit ecf5919a9765e95f8a2782be8d4e2f7a32a36f53[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Tue Oct 14 10:23:15 2025 +0200
+
+    sync
+
+[33mcommit bc78c6bebe94bbc05b0b996c23241cd1c6ad2b57[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Tue Oct 14 10:08:01 2025 +0200
+
+    sync
+
+[33mcommit 7d8f9c30cc267ae8e73fd71616115230ac42a0d5[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Fri Sep 19 14:20:44 2025 +0200
+
+    sync
+
+[33mcommit f5c0e4d4d5549319972a2d621d0c8289f102d67b[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Fri Sep 19 12:57:00 2025 +0200
+
+    sync
+
+[33mcommit 8fa665829c08d67cddefb24dacb3d199a392fbc8[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Fri Sep 19 11:59:09 2025 +0200
+
+    sync
+
+[33mcommit 039b0d8e4d35f720f27ebdb9a75d71d310de1fe9[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Fri Sep 19 10:55:13 2025 +0200
+
+    sync
+
+[33mcommit e20c1e72576ee96d3b1f1164a122abd419dc93d8[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Thu Sep 18 13:25:31 2025 +0200
+
+    sync
+
+[33mcommit d00ccab460dba125a5d6cf1733c7ce4940507cde[m
+Author: dani <dani.xtendoo@gmail.com>
+Date:   Thu Sep 18 12:48:55 2025 +0200
+
+    Primer commit en 18.0
