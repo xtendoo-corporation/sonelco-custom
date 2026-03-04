@@ -15,68 +15,133 @@
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-set="lot_info" t-value="get_lot_code(o)" />
+                    <!-- No multiplicamos esta etiqueta por product_qty porque es la etiqueta final
+                    del producto (1 por MO normalmente)
+                         Si el cliente necesita tantas como productos, se añadiría un foreach, pero suele ser 1 por pack -->
                     <t t-call="web.basic_layout">
-                        <div class="page">
+                        <!-- Restauramos la estructura original basada en floats y tablas y
+                             adaptamos la REPARTICIÓN a la imagen premium del cliente -->
+                        <div class="page" style="page-break-inside: avoid; font-family: sans-serif;">
                             <div class="oe_structure" />
                             <div id="table_label"
-                                style="width:100%;display:block;margin:0; padding:0;">
+                                style="width:100%; display:block; margin:0; padding:0;">
+
+                                <!-- Columna 1: Lote Lateral Izquierdo (Mantenido intacto) -->
                                 <div
-                                    style="text-align: center;width:20%;float:left;height:150px;position:relative;left:-5%;overflow:hidden">
+                                    style="text-align: center; width:15%; float:left; height:120px; position:relative; left:-3%; overflow:hidden;">
                                     <div
-                                        style="width:100%;-webkit-transform: rotate(-90deg);z-index:3;position:absolute;">
+                                        style="width:100%; -webkit-transform: rotate(-90deg); z-index:3; position:absolute;">
                                         <img t-if="lot_info['barcode_value']"
                                             t-att-src="'/report/barcode/?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', lot_info['barcode_value'], 1200, 300)"
-                                            style="width:380%;height:22%;margin-left:-230%;" />
+                                            style="width:380%; height:22%; margin-left:-230%;" />
                                         <span t-esc="lot_info['code']"
-                                            style="width:380%;margin-left:-200%;font-size:0.8em;top:-150%;"></span>
+                                            style="width:380%; margin-left:-200%; font-size:0.8em; top:-150%;"></span>
                                     </div>
                                 </div>
-                                <div style="width:85%;float:left; height:150px;margin-left:-5%;">
+
+                                <!-- Columna 2: Cuerpo Principal Derecho -->
+                                <div
+                                    style="width:83%; float:left; height:120px; margin-left:-1%; padding-left:2px;">
                                     <table class="table table-borderless"
-                                        style="width:100%;table-layout: fixed; border:none;">
-                                        <tr style="border:none;">
-                                            <td t-if="o.product_id.default_code"
-                                                style="text-align:center;font-weight:bolder;font-size:1.1em;">
-                                                <span t-field="o.product_id.default_code" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td t-if="o.product_id.name"
-                                                style="text-align:center;font-size:0.7em;">
-                                                <div
-                                                    style="text-overflow: ellipsis; overflow:hidden; max-height:50px; min-height:50px;">
-                                                    <span t-field="o.product_id.name" />
+                                        style="width:100%; height:120px; table-layout: fixed; margin:0; padding:0;">
+
+                                        <!-- FILA 1: Referencia, Nombre (Izquierda) + Logo Sonelco
+                                        (Derecha) -->
+                                        <!-- FILA 1: Referencia, Nombre (Izquierda) + Logo Sonelco
+                                        (Derecha) -->
+                                        <tr style="border:none; height:45px;">
+                                            <td
+                                                style="width:75%; text-align:left; vertical-align:top; padding:0; padding-top:14px; overflow:hidden;">
+                                                <div t-if="o.product_id.default_code"
+                                                    style="font-weight:900; font-size:1.8em; line-height:1; letter-spacing:0.5px; color:#1a1a1a;">
+                                                    <span t-field="o.product_id.default_code" />
+                                                </div>
+                                                <div t-if="o.product_id.name"
+                                                    style="font-size:0.85em; line-height:1; padding-top:6px; font-weight: 500;">
+                                                    <div
+                                                        style="text-overflow: ellipsis; overflow:hidden; white-space:nowrap;">
+                                                        <span
+                                                            t-esc="' '.join(o.product_id.name.split()[:3])" />
+                                                    </div>
                                                 </div>
                                             </td>
+                                            <td
+                                                style="width:25%; text-align:right; vertical-align:top; padding:0; padding-top:4px;">
+                                                <img style="max-width:50%; max-height:25px;"
+                                                    src="/sonelco_document_format/static/src/img/fav-icon-sonelco.png" />
+                                                <div
+                                                    style="font-size:0.5em; font-weight:bold; letter-spacing:1px; margin-top:2px;">
+                                                    SONELCO</div>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <table>
-                                                    <tr>
+
+                                        <!-- FILA 2: Bloque Inferior con Versión, Imágenes y Barcode -->
+                                        <tr style="border:none; height:75px;">
+                                            <td colspan="2"
+                                                style="padding:0; vertical-align:bottom; padding-bottom: 0px;">
+                                                <table
+                                                    style="width:100%; margin:0; padding:0; border:none;">
+                                                    <tr style="border:none;">
+
+                                                        <!-- Izquierda: V:, Imagen, Logo Sonelco, OF -->
                                                         <td
-                                                            style="width:20%; vertical-align:center;text-align:center;">
-                                                            <span t-field="o.product_id.image_1920"
-                                                                t-options='{"widget": "image"}'
-                                                                style="width:100%;" />
+                                                            style="width:60%; vertical-align:bottom; text-align:left; padding:0;">
+                                                            <!-- Contenedor flex simulado con tabla -->
+                                                            <table
+                                                                style="width:100%; border:none; margin:0; padding:0;">
+                                                                <tr style="border:none;">
+                                                                    <!-- Columna para V: -->
+                                                                    <td
+                                                                        style="width:30%; vertical-align:middle; text-align:left; padding:0;">
+                                                                        <div
+                                                                            style="font-size:0.8em; font-weight:bold; margin-bottom:0px; white-space:nowrap;">
+                                                                            V: <span
+                                                                                t-if="o.product_id.x_version"
+                                                                                t-field="o.product_id.x_version" /><span
+                                                                                t-else="">-</span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <!-- Columna para Imágenes
+                                                                    (Producto) -->
+                                                                    <td
+                                                                        style="width:70%; vertical-align:middle; text-align:center; padding:0; padding-left: 0px;">
+                                                                        <span
+                                                                            t-field="o.product_id.image_1920"
+                                                                            t-options='{"widget": "image"}'
+                                                                            style="max-width:50px; max-height:50px; object-fit:contain; display:inline-block; vertical-align:middle;" />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <!-- OF Abajo -->
+                                                            <div
+                                                                style="font-size:0.7em; text-align:left; margin-top:6px; padding-left:2px; font-weight: bold;">
+                                                                OF: <span t-field="o.name" />
+                                                            </div>
                                                         </td>
-                                                        <td style="width:20%;text-align:center;">
-                                                            <img style="width:100%;"
-                                                                src="/sonelco_document_format/static/src/img/fav-icon-sonelco.png" />
-                                                        </td>
+
+                                                        <!-- Derecha: Código de Barras Product -->
                                                         <td
-                                                            style="width:60%; text-align:center;margin:0;padding:0;">
-                                                            <img t-if="o.product_id.barcode"
-                                                                t-att-src="'/report/barcode/?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.product_id.barcode, 600, 150)"
-                                                                style="width:90%;height:20%;" />
-                                                            <span t-field="o.product_id.barcode"
-                                                                style="width:100%;font-size:0.7em;"></span>
+                                                            style="width:40%; text-align:right; vertical-align:bottom; padding:0;">
+                                                            <div
+                                                                style="width:100%; text-align:right; margin-top:20px; margin-bottom:-4px; margin-right:-2px;">
+                                                                <img t-if="o.product_id.barcode"
+                                                                    t-att-src="'/report/barcode/?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.product_id.barcode, 600, 150)"
+                                                                    style="width:100%; height:26px; float:right; margin-bottom:1px;" />
+                                                                <div style="clear:both;"></div>
+                                                                <span t-if="o.product_id.barcode"
+                                                                    t-field="o.product_id.barcode"
+                                                                    style="width:100%; font-size:0.75em; letter-spacing:1px; display:block; float:right; text-align:center; margin-top:-2px;"></span>
+                                                                <div style="clear:both;"></div>
+                                                            </div>
                                                         </td>
+
                                                     </tr>
                                                 </table>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
+
                             </div>
                         </div>
                     </t>
