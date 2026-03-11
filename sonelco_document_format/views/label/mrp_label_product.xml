@@ -19,10 +19,19 @@
                         <div class="page"
                             style="page-break-inside: avoid; page-break-after: avoid; font-family: sans-serif; margin:0; padding:0; max-height:120px; overflow:hidden;">
                             <div class="oe_structure" />
+                            <style>
+                                .page, .page *,
+                                .label-grid, .label-grid tr, .label-grid td, .label-grid th {
+                                border: none !important;
+                                border-width: 0 !important;
+                                box-shadow: none !important;
+                                outline: none !important;
+                                }
+                            </style>
 
                             <!-- Tabla principal 3x3 -->
-                            <table
-                                style="width:100%; height:118px; max-height:118px; table-layout:fixed; border-collapse:collapse; margin:0; padding:0;">
+                            <table class="label-grid"
+                                style="width:100%; height:118px; max-height:118px; table-layout:fixed; border-collapse:collapse; margin:0; padding:0; border:none;">
                                 <colgroup>
                                     <col style="width:33%;" />
                                     <col style="width:33%;" />
@@ -32,7 +41,7 @@
                                 <!-- ═══ FILA 1: Código + Nombre + Versión | Barcode lote ═══ -->
                                 <tr style="height:38px; max-height:38px; border:none;">
                                     <td colspan="2"
-                                        style="vertical-align:top; text-align:left; padding:2px 4px 0 4px; overflow:hidden; max-height:38px;">
+                                        style="vertical-align:top; text-align:left; padding:2px 4px 0 4px; overflow:hidden; max-height:38px; border:none;">
                                         <div
                                             style="font-weight:900; font-size:1.4em; line-height:1; color:#1a1a1a; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">
                                             <t t-esc="o.product_id.default_code or ''" />
@@ -47,7 +56,7 @@
                                         </div>
                                     </td>
                                     <td
-                                        style="vertical-align:middle; text-align:center; padding:1px; overflow:hidden;">
+                                        style="vertical-align:middle; text-align:center; padding:1px; overflow:hidden; border:none;">
                                         <div t-if="lot_info['barcode_value']"
                                             style="text-align:center;">
                                             <img
@@ -62,13 +71,13 @@
                                 <!-- ═══ FILA 2: Imagen producto | Barcode producto ═══ -->
                                 <tr style="height:50px; max-height:50px; border:none;">
                                     <td
-                                        style="vertical-align:middle; text-align:center; padding:1px; overflow:hidden;">
+                                        style="vertical-align:middle; text-align:center; padding:1px; overflow:hidden; border:none;">
                                         <span t-field="o.product_id.image_1920"
                                             t-options='{"widget": "image"}'
                                             style="max-width:48px; max-height:42px; object-fit:contain; display:inline-block; vertical-align:middle;" />
                                     </td>
                                     <td colspan="2"
-                                        style="vertical-align:middle; text-align:center; padding:1px 4px 1px 2px; overflow:hidden;">
+                                        style="vertical-align:middle; text-align:center; padding:1px 4px 1px 2px; overflow:hidden; border:none;">
                                         <div t-if="o.product_id.barcode"
                                             style="width:100%; text-align:center;">
                                             <img
@@ -83,7 +92,7 @@
                                 <!-- ═══ FILA 3: OF | Logo ═══ -->
                                 <tr style="height:28px; max-height:28px; border:none;">
                                     <td colspan="2"
-                                        style="vertical-align:middle; text-align:left; padding:1px 4px; overflow:hidden;">
+                                        style="vertical-align:middle; text-align:left; padding:1px 4px; overflow:hidden; border:none;">
                                         <div
                                             style="font-size:0.7em; font-weight:bold; white-space:nowrap; line-height:1;">
                                             OF: <t t-esc="o.name" />
