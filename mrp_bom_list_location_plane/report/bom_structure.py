@@ -17,7 +17,8 @@ class BomStructureReport(models.AbstractModel):
             line_id = line_ids.filtered(
                 lambda l: l.id == line["line_id"]
             )
-            line["location_plane"] = line_id.location_plane or ""
+            # Ensure we only use the first record if multiple are found
+            line["location_plane"] = line_id[:1].location_plane or ""
         return res
 
     @api.model
@@ -32,5 +33,6 @@ class BomStructureReport(models.AbstractModel):
             line_id = line_ids.filtered(
                 lambda l: l.product_id.display_name == line["name"]
             )
-            line["location_plane"] = line_id.location_plane or ""
+            # Ensure we only use the first record if multiple are found
+            line["location_plane"] = line_id[:1].location_plane or ""
         return res
