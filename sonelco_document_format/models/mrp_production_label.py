@@ -17,24 +17,10 @@ def get_serial_lines(production):
     mo_num = extract_mo_number(production.name)
     sequences = max(1, int(production.product_qty or 1))
 
-    total_valid_bom_qty = sum(
-        move.product_qty
-        for move in production.move_raw_ids
-        if move.state != "cancel" and move.product_qty >= 1
-    )
-
-    total_labels = int(total_valid_bom_qty)
-    base_copies_per_seq = total_labels // sequences
-    remainder = total_labels % sequences
-
     lines = []
     for seq in range(1, sequences + 1):
         code = f"Sn{mo_num}{seq:04d}"
-        copies_to_print = base_copies_per_seq
-        if seq == sequences:
-            copies_to_print += remainder
-        for _copy in range(copies_to_print):
-            lines.append({"code": code, "barcode_value": code})
+        lines.append({"code": code, "barcode_value": code})
     return lines
 
 
