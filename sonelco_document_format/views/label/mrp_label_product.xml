@@ -16,10 +16,10 @@
                 <t t-foreach="docs" t-as="o">
                     <t t-set="lot_info" t-value="get_lot_code(o)" />
                     <t t-set="qty_to_print" t-value="max(1, int(o.product_qty or 1))" />
-                    <t t-foreach="range(qty_to_print)" t-as="product_copy">
-                        <t t-call="web.basic_layout">
+                    <t t-call="web.basic_layout">
+                        <t t-foreach="range(qty_to_print)" t-as="product_copy">
                             <div class="page"
-                                style="page-break-inside: avoid; page-break-after: avoid; font-family: sans-serif; margin:0; padding:0; max-height:120px; overflow:hidden;">
+                                style="page-break-after: always; height: 33mm; max-height: 33mm; overflow: hidden; font-family: sans-serif; margin:0; padding:0;">
                                 <div class="oe_structure" />
                                 <style>
                                     .page, .page *,

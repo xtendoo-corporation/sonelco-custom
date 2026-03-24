@@ -16,22 +16,21 @@
                 <t t-foreach="docs" t-as="o">
                     <t t-set="lot_info" t-value="get_lot_code(o)" />
                     <t t-set="qty_to_print" t-value="max(1, int(o.product_qty or 1))" />
-                    <t t-foreach="range(qty_to_print)" t-as="lot_copy">
-                        <t t-call="web.basic_layout">
-                            <div class="page" style="page-break-inside: avoid;">
+                    <t t-call="web.basic_layout">
+                        <t t-foreach="range(qty_to_print)" t-as="lot_copy">
+                            <div class="page" style="page-break-after: always; height: 11.5mm; max-height: 11.5mm; overflow: hidden; margin: 0; padding: 0;">
                                 <div class="oe_structure" />
                                 <table class="table table-borderless"
-                                    style="width:100%; border:none; margin:0; padding:0; line-height: 1;">
+                                    style="width:100%; border:none; margin:0; padding:0; line-height: 1; border-collapse: collapse;">
                                     <tr style="border:none;">
-                                        <td
-                                            style="text-align: center; padding: 0; padding-top: 2px;">
+                                        <td style="text-align: center; padding: 0;">
                                             <img t-if="lot_info['barcode_value']"
                                                 t-att-src="'/report/barcode/?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', lot_info['barcode_value'], 600, 100)"
-                                                style="width:100%; height:auto; max-height: 0.8cm;" />
+                                                style="width:100%; height:auto; max-height: 7mm;" />
                                         </td>
                                     </tr>
                                     <tr style="border:none;">
-                                        <td style="text-align:center; font-size:0.65em; padding: 0;">
+                                        <td style="text-align:center; font-size:0.6em; padding: 0;">
                                             <span t-esc="lot_info['code']" />
                                         </td>
                                     </tr>
