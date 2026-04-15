@@ -43,24 +43,25 @@ class AccountMove(models.Model):
         ):
             remaining_qty = line.quantity
             for move in line.move_line_ids:
-                key = (move.picking_id, line)
-                picking_dict.setdefault(key, 0)
-                qty = self._get_signed_quantity_done(line, move, sign)
-                picking_dict[key] += qty
-                remaining_qty -= qty
-            if not line.move_line_ids and line.sale_line_ids:
-                for so_line in line.sale_line_ids:
-                    if so_dict.get(so_line.order_id):
-                        key = (so_dict[so_line.order_id], line)
-                        picking_dict.setdefault(key, 0)
-                        qty = so_line.product_uom_qty
-                        picking_dict[key] += qty
-                        remaining_qty -= qty
-            if not float_is_zero(
-                remaining_qty,
-                precision_rounding=line.product_id.uom_id.rounding or 0.01,
-            ):
-                lines_dict[line] = remaining_qty
+                if move.picking_id:
+                    key = (move.picking_id, line)
+                    picking_dict.setdefault(key, 0)
+                    qty = self._get_signed_quantity_done(line, move, sign)
+                    picking_dict[key] += qty
+                    remaining_qty -= qty
+                if not line.move_line_ids and line.sale_line_ids:
+                    for so_line in line.sale_line_ids:
+                        if so_dict.get(so_line.order_id):
+                            key = (so_dict[so_line.order_id], line)
+                            picking_dict.setdefault(key, 0)
+                            qty = so_line.product_uom_qty
+                            picking_dict[key] += qty
+                            remaining_qty -= qty
+                if not float_is_zero(
+                    remaining_qty,
+                    precision_rounding=line.product_id.uom_id.rounding or 0.01,
+                ):
+                    lines_dict[line] = remaining_qty
         no_picking = [
             {"picking": False, "line": key, "quantity": value}
             for key, value in lines_dict.items()
@@ -69,7 +70,7 @@ class AccountMove(models.Model):
             {"picking": key[0], "line": key[1], "quantity": value}
             for key, value in picking_dict.items()
         ]
-        return self._sort_grouped_lines(with_picking) + no_picking
+        return self._sort_grouped_lines(with_picking)
 
     @api.onchange("ref")
     def _onchange_ref(self):
