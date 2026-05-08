@@ -17,16 +17,17 @@
             <field name="dpi">90</field>
         </record>
 
-        <report
-            string="Etiqueta"
-            id="sonelco_document_format.label_packaging_sonelco"
-            model="stock.quant.package"
-            report_type="qweb-pdf"
-            name="sonelco_document_format.report_label_packaging_sonelco"
-            file="sonelco_document_format.report_label_packaging_sonelco"
-            paperformat="sonelco_document_format.label_sonelco_150x74"
-            print_report_name="'Etiqueta - %s' % (object.name)"
-        />
+        <record id="label_packaging_sonelco" model="ir.actions.report">
+            <field name="name">Etiqueta</field>
+            <field name="model">stock.quant.package</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sonelco_document_format.report_label_packaging_sonelco</field>
+            <field name="report_file">sonelco_document_format.report_label_packaging_sonelco</field>
+            <field name="paperformat_id" ref="sonelco_document_format.label_sonelco_150x74"/>
+            <field name="print_report_name">'Etiqueta - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="stock.model_stock_quant_package"/>
+            <field name="binding_type">report</field>
+        </record>
 
         <template id="sonelco_document_format.report_label_packaging_sonelco">
             <t t-name="sonelco_document_format.report_label_packaging_sonelco">

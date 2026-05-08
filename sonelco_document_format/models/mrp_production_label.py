@@ -46,6 +46,9 @@ class ReportMrpProductionLabelSerial(models.AbstractModel):
         return {
             "docs": productions,
             "get_serial_lines": get_serial_lines,
+            "max": max,
+            "int": int,
+            "range": range,
         }
 
 
@@ -59,6 +62,9 @@ class ReportMrpProductionLabelLot(models.AbstractModel):
         return {
             "docs": productions,
             "get_lot_code": get_lot_code,
+            "max": max,
+            "int": int,
+            "range": range,
         }
 
 
@@ -72,4 +78,7 @@ class ReportMrpProductionLabelProduct(models.AbstractModel):
         return {
             "docs": productions,
             "get_lot_code": get_lot_code,
+            "max": max,
+            "int": int,
+            "range": range,
         }
