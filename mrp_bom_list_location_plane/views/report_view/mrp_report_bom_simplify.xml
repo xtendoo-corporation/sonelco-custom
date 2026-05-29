@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
-        <record id="report_bom_simplify" model="ir.actions.report">
-            <field name="name">Estructura de Lista de Materiales simplificada</field>
-            <field name="model">mrp.bom</field>
-            <field name="report_type">qweb-pdf</field>
-            <field name="report_name">mrp_bom_list_location_plane.report_mrp_bom_simplify</field>
-            <field name="report_file">mrp_bom_list_location_plane.report_mrp_bom_simplify</field>
-            <field name="print_report_name">'Bom Structure - %s' % object.display_name</field>
-            <field name="binding_model_id" ref="mrp.model_mrp_bom"/>
-            <field name="binding_type">report</field>
-        </record>
+        <report
+            string="Estructura de Lista de Materiales simplificada"
+            id="report_bom_simplify"
+            model="mrp.bom"
+            name="mrp_bom_list_location_plane.report_mrp_bom_simplify"
+            file="mrp_bom_list_location_plane.report_mrp_bom_simplify"
+            report_type="qweb-pdf"
+            print_report_name="'Bom Structure - %s' % object.display_name"
+        />
         <template id="mrp_bom_list_location_plane.report_mrp_bom_simplify">
             <t t-set="data_report_landscape" t-value="True"/>
             <t t-call="web.basic_layout">
@@ -58,7 +57,7 @@
                                             <th class="text-right">Cantidad</th>
                                             <th class="text-left" groups="uom.group_uom">Unidad</th>
                                             <th>
-                                                <span>Posición</span>
+                                                <span>Localizacion</span>
                                             </th>
                                         </tr>
                                     </thead>

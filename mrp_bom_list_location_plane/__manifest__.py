@@ -14,12 +14,19 @@
     """,
     "depends": [
         "mrp",
+        "report_xlsx",
     ],
     "data": [
+        "views/report_view/mrp_report_bom_xlsx.xml",
         "views/mrp_bom_list_view.xml",
         "views/report_view/mrp_report_bom.xml",
         "views/report_view/mrp_report_bom_simplify.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "mrp_bom_list_location_plane/static/src/**/*",
+        ],
+    },
     "installable": True,
     "auto_install": False,
 }

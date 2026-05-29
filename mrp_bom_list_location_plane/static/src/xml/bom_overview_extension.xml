@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="mrp_bom_list_location_plane.BomOverviewComponentExtension"
+       t-inherit="mrp.BomOverviewComponent"
+       t-inherit-mode="extension">
+        <xpath expr="//BomOverviewControlPanel" position="attributes">
+            <attribute name="exportXlsx.bind">onClickExportXlsx</attribute>
+        </xpath>
+    </t>
+
+    <t t-name="mrp_bom_list_location_plane.BomOverviewControlPanelExtension"
+       t-inherit="mrp.BomOverviewControlPanel"
+       t-inherit-mode="extension">
+        <xpath expr="//button[@t-on-click='() =&gt; this.props.print()']" position="after">
+            <button t-on-click="() => props.exportXlsx &amp;&amp; props.exportXlsx()"
+                    type="button"
+                    class="btn btn-secondary text-nowrap">
+                Exportar Excel
+            </button>
+        </xpath>
+    </t>
+
+    <t t-name="mrp_bom_list_location_plane.BomOverviewTableExtension"
+       t-inherit="mrp.BomOverviewTable"
+       t-inherit-mode="extension">
+        <xpath expr="//table/thead/tr/th[last()]" position="after">
+            <th>Localizacion</th>
+        </xpath>
+        <xpath expr="//table/tfoot/tr/td[last()]" position="after">
+            <td/>
+        </xpath>
+        <xpath expr="//table/tfoot/t/tr/td[last()]" position="after">
+            <td/>
+        </xpath>
+    </t>
+
+    <t t-name="mrp_bom_list_location_plane.BomOverviewLineExtension"
+       t-inherit="mrp.BomOverviewLine"
+       t-inherit-mode="extension">
+        <xpath expr="//tr/td[last()]" position="after">
+            <td>
+                <span t-if="['bom', 'component'].includes(data.type)"
+                      t-esc="data.location_plane || ''"/>
+            </td>
+        </xpath>
+    </t>
+</templates>
+

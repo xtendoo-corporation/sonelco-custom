@@ -2,47 +2,26 @@
 <odoo>
     <data>
         <template id="report_mrp_bom_sonelco" inherit_id="mrp.report_mrp_bom">
-            <xpath expr="//table/thead" position="replace">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th name="th_mrp_bom_h">LdM</th>
-                        <th class="text-right">Cantidad</th>
-                        <th class="text-left" groups="uom.group_uom">Unidad</th>
-                                  <!--<th t-if="data['report_structure'] != 'bom_structure'" class="o_mrp_prod_cost text-right" title="This is the cost defined on the product.">Coste</th>-->
-                        <th class="o_mrp_prod_cost text-right" title="This is the cost defined on the product.">Coste</th>
-                        <th  class="o_mrp_bom_cost text-right" title="This is the cost based on the BoM of the product. It is computed by summing the costs of the components and operations needed to build the product.">LdM Coste</th>
-                        <!--<th t-if="data['report_structure'] != 'bom_structure'" class="o_mrp_bom_cost text-right" title="This is the cost based on the BoM of the product. It is computed by summing the costs of the components and operations needed to build the product.">LdM Coste</th>-->
-                        <th class="o_mrp_has_attachments" title="Files attached to the product">Attachments</th>
-                        <!--<th t-if="data['report_type'] == 'html' and data['has_attachments']" class="o_mrp_has_attachments" title="Files attached to the product">Attachments</th>-->
-                        <th>
-                        <th>
-                            <span>Posición</span>
-                        </th>
-                    </tr>
-                </thead>
+            <xpath expr="//table/thead/tr/th[last()]" position="after">
+                <th>Localizacion</th>
+            </xpath>
+            <xpath expr="//tbody/tr/td[last()]" position="after">
+                <td/>
+            </xpath>
+            <xpath expr="//tfoot/tr[1]/td[last()]" position="after">
+                <td/>
+            </xpath>
+            <xpath expr="//tfoot/t/tr/td[last()]" position="after">
+                <td/>
             </xpath>
         </template>
 
         <template id="report_mrp_bom_line_sonelco" inherit_id="mrp.report_mrp_bom_pdf_line">
-            <xpath expr="//tr/td[last()]" position="replace">
+            <xpath expr="//tr/td[last()]" position="after">
                 <td>
-                    <span>
-                        <t t-esc="l['location_plane']"/>
-                    </span>
+                    <span t-if="l['type'] in ('component', 'bom')" t-esc="l.get('location_plane', '')"/>
                 </td>
             </xpath>
         </template>
-
-
-<!--        <template id="report_mrp_bom_line_sonelco" inherit_id="mrp.report_mrp_bom_line">-->
-<!--        <xpath expr="//tr/td[last()]" position="replace">-->
-<!--            <td>-->
-<!--                <span>-->
-<!--                        <t t-esc="l['location_plane']"/>-->
-<!--                    </span>-->
-<!--            </td>-->
-<!--        </xpath>-->
-<!--    </template>-->
     </data>
 </odoo>

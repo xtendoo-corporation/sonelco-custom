@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="action_report_bom_structure_xlsx" model="ir.actions.report">
+            <field name="name">Resumen LdM Excel</field>
+            <field name="model">mrp.bom</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">mrp_bom_list_location_plane.report_bom_structure_xlsx</field>
+            <field name="report_file">mrp_bom_list_location_plane.report_bom_structure_xlsx</field>
+            <field name="print_report_name">'Resumen LdM - %s' % object.display_name</field>
+            <field name="binding_model_id" ref="mrp.model_mrp_bom"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>
+
