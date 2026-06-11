@@ -65,23 +65,28 @@
             <xpath expr="//td[@name='account_invoice_line_name']" position="replace">
                 <td name="account_invoice_line_name">
                     <t t-if="line.product_id.categ_id.name == 'Transportes'">
-                        <t t-set="description_name" t-value="line.name"/>
-                        <t t-set="product_name" t-value="line.product_id.name"/>
-                        <t t-set="code_position" t-value="description_name.find(product_name) + len(product_name)"/>
-                        <t t-if="code_position &gt; 0">
-                            <t t-set="description_name" t-value="description_name[code_position:]"/>
-                            <span t-esc="description_name.strip()" t-options="{'widget': 'text'}">Bacon Burger</span>
-                        </t>
-                    </t>
-                    <t t-else="">
-                        <span t-if="line.name" t-field="line.name" t-options="{'widget': 'text'}">Bacon Burger</span>
-                    </t>
+    <t t-set="description_name" t-value="line.name"/>
+
+    <!-- buscar el carácter ] -->
+    <t t-set="code_position" t-value="description_name.find(']')"/>
+
+    <t t-if="code_position != -1">
+        <t t-set="code_position" t-value="code_position + 1"/>
+        <t t-set="description_name" t-value="description_name[code_position:]"/>
+        <span t-esc="description_name.strip()" t-options="{'widget': 'text'}"/>
+    </t>
+</t>
+
+<t t-else="">
+    <span t-if="line.name" t-field="line.name" t-options="{'widget': 'text'}"/>
+</t>
                 </td>
             </xpath>
         </template>
 
         <template id="report_invoice_document_grouped_inherit"
                   inherit_id="account_invoice_report_grouped_by_picking.report_invoice_document">
+            <xpath expr="//t[@t-if='picking != last_picking']/tr[@t-else='']" position="replace"/>
             <xpath expr="//tr[@t-if='picking != next_picking[0]']" position="replace">
                 <tr t-if="picking != next_picking[0]">
                 <td colspan="10" style="text-align: right;">

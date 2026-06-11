@@ -13,11 +13,15 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     def lines_grouped_by_picking(self):
-        """Prepare invoice lines grouped by stock picking."""
+        """Prepare invoice lines grouped by pickings."""
         self.ensure_one()
 
         picking_dict = OrderedDict()
         lines_dict = OrderedDict()
+
+        print("\n" + "=" * 80)
+        print("DEBUG lines_grouped_by_picking", self.name)
+        print("=" * 80)
 
         sign = (
             -1.0
@@ -29,90 +33,124 @@ class AccountMove(models.Model):
             else 1.0
         )
 
-        # Relación sale order -> picking
         so_dict = {
             picking.sale_id: picking
             for picking in self.picking_ids
             if picking.sale_id
         }
 
-        # Secciones y notas
+        # secciones / notas
         for line in self.invoice_line_ids.filtered(
             lambda x: x.display_type in ("line_section", "line_note")
         ):
             lines_dict.setdefault(line, 0)
 
-        # Productos
+        # productos
         for line in self.invoice_line_ids.filtered(
             lambda x: x.display_type == "product"
         ):
 
+            print("\nLINEA:")
+            print(" name:", line.name)
+            print(" product:", line.product_id.name)
+            print(" type:", line.product_id.type)
+            print(" qty:", line.quantity)
+            print(" moves:", line.move_line_ids.ids)
+            print(" sale:", line.sale_line_ids.ids)
+
             remaining_qty = line.quantity
-            has_picking = False
+            found_picking = False
 
-            # Caso 1: tiene movimientos de stock
+            # productos con stock
             for move in line.move_line_ids:
-                if move.picking_id:
-                    has_picking = True
 
-                    key = (move.picking_id, line)
+                print(
+                    " MOVE",
+                    move.id,
+                    "picking",
+                    move.picking_id.name if move.picking_id else None
+                )
 
-                    picking_dict.setdefault(key, 0)
+                if not move.picking_id:
+                    continue
 
-                    qty = self._get_signed_quantity_done(
-                        line,
-                        move,
-                        sign
-                    )
+                found_picking = True
 
-                    picking_dict[key] += qty
-                    remaining_qty -= qty
+                key = (move.picking_id, line)
 
-            # Caso 2: no tiene movimientos pero viene de una SO
-            if not line.move_line_ids and line.sale_line_ids:
-                for so_line in line.sale_line_ids:
+                picking_dict.setdefault(key, 0)
 
-                    picking = so_dict.get(so_line.order_id)
+                qty = self._get_signed_quantity_done(
+                    line,
+                    move,
+                    sign
+                )
 
-                    if picking:
-                        has_picking = True
+                picking_dict[key] += qty
+                remaining_qty -= qty
 
-                        key = (picking, line)
+            # servicios / sin movimientos
+            if not line.move_line_ids:
+                print(
+                    " SIN MOVES -> NO PICKING:",
+                    line.product_id.name
+                )
 
-                        picking_dict.setdefault(key, 0)
+                lines_dict[line] = line.quantity
 
-                        qty = so_line.product_uom_qty
+                continue
 
-                        picking_dict[key] += qty
-                        remaining_qty -= qty
-
-            # Caso 3: no tiene ningún picking
-            if (
-                not has_picking
-                or not float_is_zero(
+            # resto pendiente
+            if not float_is_zero(
                 remaining_qty,
                 precision_rounding=line.product_id.uom_id.rounding or 0.01,
-            )
             ):
+                print(
+                    " RESTANTE:",
+                    line.product_id.name,
+                    remaining_qty
+                )
+
                 lines_dict[line] = remaining_qty
+
+        print("\n" + "*" * 50)
+        print("PICKING_DICT")
+        for k, v in picking_dict.items():
+            print(
+                k[0].name,
+                k[1].product_id.name,
+                v
+            )
+
+        print("LINES_DICT")
+        for k, v in lines_dict.items():
+            print(
+                k.product_id.name,
+                v
+            )
+
+        print("*" * 50)
 
         no_picking = [
             {
                 "picking": False,
-                "line": line,
-                "quantity": qty,
+                "line": key,
+                "quantity": value,
             }
-            for line, qty in lines_dict.items()
+            for key, value in lines_dict.items()
         ]
 
         with_picking = [
             {
                 "picking": key[0],
                 "line": key[1],
-                "quantity": qty,
+                "quantity": value,
             }
-            for key, qty in picking_dict.items()
+            for key, value in picking_dict.items()
         ]
+
+        print("NO PICKING FINAL:", no_picking)
+        print("WITH PICKING FINAL:", with_picking)
 
         return (
             self._sort_grouped_lines(with_picking)
