@@ -13,64 +13,111 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     def lines_grouped_by_picking(self):
-        """This prepares a data structure for printing the invoice report
-        grouped by pickings."""
+        """Prepare invoice lines grouped by stock picking."""
         self.ensure_one()
+
         picking_dict = OrderedDict()
         lines_dict = OrderedDict()
-        # Not change sign if the credit note has been created from reverse move option
-        # and it has the same pickings related than the reversed invoice instead of sale
-        # order invoicing process after picking reverse transfer
+
         sign = (
             -1.0
             if self.move_type == "out_refund"
-            and (
-                not self.reversed_entry_id
-                or self.reversed_entry_id.picking_ids != self.picking_ids
-            )
+               and (
+                   not self.reversed_entry_id
+                   or self.reversed_entry_id.picking_ids != self.picking_ids
+               )
             else 1.0
         )
-        # Let's get first a correspondance between pickings and sales order
-        so_dict = {x.sale_id: x for x in self.picking_ids if x.sale_id}
-        # Now group by picking by direct link or via same SO as picking's one
+
+        # Relación sale order -> picking
+        so_dict = {
+            picking.sale_id: picking
+            for picking in self.picking_ids
+            if picking.sale_id
+        }
+
+        # Secciones y notas
         for line in self.invoice_line_ids.filtered(
-            lambda x: x.display_type == "line_section" or x.display_type == "line_note"
+            lambda x: x.display_type in ("line_section", "line_note")
         ):
-            key = line
-            lines_dict.setdefault(key, 0)
+            lines_dict.setdefault(line, 0)
+
+        # Productos
         for line in self.invoice_line_ids.filtered(
             lambda x: x.display_type == "product"
         ):
+
             remaining_qty = line.quantity
+            has_picking = False
+
+            # Caso 1: tiene movimientos de stock
             for move in line.move_line_ids:
                 if move.picking_id:
+                    has_picking = True
+
                     key = (move.picking_id, line)
+
                     picking_dict.setdefault(key, 0)
-                    qty = self._get_signed_quantity_done(line, move, sign)
+
+                    qty = self._get_signed_quantity_done(
+                        line,
+                        move,
+                        sign
+                    )
+
                     picking_dict[key] += qty
                     remaining_qty -= qty
-                if not line.move_line_ids and line.sale_line_ids:
-                    for so_line in line.sale_line_ids:
-                        if so_dict.get(so_line.order_id):
-                            key = (so_dict[so_line.order_id], line)
-                            picking_dict.setdefault(key, 0)
-                            qty = so_line.product_uom_qty
-                            picking_dict[key] += qty
-                            remaining_qty -= qty
-                if not float_is_zero(
-                    remaining_qty,
-                    precision_rounding=line.product_id.uom_id.rounding or 0.01,
-                ):
-                    lines_dict[line] = remaining_qty
+
+            # Caso 2: no tiene movimientos pero viene de una SO
+            if not line.move_line_ids and line.sale_line_ids:
+                for so_line in line.sale_line_ids:
+
+                    picking = so_dict.get(so_line.order_id)
+
+                    if picking:
+                        has_picking = True
+
+                        key = (picking, line)
+
+                        picking_dict.setdefault(key, 0)
+
+                        qty = so_line.product_uom_qty
+
+                        picking_dict[key] += qty
+                        remaining_qty -= qty
+
+            # Caso 3: no tiene ningún picking
+            if (
+                not has_picking
+                or not float_is_zero(
+                remaining_qty,
+                precision_rounding=line.product_id.uom_id.rounding or 0.01,
+            )
+            ):
+                lines_dict[line] = remaining_qty
+
         no_picking = [
-            {"picking": False, "line": key, "quantity": value}
-            for key, value in lines_dict.items()
+            {
+                "picking": False,
+                "line": line,
+                "quantity": qty,
+            }
+            for line, qty in lines_dict.items()
         ]
+
         with_picking = [
-            {"picking": key[0], "line": key[1], "quantity": value}
-            for key, value in picking_dict.items()
+            {
+                "picking": key[0],
+                "line": key[1],
+                "quantity": qty,
+            }
+            for key, qty in picking_dict.items()
         ]
-        return self._sort_grouped_lines(with_picking)
+
+        return (
+            self._sort_grouped_lines(with_picking)
+            + self._sort_grouped_lines(no_picking)
+        )
 
     @api.onchange("ref")
     def _onchange_ref(self):
