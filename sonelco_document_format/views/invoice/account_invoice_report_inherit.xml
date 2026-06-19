@@ -64,22 +64,85 @@
             </xpath>
             <xpath expr="//td[@name='account_invoice_line_name']" position="replace">
                 <td name="account_invoice_line_name">
-                    <t t-if="line.product_id.categ_id.name == 'Transportes'">
-    <t t-set="description_name" t-value="line.name"/>
+                    <data inherit_id="account.report_invoice_document">
+            <xpath expr="//t[@t-set='information_block']" position="replace">
+                <t t-set="information_block"/>
+            </xpath>
 
-    <!-- buscar el carácter ] -->
-    <t t-set="code_position" t-value="description_name.find(']')"/>
+            <!-- Reemplazar el div de informations para agregar mejor espaciado -->
+            <xpath expr="//div[@id='informations']" position="replace">
+                <div id="informations" class="d-flex flex-wrap justify-content-between mt-4 mb-4" style="width: 100%;">
+                    <div t-if="o.invoice_date" name="invoice_date" class="mb-2" style="min-width: 100px;">
+                        <strong>Fecha:</strong>
+                        <p class="m-0" t-field="o.invoice_date"/>
+                    </div>
+                    <div t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'" name="due_date" class="mb-2" style="min-width: 120px;">
+                        <strong>Fecha de vencimiento:</strong>
+                        <p class="m-0" t-field="o.invoice_date_due"/>
+                    </div>
+                    <div t-if="o.invoice_origin" name="origin" class="mb-2" style="min-width: 100px;">
+                        <strong>Origen:</strong>
+                        <p class="m-0" t-field="o.invoice_origin"/>
+                    </div>
+                    <div t-if="o.partner_id.ref" name="customer_code" class="mb-2" style="min-width: 100px;">
+                        <strong>Código Cliente:</strong>
+                        <p class="m-0" t-field="o.partner_id.ref"/>
+                    </div>
+                    <div t-if="o.ref" name="reference" class="mb-2" style="min-width: 100px;">
+                        <strong>Referencia:</strong>
+                        <p class="m-0" t-field="o.ref"/>
+                    </div>
+                </div>
+            </xpath>
 
-    <t t-if="code_position != -1">
-        <t t-set="code_position" t-value="code_position + 1"/>
-        <t t-set="description_name" t-value="description_name[code_position:]"/>
-        <span t-esc="description_name.strip()" t-options="{'widget': 'text'}"/>
-    </t>
-</t>
-
-<t t-else="">
-    <span t-if="line.name" t-field="line.name" t-options="{'widget': 'text'}"/>
-</t>
+            <xpath expr="//span[@id='payment_terms_note_id']" position="replace">
+                <p name="payment_mode" t-if="o.payment_mode_id">
+                    <strong>Modo de Pago: </strong>
+                    <span t-esc="o.payment_mode_id.name"/>
+                </p>
+            </xpath>
+            <xpath expr="//p[@name='payment_communication']" position="replace">
+            </xpath>
+<!--            <xpath expr="//th[@name='th_discount']" position="replace">-->
+<!--            </xpath>-->
+            <xpath expr="//th[@name='th_taxes']" position="replace">
+            </xpath>
+<!--            <xpath expr="//td[@name='td_discount']" position="replace">-->
+<!--            </xpath>-->
+            <xpath expr="//td[@name='td_taxes']" position="replace">
+            </xpath>
+            <xpath expr="//td[@name='td_quantity']" position="replace">
+                <td name="td_quantity" class="o_td_quantity text-end">
+                    <span t-field="line.quantity" style="display:none;">3.00</span>
+                    <span t-esc="'%.0f'%line.quantity" class="text-nowrap">3.00</span>
+                </td>
+            </xpath>
+            <xpath expr="//td[@name='td_price_unit']" position="replace">
+                <td name="td_price_unit" t-attf-class="text-end {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                    <span class="text-nowrap" t-esc="'%.2f'%line.price_unit">9.00</span>
+                </td>
+            </xpath>
+            <xpath expr="//td[@name='account_invoice_line_name']" position="replace">
+                <td name="account_invoice_line_name">
+                    <!-- IMPORTANTE
+                    Este if esta aqui para que al meter el porte desde el boton añadir envio,
+                     no salga el texto por duplicado, ya que se usan las descripciones y si se añade el producto "a pelo", saldra en blanco,
+                     ya que no hay descripcion -->
+                     <t t-if="line.product_id.categ_id.name == 'Transportes'">
+                        <t t-set="description_name" t-value="line.name"/>
+                        <t t-set="product_name" t-value="line.product_id.name"/>
+                        <t t-set="code_position" t-value="description_name.find(product_name) + len(product_name)"/>
+                        <t t-if="code_position &gt; 0">
+                            <t t-set="description_name" t-value="description_name[code_position:]"/>
+                            <span t-esc="description_name.strip()" t-options="{'widget': 'text'}">Bacon Burger</span>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <span t-if="line.name" t-field="line.name" t-options="{'widget': 'text'}">Bacon Burger</span>
+                    </t>
+                </td>
+            </xpath>
+        </data>
                 </td>
             </xpath>
         </template>
