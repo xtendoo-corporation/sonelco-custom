@@ -28,12 +28,16 @@ class StockQuantPackage(models.Model):
 
     @api.depends("quant_ids")
     def _compute_delivery_id(self):
-        self.delivery_id = self._get_delivery_id()
-        self.property_delivery_carrier_id = self.partner_id.property_delivery_carrier_id
+        for package in self:
+            package.delivery_id = package._get_delivery_id()
+            package.property_delivery_carrier_id = (
+                package.partner_id.property_delivery_carrier_id
+            )
 
     def _get_delivery_id(self):
+        self.ensure_one()
         move_line = self.env['stock.move.line'].search(
-            ['|', ('result_package_id', 'in', self.ids), ('package_id', 'in', self.ids)],
+            ['|', ('result_package_id', '=', self.id), ('package_id', '=', self.id)],
             order='date desc, id desc',
             limit=1,
         )
