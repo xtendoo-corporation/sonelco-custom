@@ -32,12 +32,9 @@ class StockQuantPackage(models.Model):
         self.property_delivery_carrier_id = self.partner_id.property_delivery_carrier_id
 
     def _get_delivery_id(self):
-        delivery_id = False
-        domain = ['|', ('result_package_id', 'in', self.ids), ('package_id', 'in', self.ids)]
-        move_line = self.env['stock.move.line'].search(domain)
-        if move_line:
-            delivery_id = self.env['stock.picking'].search(
-                [('id', '=', move_line[0].picking_id.id)],
-                limit=1,
-            )
-        return delivery_id
+        move_line = self.env['stock.move.line'].search(
+            ['|', ('result_package_id', 'in', self.ids), ('package_id', 'in', self.ids)],
+            order='date desc, id desc',
+            limit=1,
+        )
+        return move_line.picking_id
