@@ -20,6 +20,28 @@
             <field name="binding_model_id" eval="False"/>
         </record>
 
+        <!--
+            El PDF estándar de la factura (el que Odoo genera y adjunta siempre al
+            enviar) usa el diseño de Sonelco. Así el correo lleva un único PDF y
+            sin el nombre comercial del cliente delante de la razón social.
+            Odoo adjunta además los informes de la plantilla de correo que no
+            coincidan con éste, por eso las plantillas no deben llevar ninguno.
+        -->
+        <record id="account.account_invoices" model="ir.actions.report">
+            <field name="report_name">sonelco_document_format.report_invoice_not_grouped</field>
+            <field name="report_file">sonelco_document_format.report_invoice_not_grouped</field>
+        </record>
+
+        <!--
+            Las plantillas de correo de Odoo son datos "noupdate": un record de
+            otro módulo no las sobrescribe al actualizar. Por eso se usa un
+            write que se ejecuta en cada actualización de este módulo.
+        -->
+        <function model="mail.template" name="write">
+            <value eval="[ref('account.email_template_edi_invoice'), ref('account.email_template_edi_credit_note')]"/>
+            <value eval="{'report_template_ids': [(5, 0, 0)]}"/>
+        </function>
+
 <!--         <report-->
 <!--            id="report_invoice_without_grouped"-->
 <!--            string="Factura Sonelco"-->
