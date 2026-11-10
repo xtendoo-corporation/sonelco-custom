@@ -33,6 +33,16 @@
         </record>
 
         <!--
+            La opción «Facturas sin pago» del menú Imprimir/Descargar es otro
+            informe estándar (account.report_invoice) con el nombre comercial del
+            cliente delante de la razón social. Usa también el diseño de Sonelco.
+        -->
+        <record id="account.account_invoices_without_payment" model="ir.actions.report">
+            <field name="report_name">sonelco_document_format.report_invoice_not_grouped</field>
+            <field name="report_file">sonelco_document_format.report_invoice_not_grouped</field>
+        </record>
+
+        <!--
             Las plantillas de correo de Odoo son datos "noupdate": un record de
             otro módulo no las sobrescribe al actualizar. Por eso se usa un
             write que se ejecuta en cada actualización de este módulo.

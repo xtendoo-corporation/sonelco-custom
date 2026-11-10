@@ -3,7 +3,7 @@
 
 {
     "name": "Sonelco Document Format",
-    "version": "18.0.1.1",
+    "version": "18.0.1.2",
     "summary": "Formatos de impresión para Sonelco",
     "author": "Dani Domínguez",
     "company": "Xtendoo",
